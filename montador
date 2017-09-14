@@ -38,6 +38,7 @@ while l:
         print("  {%s, %s},"%(op,arg))
     else:
         print()
+        ip -= 1
     l = stdin.readline()
     ip += 1
 print("};")
