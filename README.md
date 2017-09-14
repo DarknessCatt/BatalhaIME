@@ -1,2 +1,2 @@
 # BatalhaIME
-O Du é muito salgado, só você precisa saber disso
+O Du é muito salgado, você só precisa saber disso
