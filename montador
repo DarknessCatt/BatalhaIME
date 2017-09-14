@@ -41,10 +41,10 @@ while l:
     l = stdin.readline()
     ip += 1
 print("};")
-    
-
-
-
+print("int main(int ac, char **av) {")   
+print("Maquina *maq = cria_maquina(prog);")
+print("exec_maquina(maq, ",ip,");")
+print("estroi_maquina(maq);")
 
 # Local variables:
 # mode: python
