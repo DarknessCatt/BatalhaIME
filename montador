@@ -44,7 +44,8 @@ print("};")
 print("int main(int ac, char **av) {")   
 print("Maquina *maq = cria_maquina(prog);")
 print("exec_maquina(maq, ",ip,");")
-print("estroi_maquina(maq);")
+print("destroi_maquina(maq);")
+print("}")
 
 # Local variables:
 # mode: python
