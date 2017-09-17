@@ -30,7 +30,9 @@ char *CODES[] = {
   "STO",
   "RCL",
   "END",
-  "PRN"
+  "PRN",
+  "RCE",
+  "STL"
 };
 #else
 #  define D(X)
@@ -50,6 +52,7 @@ Maquina *cria_maquina(INSTR *p) {
   if (!m) Fatal("Memória insuficiente",4);
   m->ip = 0;
   m->prog = p;
+  m->rbp = 0;
   return m;
 }
 
@@ -167,6 +170,12 @@ void exec_maquina(Maquina *m, int n) {
 	  return;
 	case PRN:
 	  printf("%d\n", desempilha(pil));
+	  break;
+	case RCE:
+	  empilha(pil,exec->val[ m->Mem[arg] + m->rbp ]) //Empilha em pil o valor da exec somando com a base
+	  break;
+	case STL:
+	  exec->val[ m->Mem[arg] + m->rbp] = desempilha(pil)
 	  break;
 	}
 	D(imprime(pil,5));
