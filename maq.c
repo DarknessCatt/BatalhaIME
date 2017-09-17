@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "maq.h"
 
-/* #define DEBUG */
+#define DEBUG 
 
 #ifdef DEBUG
 #  define D(X) X
@@ -172,10 +172,10 @@ void exec_maquina(Maquina *m, int n) {
 	  printf("%d\n", desempilha(pil));
 	  break;
 	case RCE:
-	  empilha(pil,exec->val[ m->Mem[arg] + m->rbp ]) //Empilha em pil o valor da exec somando com a base
+	  empilha(pil,exec->val[ m->Mem[arg] + m->rbp ]); //Empilha em pil o valor da exec somando com a base
 	  break;
 	case STL:
-	  exec->val[ m->Mem[arg] + m->rbp] = desempilha(pil)
+	  exec->val[ m->Mem[arg] + m->rbp] = desempilha(pil);
 	  break;
 	}
 	D(imprime(pil,5));
