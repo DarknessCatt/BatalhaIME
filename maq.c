@@ -180,7 +180,7 @@ void exec_maquina(Maquina *m, int n) {
 	  exec->val[ arg + m->rbp] = desempilha(pil); //Desempilha na exec na posição do arg mais base
 	  break;
 	case ALO:
-	  exec->topo = topo + m->Mem[arg]; //Soma arg no topo da pilha de exec
+	  exec->topo = topo + arg; //Soma arg no topo da pilha de exec
 	  break;
 	case FRE:
 	  exec->topo = topo - m->Mem[arg]; //Subtrai arg no topo da pilha de exec
