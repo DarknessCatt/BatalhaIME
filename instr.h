@@ -26,7 +26,7 @@ typedef enum {
   PRN,
   RCE,
   STL,
-  ALO,
+  ALC,
   FRE
 } OpCode;
 
