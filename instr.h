@@ -25,7 +25,9 @@ typedef enum {
   END,
   PRN,
   RCE,
-  STL
+  STL,
+  ALO,
+  FRE
 } OpCode;
 
 /* Tipos dos operandos */
