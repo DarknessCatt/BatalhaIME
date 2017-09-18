@@ -177,7 +177,7 @@ void exec_maquina(Maquina *m, int n) {
 	  empilha(pil,exec->val[ m->Mem[arg] + m->rbp ]); //Empilha em pil o valor da exec somando com a base
 	  break;
 	case STL:
-	  exec->val[ m->Mem[arg] + m->rbp] = desempilha(pil); //Desempilha na exec na posição do arg mais base
+	  exec->val[ arg + m->rbp] = desempilha(pil); //Desempilha na exec na posição do arg mais base
 	  break;
 	case ALO:
 	  exec->topo = topo + m->Mem[arg]; //Soma arg no topo da pilha de exec
