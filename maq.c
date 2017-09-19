@@ -124,6 +124,7 @@ void exec_maquina(Maquina *m, int n) {
 	  ip = arg;
 	  continue;
 	case RET:
+	  empilha(pil, args);
 	  ip = desempilha(exec);
 	  break;
 	case EQ:
