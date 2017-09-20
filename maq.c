@@ -121,7 +121,7 @@ void exec_maquina(Maquina *m, int n) {
 	  break;
 	case CALL:
 	  empilha(exec, ip);
-	  empilha(exec, m->rbp);
+	  empilha(exec, m->rbp); //armazena o rbp para voltar depois no RET
 	  ip = arg;
 	  continue;
 	case RET:
