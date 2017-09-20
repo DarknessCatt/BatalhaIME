@@ -183,6 +183,7 @@ void exec_maquina(Maquina *m, int n) {
 	  exec->val[ arg + m->rbp] = desempilha(pil); //Desempilha na exec na posição do arg mais base
 	  break;
 	case ALC:
+	  m->rbp = exec->topo;
 	  exec->topo = exec->topo + arg; //Soma arg no topo da pilha de exec
 	  break;
 	case FRE:
