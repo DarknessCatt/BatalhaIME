@@ -122,11 +122,13 @@ void exec_maquina(Maquina *m, int n) {
 	case CALL:
 	  empilha(exec, ip);
 	  empilha(exec, m->rbp); //armazena o rbp para voltar depois no RET
+	  D(imprime(exec,5));
+	  D(printf("\n     "));
 	  ip = arg;
 	  continue;
 	case RET:
-	  m->rbp = desempilha(exec); //
-	  empilha(pil, arg);
+	  m->rbp = desempilha(exec);
+	  //empilha(pil, arg);
 	  ip = desempilha(exec);
 	  break;
 	case EQ:
@@ -180,7 +182,7 @@ void exec_maquina(Maquina *m, int n) {
 	  empilha(pil,exec->val[arg + m->rbp ]); //Empilha em pil o valor de pilha exec[arg + base]
 	  break;
 	case STL:
-	  exec->val[ arg + m->rbp] = desempilha(pil); //Desempilha na exec na posição do arg mais base
+	  exec->val[arg + m->rbp] = desempilha(pil); //Desempilha na exec na posição do arg mais base
 	  break;
 	case ALC:
 	  m->rbp = exec->topo;
@@ -191,6 +193,8 @@ void exec_maquina(Maquina *m, int n) {
 	  break;
 	}
 	D(imprime(pil,5));
+	D(printf("\n     "));
+	D(imprime(exec,5));
 	D(puts("\n"));
 
 	ip++;
