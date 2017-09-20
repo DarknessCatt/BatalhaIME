@@ -121,10 +121,11 @@ void exec_maquina(Maquina *m, int n) {
 	  break;
 	case CALL:
 	  empilha(exec, ip);
+	  empilha(exec, m->rbp);
 	  ip = arg;
 	  continue;
 	case RET:
-	  m->rbp = desempilha(exec);
+	  m->rbp = desempilha(exec); //
 	  empilha(pil, arg);
 	  ip = desempilha(exec);
 	  break;
