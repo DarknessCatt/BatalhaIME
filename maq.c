@@ -176,7 +176,7 @@ void exec_maquina(Maquina *m, int n) {
 	  printf("%d\n", desempilha(pil));
 	  break;
 	case RCE:
-	  empilha(pil,exec->val[ m->Mem[arg] + m->rbp ]); //Empilha em pil o valor da exec somando com a base
+	  empilha(pil,exec->val[arg + m->rbp ]); //Empilha em pil o valor de pilha exec[arg + base]
 	  break;
 	case STL:
 	  exec->val[ arg + m->rbp] = desempilha(pil); //Desempilha na exec na posição do arg mais base
@@ -185,7 +185,7 @@ void exec_maquina(Maquina *m, int n) {
 	  exec->topo = exec->topo + arg; //Soma arg no topo da pilha de exec
 	  break;
 	case FRE:
-	  exec->topo = exec->topo - m->Mem[arg]; //Subtrai arg no topo da pilha de exec
+	  exec->topo = m->rbp; //Subtrai arg no topo da pilha de exec
 	  break;
 	}
 	D(imprime(pil,5));
