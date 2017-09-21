@@ -182,14 +182,14 @@ void exec_maquina(Maquina *m, int n) {
 	  empilha(pil,exec->val[arg + m->rbp ]); //Empilha em pil o valor de pilha exec[arg + base]
 	  break;
 	case STL:
-	  exec->val[m->rbp+arg] = desempilha(pil); //Desempilha na exec na posição do arg mais base
+	  exec->val[m->rbp+arg] = desempilha(pil); //Desempilha da pilha de dados e coloca na de execucao na posição do arg mais rbp
 	  break;
 	case ALC:
-	  m->rbp = exec->topo-1;
+	  m->rbp = exec->topo-1; // Aponta a base para o inicio das variaveis locais (aponta para o valor de rbp antigo)
 	  exec->topo = exec->topo + arg; //Soma arg no topo da pilha de exec
 	  break;
 	case FRE:
-	  exec->topo = m->rbp+1; //Subtrai arg no topo da pilha de exec
+	  exec->topo = m->rbp+1; //Volta o topo para sua posicao original
 	  break;
 	}
 	D(imprime(pil,5));
