@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "maq.h"
 
-#define DEBUG 
+//#define DEBUG 
 
 #ifdef DEBUG
 #  define D(X) X
@@ -185,11 +185,11 @@ void exec_maquina(Maquina *m, int n) {
 	  exec->val[m->rbp+arg] = desempilha(pil); //Desempilha na exec na posição do arg mais base
 	  break;
 	case ALC:
-	  m->rbp = exec->topo;
-	  exec->topo = exec->topo + arg + 1; //Soma arg no topo da pilha de exec
+	  m->rbp = exec->topo-1;
+	  exec->topo = exec->topo + arg; //Soma arg no topo da pilha de exec
 	  break;
 	case FRE:
-	  exec->topo = m->rbp; //Subtrai arg no topo da pilha de exec
+	  exec->topo = m->rbp+1; //Subtrai arg no topo da pilha de exec
 	  break;
 	}
 	D(imprime(pil,5));
