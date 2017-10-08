@@ -9,6 +9,8 @@ static Celula[][] *init_arena() {
 		for(j=1; j<GRID; j++) {
 			arena[i][j].terreno = rand() % 4;
 			arena[i][j].cristais = rand() % 5;
+			arena[i][j].ocup = 0;
+			arena[i][j].base = 0;
 		}
 	}
 	return arena;
