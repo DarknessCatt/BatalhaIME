@@ -1,4 +1,4 @@
-#include 
+#include "maq.h"
 
 typedef struct {
 int terreno;
