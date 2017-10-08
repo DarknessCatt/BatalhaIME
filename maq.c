@@ -34,7 +34,8 @@ char *CODES[] = {
   "RCE",
   "STL",
   "ALC",
-  "FRE"
+  "FRE",
+  "ATR"
 };
 #else
 #  define D(X)
@@ -191,6 +192,8 @@ void exec_maquina(Maquina *m, int n) {
 	case FRE:
 	  exec->topo = m->rbp+1; //Volta o topo para sua posicao original
 	  break;
+	case ATR: //change me plis
+		return;
 	}
 	D(imprime(pil,5));
 	D(printf("\n     "));
