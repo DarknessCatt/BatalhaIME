@@ -1,3 +1,4 @@
+#include 
 
 typedef struct {
 int terreno;
@@ -8,6 +9,8 @@ int base;
 
 typedef struct {
 	Celula[][] arena;
+	int time;
+	Maquina *exercito;
 } Arena;
 
 Arena *init_arena();
