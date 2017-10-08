@@ -52,5 +52,6 @@ typedef int OPERANDO;
 /* Instrução */
 typedef struct {
   OpCode instr;
+  Tipo tipo;
   OPERANDO op;
 } INSTR;
