@@ -10,7 +10,7 @@ int base;
 typedef struct {
 	Celula arena[][];
 	int time;
-	Maquina *exercito;
+	Maquina exercito[100];
 } Arena;
 
 Arena *init_arena();
