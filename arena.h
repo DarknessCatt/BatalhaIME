@@ -6,6 +6,10 @@ int ocup;
 int base;
 } Celula;
 
+typedef struct {
+	Celula[][] arena;
+} Arena;
+
 Arena *init_arena();
 void Atualiza();
 void InsereExercito();
