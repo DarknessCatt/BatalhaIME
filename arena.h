@@ -8,7 +8,7 @@ int base;
 } Celula;
 
 typedef struct {
-	Celula[][] arena;
+	Celula arena[][];
 	int time;
 	Maquina *exercito;
 } Arena;
