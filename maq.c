@@ -192,7 +192,7 @@ void exec_maquina(Maquina *m, int n) {
 	case FRE:
 	  exec->topo = m->rbp+1; //Volta o topo para sua posicao original
 	  break;
-	case ATR: //change me plis
+	case ATR: //change me plis plis
 		return;
 	}
 	D(imprime(pil,5));
