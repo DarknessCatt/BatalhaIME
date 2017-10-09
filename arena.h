@@ -8,10 +8,12 @@ int base;
 } Celula;
 
 typedef struct {
-	Celula arena[][];
+	Celula cell[21][21];
 	int time;
-	Maquina exercito[100];
 } Arena;
+
+Maquina exercito[100];
+int maquinas;
 
 Arena *init_arena();
 void Atualiza();
