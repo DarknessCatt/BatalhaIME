@@ -193,7 +193,9 @@ void exec_maquina(Maquina *m, int n) {
 	  exec->topo = m->rbp+1; //Volta o topo para sua posicao original
 	  break;
 	case ATR: //change me plis plis
-		return;
+	  empilha(pil,arg);
+	  empilha(Sistema(0)); // vamos supor que o 0 é para ele retornar o valor do atributo.
+	  break;
 	}
 	D(imprime(pil,5));
 	D(printf("\n     "));
