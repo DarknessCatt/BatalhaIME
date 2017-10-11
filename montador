@@ -48,7 +48,7 @@ print("exec_maquina(maq, 1000);")
 print("destroi_maquina(maq);")
 print("}")
 
-print("""Maquina gen(){
+print("""Maquina *gen(){
         return cria_maquina(prog); 
     }
     """)
