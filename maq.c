@@ -81,8 +81,11 @@ void exec_maquina(Maquina *m, int n) {
 	switch (opc) {
 	  OPERANDO tmp;
 	case PUSH:
-	  empilha(pil, arg);
-	  break;
+		if (op.t == NUM) { 
+			empilha(pil, arg); 
+			break;
+		}
+		else Fatal("Operando incompatível", 9);
 	case POP:
 	  desempilha(pil);
 	  break;
@@ -92,40 +95,78 @@ void exec_maquina(Maquina *m, int n) {
 	  empilha(pil, tmp);
 	  break;
 	case ADD:
-	  empilha(pil, desempilha(pil)+desempilha(pil));
-	  break;
+	  Operando op1 = desempilha(pil);
+	  Operando op2 = desempilha(pil);
+	  if (op1.t == NUM && op2.t == NUM) {
+	  	Operando op3;
+	  	op3.t = op1.t;
+	  	op3.n = op1.n + op2.n;
+	  	empilha(pil, op3);
+	  	break;
+	  }
+	  else Fatal("Operando incompatível", 9);
 	case SUB:
-	  tmp = desempilha(pil);
-	  empilha(pil, desempilha(pil)-tmp);
-	  break;
+	  Operando op1 = desempilha(pil);
+	  Operando op2 = desempilha(pil);
+	  if (op1.t == NUM && op2.t == NUM) {
+	  	Operando op3;
+	  	op3.t = op1.t;
+	  	op3.n = op2.n - op1.n;
+	  	empilha(pil, op3);
+	  	break;
+	  }
+	  else Fatal("Operando incompatível", 9);
 	case MUL:
-	  empilha(pil, desempilha(pil)*desempilha(pil));
-	  break;
+	  Operando op1 = desempilha(pil);
+	  Operando op2 = desempilha(pil);
+	  if (op1.t == NUM && op2.t == NUM) {
+	  	Operando op3;
+	  	op3.t = op1.t;
+	  	op3.n = op1.n * op2.n;
+	  	empilha(pil, op3);
+	  	break;
+	  }
+	  else Fatal("Operando incompatível", 9);
 	case DIV:
-	  tmp = desempilha(pil);
-	  empilha(pil, desempilha(pil)/tmp);
-	  break;
+	  Operando op1 = desempilha(pil);
+	  Operando op2 = desempilha(pil);
+	  if (op1.t == NUM && op2.t == NUM) {
+	  	Operando op3;
+	  	op3.t = op1.t;
+	  	op3.n = op2.n / op1.n;
+	  	empilha(pil, op3);
+	  	break;
+	  }
+	  else Fatal("Operando incompatível", 9);
 	case JMP:
-	  ip = arg;
+	  ip = arg.n;
 	  continue;
 	case JIT:
-	  if (desempilha(pil) != 0) {
-		ip = arg;
-		continue;
+	  Operando op = desempilha(pil);
+	  if (op.t == NUM) {
+	  	if (op.n != 0) {
+			ip = arg.n;
+			continue;
+		}
+		break;
 	  }
-	  break;
+	  else Fatal("Operando incompatível", 9);
 	case JIF:
-	  if (desempilha(pil) == 0) {
-		ip = arg;
-		continue;
+	  Operando op = desempilha(pil);
+	  if (op.t == NUM) {
+	  	if (op.n == 0) {
+			ip = arg.n;
+			continue;
+		}
+		break;
 	  }
-	  break;
+	  else Fatal("Operando incompatível", 9); //até aqui parece certo. RM ME LATER PLIS ----------X-----------
 	case CALL:
 	  empilha(exec, ip);
 	  empilha(exec, m->rbp); //armazena o rbp para voltar depois no RET
 	  D(imprime(exec,5));
 	  D(printf("\n     "));
-	  ip = arg;
+	  ip = arg.n;
 	  continue;
 	case RET:
 	  m->rbp = desempilha(exec);
