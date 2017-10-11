@@ -3,7 +3,7 @@
 #include "arena.h"
 #define GRID 21
 
-/*INSTR programa[] = {
+INSTR programa[] = {
   {PUSH, 3},
   {PUSH, 6},
   {CALL, 5},
@@ -11,11 +11,12 @@
   {END,  0},
   {ADD,  0},
   {RET,  0}
-};*/
+};
 
-Arena* init_arena() {
+Arena *init_arena() {
 	Arena *arena = (Arena*)malloc(sizeof(Arena));
 	nmaquinas = 0;
+	robonow = 0;
 	nexercitos = 0;
 	int i,j;
 	for(i=1;i<GRID;i++) {
@@ -29,34 +30,27 @@ Arena* init_arena() {
 	}
 	return arena;
 }
-void registro(Maquina *maq) {
-	exercito[maquinas] = *maq;
-	maquinas++;
-	/*printf("Maquinas:%d\n",maquinas);
-	exercito[0].cristais = 217;
-	printf("%d",exercito[0].cristais);*/
-}
 
 void Escalonador(int rodadas) {
-	for(int j = 0; j< rodadas; j++) {
+	/*for(int j = 0; j< rodadas; j++) {
 		for(int i = 0; i < nexercitos; i++) {
-			for(int k = 0; k < nmaquinas; k++)
-				exec_maquina(exercito[i].maquinas[k], 50);
+			for(int k = 0; k < nmaquinas; k++) {
+					exec_maquina(exercito[i].maquinas[k], 50);
+				}
+			}
 		}
-	}
+	}*/
 }
 
-void InsereExercito() {
-	// ???WxWW
-	for(int i = 0; i< 5; i++) {
-		Maquina *maq = cria_maquina(programa);
-		exercito[nexercitos].maquinas[i] = *maq;
+void InsereExercito(Exercito exercito) {
+	exercito[nexercitos] = exercito;
+	for(int i =0; i < 5; i++) {
+		maquinas[nexercitos*5 + i] = exercito.robos[i];
 	}
-	nexercitos++;	
+	nexercitos++;
 }
 int main() {
 	Arena *arena = init_arena();
 	Maquina *maq = cria_maquina(programa);
-	registro(maq);
 	printf("%d",arena->cell[1][1].cristais);
 }

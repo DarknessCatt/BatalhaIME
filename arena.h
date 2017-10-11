@@ -12,13 +12,11 @@ typedef struct {
 	int time;
 } Arena;
 
-typedef struct {
-	Maquina maquinas[5];
-} Exercito;
-
+Maquina maquinas[100];
 Exercito exercito[20];
 int nmaquinas;
 int nexercitos;
+int robonow;
 
 Arena *init_arena();
 void Atualiza();
