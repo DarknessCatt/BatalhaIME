@@ -12,8 +12,13 @@ typedef struct {
 	int time;
 } Arena;
 
-Maquina exercito[100];
-int maquinas;
+typedef struct {
+	Maquina maquinas[5];
+} Exercito;
+
+Exercito exercito[20];
+int nmaquinas;
+int nexercitos;
 
 Arena *init_arena();
 void Atualiza();

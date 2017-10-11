@@ -15,7 +15,8 @@
 
 Arena* init_arena() {
 	Arena *arena = (Arena*)malloc(sizeof(Arena));
-	maquinas = 0;
+	nmaquinas = 0;
+	nexercitos = 0;
 	int i,j;
 	for(i=1;i<GRID;i++) {
 		for(j=1; j<GRID; j++) {
@@ -36,7 +37,22 @@ void registro(Maquina *maq) {
 	printf("%d",exercito[0].cristais);*/
 }
 
+void Escalonador(int rodadas) {
+	for(int j = 0; j< rodadas; j++) {
+		for(int i = 0; i < maquinas; i++) {
+			exec_maquina(exercito[i], 50);
+		}
+	}
+}
 
+void InsereExercito() {
+	// ???WxWW
+	for(int i = 0; i< 5; i++) {
+		Maquina *maq = cria_maquina(programa);
+		exercito[nexercitos].maquinas[i] = *maq;
+	}
+	nexercitos++;
+}
 int main() {
 	Arena *arena = init_arena();
 	Maquina *maq = cria_maquina(programa);
