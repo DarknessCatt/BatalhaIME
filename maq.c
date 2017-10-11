@@ -160,19 +160,28 @@ void exec_maquina(Maquina *m, int n) {
 		}
 		break;
 	  }
-	  else Fatal("Operando incompatível", 9); //até aqui parece certo. RM ME LATER PLIS ----------X-----------
+	  else Fatal("Operando incompatível", 9); 
 	case CALL:
-	  empilha(exec, ip);
-	  empilha(exec, m->rbp); //armazena o rbp para voltar depois no RET
+	  Operando opip;
+	  opip.n = ip;
+	  Operando oprbp;
+	  oprbp.n = m->rbp;
+	  empilha(exec, opip.n);
+	  empilha(exec, oprbp.n); //armazena o rbp para voltar depois no RET
 	  D(imprime(exec,5));
-	  D(printf("\n     "));
+	  D(printf("\n     ")); 
 	  ip = arg.n;
 	  continue;
 	case RET:
-	  m->rbp = desempilha(exec);
-	  //empilha(pil, arg);
-	  ip = desempilha(exec);
-	  break;
+	  Operando oprbp = desempilha(exec);
+	  if (oprbp.t == NUM) m->rbp = oprbp.n;
+	  else Fatal("Operando incompatível", 9);
+	  
+	  Operando opip = desempilha(exec);
+	  if (opip.t == NUM) ip = opip.n;
+	  else Fatal("Operando incompatível", 9); 
+
+	  break;                     //até aqui parece certo. RM ME LATER PLIS ----------X-----------
 	case EQ:
 	  if (desempilha(pil) == desempilha(pil))
 		empilha(pil, 1);
