@@ -40,19 +40,17 @@ typedef enum {
 } Tipo;
 
 /* Operando */
-/* typedef struct { */
-/*   Tipo t; */
-/*   union { */
-/* 	int n; */
-/* 	int ac; */
-/* 	int v; */
-/*   }; */
-/* } OPERANDO; */
-typedef int OPERANDO;
+typedef struct { 
+  Tipo t; 
+   union { 
+  	int n; 
+  	int ac; 
+  	int v; 
+  }; 
+} OPERANDO;
 
 /* Instrução */
 typedef struct {
   OpCode instr;
-  Tipo tipo;
   OPERANDO op;
 } INSTR;
