@@ -39,8 +39,9 @@ void registro(Maquina *maq) {
 
 void Escalonador(int rodadas) {
 	for(int j = 0; j< rodadas; j++) {
-		for(int i = 0; i < maquinas; i++) {
-			exec_maquina(exercito[i], 50);
+		for(int i = 0; i < nexercitos; i++) {
+			for(int k = 0; k < nmaquinas; k++)
+				exec_maquina(exercito[i].maquinas[k], 50);
 		}
 	}
 }
@@ -51,7 +52,7 @@ void InsereExercito() {
 		Maquina *maq = cria_maquina(programa);
 		exercito[nexercitos].maquinas[i] = *maq;
 	}
-	nexercitos++;
+	nexercitos++;	
 }
 int main() {
 	Arena *arena = init_arena();
