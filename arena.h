@@ -1,4 +1,5 @@
 #include "maq.h"
+#include "pilha.h"
 
 typedef struct {
 int terreno;

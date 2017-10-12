@@ -49,6 +49,37 @@ void InsereExercito(Exercito exercito) {
 	}
 	nexercitos++;
 }
+
+void Sistema(int op) {
+	switch (op) {
+		case 0:
+			Operando op = desempilha(maquinas[escalonador].pil);
+			Operando atr;
+			atr.t = NUM;
+			Operando cel = desempilha(maquinas[escalonador].pil);
+			if(cel.t == CELULA) {
+				switch (op.n) {
+					case 0:
+						atr.n = cel.cel.terreno;
+						break;
+					case 1:
+						atr.n = cel.cel.cristais;
+						break;
+					case 2:
+						atr.n = cel.cel.ocup;
+						break;
+					case 3:
+						atr.n = cel.cel.base;
+						break;
+				}
+			}
+			empilha(maquinas[escalonador].pil,atr);
+			break;
+		case 1:
+	}
+
+}
+
 int main() {
 	Arena *arena = init_arena();
 	Maquina *maq = cria_maquina(programa);
