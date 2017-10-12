@@ -35,7 +35,11 @@ char *CODES[] = {
   "STL",
   "ALC",
   "FRE",
-  "ATR"
+  "ATR",
+  "MOV",
+  "SRC",
+  "GRB",
+  "DRP"
 };
 #else
 #  define D(X)
@@ -301,7 +305,9 @@ void exec_maquina(Maquina *m, int n) {
 	case END:
 	  return;                   
 	case PRN:
-	  printf("%d\n", desempilha(pil)); //fazer depois LEIA-ME! ISSO! VC MESMO! ~~~~~~~~~~~~~~~~~X~~~~~~~~~~~~~~~
+	  Operando op;
+	  op = desempilha(pil);
+	  printf("%d\n", op.n); 
 	  break;
 	case RCE:
 	  empilha(pil,exec->val[arg + m->rbp ]); //Empilha em pil o valor de pilha exec[arg + base]
