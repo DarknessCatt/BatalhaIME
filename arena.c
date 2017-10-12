@@ -32,14 +32,10 @@ Arena *init_arena() {
 }
 
 void Escalonador(int rodadas) {
-	/*for(int j = 0; j< rodadas; j++) {
-		for(int i = 0; i < nexercitos; i++) {
-			for(int k = 0; k < nmaquinas; k++) {
-					exec_maquina(exercito[i].maquinas[k], 50);
-				}
-			}
-		}
-	}*/
+	for(int k = 0; k < nmaquinas; k++) {
+		escalonador = k;
+		exec_maquina(maquinas[k], 50);	
+	}
 }
 
 void InsereExercito(Exercito exercito) {

@@ -18,6 +18,7 @@ Exercito exercito[20];
 int nmaquinas;
 int nexercitos;
 int robonow;
+int escalonador;
 
 Arena *init_arena();
 void Atualiza();
