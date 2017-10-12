@@ -83,165 +83,149 @@ void Sistema(int op) {
 			empilha(maquinas[escalonador].pil,atr);
 			break;
 		case 1: // MOV
-			Operando mov;
-			mov.t = NUM;
-			mov.n = Mover();
-			empilha(maquinas[escalonador].pil,mov);
+			empilha(maquinas[escalonador].pil,Vizinhos(0));
 			break;
 		case 2: // SRC
+			empilha(maquinas[escalonador].pil,Vizinhos(1));
 			break;
 		case 3: // GRB
+			empilha(maquinas[escalonador].pil,Vizinhos(2));
 			break;
 		case 4: // DRP
+			empilha(maquinas[escalonador].pil,Vizinhos(3));
 			break;
 	}
 
 }
 
-//Tenta mover o robo, e retorna 1 se conseguiu e 0 se não pode mover ele ( ou ele andou para a parede ou
-// a casa já está ocupada)
-int Mover(){
+// Localiza a coordenada pedida pelo robo e tenta executar a ação baseada na coordenada.
+// Caso SRC, retorna a celula. Para os outros casos, retorna 1 caso tenha conseguido executar a ação.
+// M:
+// 0 = Mover
+// 1 = Olhar espaço
+// 2 = Pegar Cristal
+// 3 = Soltar Cristal
+Operando Vizinhos(int M){
 	Operando op =  desempilha(maquinas[escalonador].pil);
 	int x = maquinas[escalonador].x;
 	int y = maquinas[escalonador].y;
 	int nx = x, ny = y;
 
-	if(x%2){
+	if(x%2){ //impar
 		switch(op.n){
-			case 0: // Mover Para N (x,y+1)
+			case 0: // N (x,y+1)
 				ny++;
-				if(!arena->cell[nx][ny].ocupada){				
-					maquinas[escalonador].y = ny;
-					arena->cell[x][y].ocupada = 0;
-					arena->cell[nx][ny].ocupada = 1;
-					return 1;				
-				}
-				return 0;
 				break;
-			case 1: // Mover para NE (x+1,y+1)
+			case 1: // NE (x+1,y+1)
 				nx++;
 				ny++;
-				if(!arena->cell[nx][ny].ocupada){
-					maquinas[escalonador].x = nx;
-					maquinas[escalonador].y = ny;
-					arena->cell[x][y].ocupada = 0;
-					arena->cell[nx][ny].ocupada = 1;
-					return 1;
-				}
-				return 0;
 				break;
-			case 2: // Mover para SE (x+1,y)
+			case 2: // SE (x+1,y)
 				nx++;
-				if(!arena->cell[nx][ny].ocupada){
-					maquinas[escalonador].x = nx;
-					arena->cell[x][y].ocupada = 0;
-					arena->cell[nx][ny].ocupada = 1;
-					return 1;
-				}
-				return 0;
 				break;
-			case 3: // Mover para S (x,y-1)
+			case 3: // S (x,y-1)
 				ny--;
-				if(!arena->cell[nx][ny].ocupada){
-					maquinas[escalonador].y = ny;
-					arena->cell[x][y].ocupada = 0;
-					arena->cell[nx][ny].ocupada = 1;
-					return 1;
-				}
-				return 0;
 				break;
-			case 4: // Mover para SW (x-1,y)
+			case 4: // SW (x-1,y)
 				nx--;
-				if(!arena->cell[nx][ny].ocupada){
-					maquinas[escalonador].x = nx;
-					arena->cell[x][y].ocupada = 0;
-					arena->cell[nx][ny].ocupada = 1;
-					return 1;
-				}
-				return 0;
 				break;
-			case 5: //Mover para NW (x-1,y+1)
+			case 5: // NW (x-1,y+1)
 				nx--;
 				ny++;
-				if(!arena->cell[nx][ny].ocupada){
-					maquinas[escalonador].x = nx;
-					maquinas[escalonador].y = ny;
-					arena->cell[x][y].ocupada = 0;
-					arena->cell[nx][ny].ocupada = 1;
-					return 1;
-				}
-				return 0;
 				break;
 		}
+	}
+	else{ //par
+		switch(op.n){
+			case 0: // N (x,y+1)
+				ny++;
+				break;
+			case 1: // NE (x+1,y)
+				nx++;
+				break;
+			case 2: // SE (x+1,y-1)
+				nx++;
+				ny--;
+				break;
+			case 3: // S (x,y-1)
+				ny--;
+				break;
+			case 4: // SW (x-1,y-1)
+				nx--;
+				ny--;
+				break;
+			case 5: // NW (x-1,y)
+				nx--;
+				break;
+		}
+	}
+
+	Operando r;
+
+	switch (M){
+		case 0:
+			r.t = CELULA;
+			r.n = Mover(nx,ny);
+			return r;
+			break;
+
+		case 1:
+			r.t = NUM;
+			r.n = arena->cell[nx][ny];
+			return r;
+		 	break;
+
+		 case 2:
+		 	r.t = NUM;
+		 	r.n = Cristal(nx,ny,1);
+		 	return r;
+		 	break;
+
+		 case 3:
+		 	r.t = NUM;
+		 	r.n = Cristal(nx,ny,0);
+		 	return r;
+		 	break;
+	}
+
+}
+
+int Mover(int nx, int ny){
+
+	int x = maquinas[escalonador].x;
+	int y = maquinas[escalonador].y;
+
+	if(!arena->cell[nx][ny].ocupada){
+		maquinas[escalonador].x = nx;
+		maquinas[escalonador].y = ny;
+		arena->cell[x][y].ocupada = 0;
+		arena->cell[nx][ny].ocupada = 1;
+		return 1;
+	}
+	return 0;
+}
+
+int Cristal(int nx, int ny, int c){
+
+	if(c){
+		if(arena->cell[nx][ny].cristais){
+			maquinas[escalonador].cristais++;
+			arena->cell[nx][ny].cristais--;
+			return 1;
+		}
+		else
+			return 0;
 	}
 	else{
-		switch(op.n){
-			case 0: // Mover Para N (x,y+1)
-				ny++;
-				if(!arena->cell[nx][ny].ocupada){				
-					maquinas[escalonador].y = ny;
-					arena->cell[x][y].ocupada = 0;
-					arena->cell[nx][ny].ocupada = 1;
-					return 1;				
-				}
-				return 0;
-				break;
-			case 1: // Mover para NE (x+1,y)
-				nx++;
-				if(!arena->cell[nx][ny].ocupada){
-					maquinas[escalonador].x = nx;
-					arena->cell[x][y].ocupada = 0;
-					arena->cell[nx][ny].ocupada = 1;
-					return 1;
-				}
-				return 0;
-				break;
-			case 2: // Mover para SE (x+1,y-1)
-				nx++;
-				ny--;
-				if(!arena->cell[nx][ny].ocupada){
-					maquinas[escalonador].x = nx;
-					maquinas[escalonador].y = ny;
-					arena->cell[x][y].ocupada = 0;
-					arena->cell[nx][ny].ocupada = 1;
-					return 1;
-				}
-				return 0;
-				break;
-			case 3: // Mover para S (x,y-1)
-				ny--;
-				if(!arena->cell[nx][ny].ocupada){
-					maquinas[escalonador].y = ny;
-					arena->cell[x][y].ocupada = 0;
-					arena->cell[nx][ny].ocupada = 1;
-					return 1;
-				}
-				return 0;
-				break;
-			case 4: // Mover para SW (x-1,y-1)
-				nx--;
-				ny--;
-				if(!arena->cell[nx][ny].ocupada){
-					maquinas[escalonador].x = nx;
-					maquinas[escalonador].y = ny;
-					arena->cell[x][y].ocupada = 0;
-					arena->cell[nx][ny].ocupada = 1;
-					return 1;
-				}
-				return 0;
-				break;
-			case 5: //Mover para NW (x-1,y)
-				nx--;
-				if(!arena->cell[nx][ny].ocupada){
-					maquinas[escalonador].x = nx;
-					arena->cell[x][y].ocupada = 0;
-					arena->cell[nx][ny].ocupada = 1;
-					return 1;
-				}
-				return 0;
-				break;
+		if(maquinas[escalonador].cristais){
+			maquinas[escalonador].cristais--;
+			arena->cell[nx][ny].cristais++;
+			return 1;
 		}
+		else
+			return 0;
 	}
+
 }
 
 int main() {
