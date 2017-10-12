@@ -28,6 +28,17 @@ Arena *init_arena() {
 			//printf("%d",arena->cell[i][j].cristais);
 		}
 	}
+
+	for(i=0;i<GRID;i++){
+		arena->cell[i][0].ocup = 1;
+		arena->cell[i][20].ocup = 1;
+	}
+
+	for(i=0;i<GRID;i++){
+		arena->cell[0][i].ocup = 1;
+		arena->cell[20][i].ocup = 1;
+	}
+
 	return arena;
 }
 
@@ -72,6 +83,10 @@ void Sistema(int op) {
 			empilha(maquinas[escalonador].pil,atr);
 			break;
 		case 1: // MOV
+			Operando mov;
+			mov.t = NUM;
+			mov.n = Mover();
+			empilha(maquinas[escalonador].pil,mov);
 			break;
 		case 2: // SRC
 			break;
@@ -81,6 +96,152 @@ void Sistema(int op) {
 			break;
 	}
 
+}
+
+//Tenta mover o robo, e retorna 1 se conseguiu e 0 se não pode mover ele ( ou ele andou para a parede ou
+// a casa já está ocupada)
+int Mover(){
+	Operando op =  desempilha(maquinas[escalonador].pil);
+	int x = maquinas[escalonador].x;
+	int y = maquinas[escalonador].y;
+	int nx = x, ny = y;
+
+	if(x%2){
+		switch(op.n){
+			case 0: // Mover Para N (x,y+1)
+				ny++;
+				if(!arena->cell[nx][ny].ocupada){				
+					maquinas[escalonador].y = ny;
+					arena->cell[x][y].ocupada = 0;
+					arena->cell[nx][ny].ocupada = 1;
+					return 1;				
+				}
+				return 0;
+				break;
+			case 1: // Mover para NE (x+1,y+1)
+				nx++;
+				ny++;
+				if(!arena->cell[nx][ny].ocupada){
+					maquinas[escalonador].x = nx;
+					maquinas[escalonador].y = ny;
+					arena->cell[x][y].ocupada = 0;
+					arena->cell[nx][ny].ocupada = 1;
+					return 1;
+				}
+				return 0;
+				break;
+			case 2: // Mover para SE (x+1,y)
+				nx++;
+				if(!arena->cell[nx][ny].ocupada){
+					maquinas[escalonador].x = nx;
+					arena->cell[x][y].ocupada = 0;
+					arena->cell[nx][ny].ocupada = 1;
+					return 1;
+				}
+				return 0;
+				break;
+			case 3: // Mover para S (x,y-1)
+				ny--;
+				if(!arena->cell[nx][ny].ocupada){
+					maquinas[escalonador].y = ny;
+					arena->cell[x][y].ocupada = 0;
+					arena->cell[nx][ny].ocupada = 1;
+					return 1;
+				}
+				return 0;
+				break;
+			case 4: // Mover para SW (x-1,y)
+				nx--;
+				if(!arena->cell[nx][ny].ocupada){
+					maquinas[escalonador].x = nx;
+					arena->cell[x][y].ocupada = 0;
+					arena->cell[nx][ny].ocupada = 1;
+					return 1;
+				}
+				return 0;
+				break;
+			case 5: //Mover para NW (x-1,y+1)
+				nx--;
+				ny++;
+				if(!arena->cell[nx][ny].ocupada){
+					maquinas[escalonador].x = nx;
+					maquinas[escalonador].y = ny;
+					arena->cell[x][y].ocupada = 0;
+					arena->cell[nx][ny].ocupada = 1;
+					return 1;
+				}
+				return 0;
+				break;
+		}
+	}
+	else{
+		switch(op.n){
+			case 0: // Mover Para N (x,y+1)
+				ny++;
+				if(!arena->cell[nx][ny].ocupada){				
+					maquinas[escalonador].y = ny;
+					arena->cell[x][y].ocupada = 0;
+					arena->cell[nx][ny].ocupada = 1;
+					return 1;				
+				}
+				return 0;
+				break;
+			case 1: // Mover para NE (x+1,y)
+				nx++;
+				if(!arena->cell[nx][ny].ocupada){
+					maquinas[escalonador].x = nx;
+					arena->cell[x][y].ocupada = 0;
+					arena->cell[nx][ny].ocupada = 1;
+					return 1;
+				}
+				return 0;
+				break;
+			case 2: // Mover para SE (x+1,y-1)
+				nx++;
+				ny--;
+				if(!arena->cell[nx][ny].ocupada){
+					maquinas[escalonador].x = nx;
+					maquinas[escalonador].y = ny;
+					arena->cell[x][y].ocupada = 0;
+					arena->cell[nx][ny].ocupada = 1;
+					return 1;
+				}
+				return 0;
+				break;
+			case 3: // Mover para S (x,y-1)
+				ny--;
+				if(!arena->cell[nx][ny].ocupada){
+					maquinas[escalonador].y = ny;
+					arena->cell[x][y].ocupada = 0;
+					arena->cell[nx][ny].ocupada = 1;
+					return 1;
+				}
+				return 0;
+				break;
+			case 4: // Mover para SW (x-1,y-1)
+				nx--;
+				ny--;
+				if(!arena->cell[nx][ny].ocupada){
+					maquinas[escalonador].x = nx;
+					maquinas[escalonador].y = ny;
+					arena->cell[x][y].ocupada = 0;
+					arena->cell[nx][ny].ocupada = 1;
+					return 1;
+				}
+				return 0;
+				break;
+			case 5: //Mover para NW (x-1,y)
+				nx--;
+				if(!arena->cell[nx][ny].ocupada){
+					maquinas[escalonador].x = nx;
+					arena->cell[x][y].ocupada = 0;
+					arena->cell[nx][ny].ocupada = 1;
+					return 1;
+				}
+				return 0;
+				break;
+		}
+	}
 }
 
 int main() {

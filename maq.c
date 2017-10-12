@@ -329,6 +329,10 @@ void exec_maquina(Maquina *m, int n) {
 	  empilha(pil,arg);
 	  Sistema(0); // vamos supor que o 0 é para ele retornar o valor do atributo.
 	  break;
+	case MOV:
+	  empilha(pil,arg);
+	  Sistema(1);
+	  break;
 	}
 	D(imprime(pil,5));
 	D(printf("\n     "));
