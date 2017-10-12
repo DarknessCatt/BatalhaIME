@@ -166,8 +166,8 @@ void exec_maquina(Maquina *m, int n) {
 	  opip.n = ip;
 	  Operando oprbp;
 	  oprbp.n = m->rbp;
-	  empilha(exec, opip.n);
-	  empilha(exec, oprbp.n); //armazena o rbp para voltar depois no RET
+	  empilha(exec, opip);
+	  empilha(exec, oprbp); //armazena o rbp para voltar depois no RET
 	  D(imprime(exec,5));
 	  D(printf("\n     ")); 
 	  ip = arg.n;
@@ -183,10 +183,14 @@ void exec_maquina(Maquina *m, int n) {
 
 	  break;                     //até aqui parece certo. RM ME LATER PLIS ----------X-----------
 	case EQ:
+	  Operando op;
+	  op.t = NUM;
 	  if (desempilha(pil) == desempilha(pil))
-		empilha(pil, 1);
+		op.n = 1;
+		empilha(pil, op);
 	  else
-		empilha(pil, 0);
+	  	op.n = 0;
+		empilha(pil, op);
 	  break;
 	case GT:
 	  if (desempilha(pil) < desempilha(pil))
