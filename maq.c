@@ -308,17 +308,20 @@ void exec_maquina(Maquina *m, int n) {
 	  break;
 	case STL:
 	  exec->val[m->rbp+arg] = desempilha(pil); //Desempilha da pilha de dados e coloca na de execucao na posição do arg mais rbp
-	  break;      //até aqui parece certo RM ME LATER PLIS PLIS ----------------X-----------------------
-	case ALC:
-	  m->rbp = exec->topo-1; // Aponta a base para o inicio das variaveis locais (aponta para o valor de rbp antigo)
-	  exec->topo = exec->topo + arg; //Soma arg no topo da pilha de exec
 	  break;
+	case ALC:
+	  if (arg.t == NUM) {
+	  m->rbp = exec->topo-1; // Aponta a base para o inicio das variaveis locais (aponta para o valor de rbp antigo)
+	  exec->topo = exec->topo + arg.n; //Soma arg no topo da pilha de exec
+	  break;
+	  }
+	  else Fatal("Operando incompatível", 9); 
 	case FRE:
 	  exec->topo = m->rbp+1; //Volta o topo para sua posicao original
 	  break;
-	case ATR: //change me plis plis
+	case ATR:
 	  empilha(pil,arg);
-	  empilha(Sistema(0)); // vamos supor que o 0 é para ele retornar o valor do atributo.
+	  Sistema(0); // vamos supor que o 0 é para ele retornar o valor do atributo.
 	  break;
 	}
 	D(imprime(pil,5));
