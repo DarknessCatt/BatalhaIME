@@ -285,24 +285,30 @@ void exec_maquina(Maquina *m, int n) {
 	  }
 	  break;
 	  }
-	  else Fatal("Operando incompatível", 9); //até aqui parece certo. RM ME LATER PLIS ----------X-----------
+	  else Fatal("Operando incompatível", 9); 
 	case STO:
-	  m->Mem[arg] = desempilha(pil);
+	  Operando op;
+	  op.t = NUM;
+	  op.n = desempilha(pil);
+	  m->Mem[arg.n] = op.n;
 	  break;
 	case RCL:
-	  empilha(pil,m->Mem[arg]);
+	  Operando op;
+	  op.t = NUM;
+	  op.n = m->Mem[arg.n];
+	  empilha(pil, op);
 	  break;
 	case END:
-	  return;
+	  return;                   
 	case PRN:
-	  printf("%d\n", desempilha(pil));
+	  printf("%d\n", desempilha(pil)); //fazer depois LEIA-ME! ISSO! VC MESMO! ~~~~~~~~~~~~~~~~~X~~~~~~~~~~~~~~~
 	  break;
 	case RCE:
 	  empilha(pil,exec->val[arg + m->rbp ]); //Empilha em pil o valor de pilha exec[arg + base]
 	  break;
 	case STL:
 	  exec->val[m->rbp+arg] = desempilha(pil); //Desempilha da pilha de dados e coloca na de execucao na posição do arg mais rbp
-	  break;
+	  break;      //até aqui parece certo RM ME LATER PLIS PLIS ----------------X-----------------------
 	case ALC:
 	  m->rbp = exec->topo-1; // Aponta a base para o inicio das variaveis locais (aponta para o valor de rbp antigo)
 	  exec->topo = exec->topo + arg; //Soma arg no topo da pilha de exec
