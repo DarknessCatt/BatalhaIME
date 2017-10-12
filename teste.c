@@ -42,7 +42,8 @@ typedef enum {
 typedef enum {
   NUM,
   ACAO,
-  VAR
+  VAR,
+  CELULA
 } Tipo;
 
 typedef struct { 
@@ -51,6 +52,7 @@ typedef struct {
   	int n; 
   	int ac; 
   	int v; 
+  	Celula c;
   }; 
 } OPERANDO;
 
@@ -76,12 +78,14 @@ INSTR programa[] = {
 int main()
 {
 	//OpCode   opc = programa[0].instr; //Linha ip do programa pegando o OpCode instr
-	INSTR in[] = {
-	{CALL ,{NUM,3}},
-	{CALL ,{NUM,74}}
-	};
-	OPERANDO op = in[1].op;
-	printf("%d\n", op.n );
+	OPERANDO op;
+	OPERANDO op1;
+	op.t = CELULA;
+	op1.t = NUM;
+	op.n = 23;
+	op1.n = 23;
+	op.c.cristais = 22;
+	printf("%d\n", op.c.cristais);
 	/*
 	OPERANDO op;
 	op.t = NUM;
