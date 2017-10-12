@@ -330,9 +330,12 @@ void exec_maquina(Maquina *m, int n) {
 	  Sistema(0); // vamos supor que o 0 é para ele retornar o valor do atributo.
 	  break;
 	case MOV:
-	  empilha(pil,arg);
-	  Sistema(1);
-	  break;
+	  if(arg.t == NUM){
+	    empilha(pil,arg);
+	  	Sistema(1);
+	  	break;
+	  }
+	  else Fatal("Operando incompatível", 9);  
 	}
 	D(imprime(pil,5));
 	D(printf("\n     "));
