@@ -163,8 +163,10 @@ void exec_maquina(Maquina *m, int n) {
 	  else Fatal("Operando incompatível", 9); 
 	case CALL:
 	  Operando opip;
+	  opip.t = NUM;
 	  opip.n = ip;
 	  Operando oprbp;
+	  oprbp.t = NUM;
 	  oprbp.n = m->rbp;
 	  empilha(exec, opip);
 	  empilha(exec, oprbp); //armazena o rbp para voltar depois no RET
