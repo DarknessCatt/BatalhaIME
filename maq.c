@@ -183,47 +183,109 @@ void exec_maquina(Maquina *m, int n) {
 	  if (opip.t == NUM) ip = opip.n;
 	  else Fatal("Operando incompatível", 9); 
 
-	  break;                     //até aqui parece certo. RM ME LATER PLIS ----------X-----------
+	  break;                     
 	case EQ:
 	  Operando op;
 	  op.t = NUM;
-	  if (desempilha(pil) == desempilha(pil))
+	  Operando opA = desempilha(pil);
+	  Operando opB = desempilha(pil);
+	  if (opA.t == NUM && opB.t == NUM) {
+	  if (opA.n == opB.n) {
 		op.n = 1;
 		empilha(pil, op);
-	  else
+	  }
+	  else {
 	  	op.n = 0;
 		empilha(pil, op);
+	  }
 	  break;
+	  }
+	  else Fatal("Operando incompatível", 9); 
 	case GT:
-	  if (desempilha(pil) < desempilha(pil))
-		empilha(pil, 1);
-	  else
-		empilha(pil, 0);
+	  Operando op;
+	  op.t = NUM;
+	  Operando opA = desempilha(pil);
+	  Operando opB = desempilha(pil);
+	  if (opA.t == NUM && opB.t == NUM) {
+	  if (opA.n < opB.n) {
+		op.n = 1;
+		empilha(pil, op);
+	  }
+	  else {
+	  	op.n = 0;
+		empilha(pil, op);
+	  }
 	  break;
+	  }
+	  else Fatal("Operando incompatível", 9);
 	case GE:
-	  if (desempilha(pil) <= desempilha(pil))
-		empilha(pil, 1);
-	  else
-		empilha(pil, 0);
+	  Operando op;
+	  op.t = NUM;
+	  Operando opA = desempilha(pil);
+	  Operando opB = desempilha(pil);
+	  if (opA.t == NUM && opB.t == NUM) {
+	  if (opA.n <= opB.n) {
+		op.n = 1;
+		empilha(pil, op);
+	  }
+	  else {
+	  	op.n = 0;
+		empilha(pil, op);
+	  }
 	  break;
+	  }
+	  else Fatal("Operando incompatível", 9);
 	case LT:
-	  if (desempilha(pil) > desempilha(pil))
-		empilha(pil, 1);
-	  else
-		empilha(pil, 0);
+	  Operando op;
+	  op.t = NUM;
+	  Operando opA = desempilha(pil);
+	  Operando opB = desempilha(pil);
+	  if (opA.t == NUM && opB.t == NUM) {
+	  if (opA.n > opB.n) {
+		op.n = 1;
+		empilha(pil, op);
+	  }
+	  else {
+	  	op.n = 0;
+		empilha(pil, op);
+	  }
 	  break;
+	  }
+	  else Fatal("Operando incompatível", 9);
 	case LE:
-	  if (desempilha(pil) >= desempilha(pil))
-		empilha(pil, 1);
-	  else
-		empilha(pil, 0);
+	  Operando op;
+	  op.t = NUM;
+	  Operando opA = desempilha(pil);
+	  Operando opB = desempilha(pil);
+	  if (opA.t == NUM && opB.t == NUM) {
+	  if (opA.n >= opB.n) {
+		op.n = 1;
+		empilha(pil, op);
+	  }
+	  else {
+	  	op.n = 0;
+		empilha(pil, op);
+	  }
 	  break;
+	  }
+	  else Fatal("Operando incompatível", 9);
 	case NE:
-	  if (desempilha(pil) != desempilha(pil))
-		empilha(pil, 1);
-	  else
-		empilha(pil, 0);
+	  Operando op;
+	  op.t = NUM;
+	  Operando opA = desempilha(pil);
+	  Operando opB = desempilha(pil);
+	  if (opA.t == NUM && opB.t == NUM) {
+	  if (opA.n != opB.n) {
+		op.n = 1;
+		empilha(pil, op);
+	  }
+	  else {
+	  	op.n = 0;
+		empilha(pil, op);
+	  }
 	  break;
+	  }
+	  else Fatal("Operando incompatível", 9); //até aqui parece certo. RM ME LATER PLIS ----------X-----------
 	case STO:
 	  m->Mem[arg] = desempilha(pil);
 	  break;
