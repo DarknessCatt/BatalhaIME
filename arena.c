@@ -52,7 +52,7 @@ void InsereExercito(Exercito exercito) {
 
 void Sistema(int op) {
 	switch (op) {
-		case 0:
+		case 0: // Chamada do ATR
 			Operando op = desempilha(maquinas[escalonador].pil);
 			Operando atr;
 			atr.t = NUM;
@@ -75,7 +75,14 @@ void Sistema(int op) {
 			}
 			empilha(maquinas[escalonador].pil,atr);
 			break;
-		case 1:
+		case 1: // MOV
+			break;
+		case 2: // SRC
+			break;
+		case 3: // GRB
+			break;
+		case 4: // DRP
+			break;
 	}
 
 }
