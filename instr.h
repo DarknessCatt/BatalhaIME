@@ -35,6 +35,14 @@ typedef enum {
   DRP
 } OpCode;
 
+
+typedef struct {
+int terreno;
+int cristais;
+int ocup;
+int base;
+} Celula;
+
 /* Tipos dos operandos */
 /* no momento, são todos inteiros */
 typedef enum {

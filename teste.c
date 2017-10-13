@@ -86,15 +86,15 @@ int main()
 	op1.n = 23;
 	op.c.cristais = 22;
 	printf("%d\n", op.c.cristais);
-	/*
-	OPERANDO op;
+	
+	/*OPERANDO op;
 	op.t = NUM;
 	op.n = 72;
 	op.ac = 155;
 	if(op.t == ACAO) printf("Acao");
 	printf("%d",op.n);
 	printf("%d",op.ac);
-	Celula arena[1][1];
+	CELULA arena[1][1];
 	arena[0][0].terreno = 0;
 	arena[0][0].cristais = 0;
 	arena[0][0].ocup = 1;

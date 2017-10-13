@@ -84,12 +84,15 @@ void exec_maquina(Maquina *m, int n) {
 
 	switch (opc) {
 	  OPERANDO tmp;
+	  OPERANDO op1;
+	  OPERANDO op2;
+	  OPERANDO op3;
 	case PUSH:
-		if (op.t == NUM) { 
+		if (arg.t == NUM) { 
 			empilha(pil, arg); 
-			break;
 		}
 		else Fatal("Operando incompatível", 9);
+		break;
 	case POP:
 	  desempilha(pil);
 	  break;
@@ -99,229 +102,212 @@ void exec_maquina(Maquina *m, int n) {
 	  empilha(pil, tmp);
 	  break;
 	case ADD:
-	  Operando op1 = desempilha(pil);
-	  Operando op2 = desempilha(pil);
+	  op1 = desempilha(pil);
+	  op2 = desempilha(pil);
 	  if (op1.t == NUM && op2.t == NUM) {
-	  	Operando op3;
 	  	op3.t = op1.t;
 	  	op3.n = op1.n + op2.n;
 	  	empilha(pil, op3);
-	  	break;
 	  }
 	  else Fatal("Operando incompatível", 9);
+	  break;
 	case SUB:
-	  Operando op1 = desempilha(pil);
-	  Operando op2 = desempilha(pil);
+	  op1 = desempilha(pil);
+	  op2 = desempilha(pil);
 	  if (op1.t == NUM && op2.t == NUM) {
-	  	Operando op3;
+	  	op3;
 	  	op3.t = op1.t;
 	  	op3.n = op2.n - op1.n;
 	  	empilha(pil, op3);
-	  	break;
 	  }
 	  else Fatal("Operando incompatível", 9);
+	  break;
 	case MUL:
-	  Operando op1 = desempilha(pil);
-	  Operando op2 = desempilha(pil);
+	  op1 = desempilha(pil);
+	  op2 = desempilha(pil);
 	  if (op1.t == NUM && op2.t == NUM) {
-	  	Operando op3;
 	  	op3.t = op1.t;
 	  	op3.n = op1.n * op2.n;
 	  	empilha(pil, op3);
-	  	break;
 	  }
 	  else Fatal("Operando incompatível", 9);
+	  break;
 	case DIV:
-	  Operando op1 = desempilha(pil);
-	  Operando op2 = desempilha(pil);
+	  op1 = desempilha(pil);
+	  op2 = desempilha(pil);
 	  if (op1.t == NUM && op2.t == NUM) {
-	  	Operando op3;
 	  	op3.t = op1.t;
 	  	op3.n = op2.n / op1.n;
 	  	empilha(pil, op3);
-	  	break;
 	  }
 	  else Fatal("Operando incompatível", 9);
+	  break;
 	case JMP:
 	  ip = arg.n;
 	  continue;
 	case JIT:
-	  Operando op = desempilha(pil);
-	  if (op.t == NUM) {
-	  	if (op.n != 0) {
+	  op1 = desempilha(pil);
+	  if (op1.t == NUM) {
+	  	if (op1.n != 0) {
 			ip = arg.n;
 			continue;
 		}
-		break;
 	  }
 	  else Fatal("Operando incompatível", 9);
+	  break;
 	case JIF:
-	  Operando op = desempilha(pil);
-	  if (op.t == NUM) {
-	  	if (op.n == 0) {
+	  op1 = desempilha(pil);
+	  if (op1.t == NUM) {
+	  	if (op1.n == 0) {
 			ip = arg.n;
 			continue;
 		}
-		break;
 	  }
 	  else Fatal("Operando incompatível", 9); 
+	  break;
 	case CALL:
-	  Operando opip;
-	  opip.t = NUM;
-	  opip.n = ip;
-	  Operando oprbp;
-	  oprbp.t = NUM;
-	  oprbp.n = m->rbp;
-	  empilha(exec, opip);
-	  empilha(exec, oprbp); //armazena o rbp para voltar depois no RET
+	  op1.t = NUM;
+	  op1.n = ip;
+	  op2.t = NUM;
+	  op2.n = m->rbp;
+	  empilha(exec, op1);
+	  empilha(exec, op2); //armazena o rbp para voltar depois no RET
 	  D(imprime(exec,5));
 	  D(printf("\n     ")); 
 	  ip = arg.n;
 	  continue;
 	case RET:
-	  Operando oprbp = desempilha(exec);
-	  if (oprbp.t == NUM) m->rbp = oprbp.n;
-	  else Fatal("Operando incompatível", 9);
+	  op2 = desempilha(exec);
+	  if (op2.t == NUM) m->rbp = op2.n;
+	  else Fatal("OPERANDO incompatível", 9);
 	  
-	  Operando opip = desempilha(exec);
-	  if (opip.t == NUM) ip = opip.n;
-	  else Fatal("Operando incompatível", 9); 
-
+	  op1 = desempilha(exec);
+	  if (op1.t == NUM) ip = op1.n;
+	  else Fatal("OPERANDO incompatível", 9); 
 	  break;                     
 	case EQ:
-	  Operando op;
-	  op.t = NUM;
-	  Operando opA = desempilha(pil);
-	  Operando opB = desempilha(pil);
-	  if (opA.t == NUM && opB.t == NUM) {
-	  if (opA.n == opB.n) {
-		op.n = 1;
-		empilha(pil, op);
-	  }
-	  else {
-	  	op.n = 0;
-		empilha(pil, op);
-	  }
-	  break;
+	  op1.t = NUM;
+	  op2 = desempilha(pil);
+	  op3 = desempilha(pil);
+	  if (op2.t == NUM && op3.t == NUM) {
+	 	 if (op2.n == op3.n) {
+			op1.n = 1;
+			empilha(pil, op1);
+	 	 }
+	 	 else {
+	  		op1.n = 0;
+			empilha(pil, op1);
+	  	}
 	  }
 	  else Fatal("Operando incompatível", 9); 
+	  break;
 	case GT:
-	  Operando op;
-	  op.t = NUM;
-	  Operando opA = desempilha(pil);
-	  Operando opB = desempilha(pil);
-	  if (opA.t == NUM && opB.t == NUM) {
-	  if (opA.n < opB.n) {
-		op.n = 1;
-		empilha(pil, op);
-	  }
-	  else {
-	  	op.n = 0;
-		empilha(pil, op);
-	  }
-	  break;
+	  op1.t = NUM;
+	  op2 = desempilha(pil);
+	  op3 = desempilha(pil);
+	  if (op2.t == NUM && op3.t == NUM) {
+	 	 if (op2.n < op3.n) {
+			op1.n = 1;
+			empilha(pil, op1);
+	  	}
+	  	else {
+	  		op1.n = 0;
+			empilha(pil, op1);
+	  	}
 	  }
 	  else Fatal("Operando incompatível", 9);
+	  break;
 	case GE:
-	  Operando op;
-	  op.t = NUM;
-	  Operando opA = desempilha(pil);
-	  Operando opB = desempilha(pil);
-	  if (opA.t == NUM && opB.t == NUM) {
-	  if (opA.n <= opB.n) {
-		op.n = 1;
-		empilha(pil, op);
-	  }
-	  else {
-	  	op.n = 0;
-		empilha(pil, op);
-	  }
-	  break;
+	  op1.t = NUM;
+	  op2 = desempilha(pil);
+	  op3 = desempilha(pil);
+	  if (op2.t == NUM && op3.t == NUM) {
+	 	 if (op2.n <= op3.n) {
+			op1.n = 1;
+			empilha(pil, op1);
+	  	}
+	 	 else {
+	  		op1.n = 0;
+			empilha(pil, op1);
+	  	}
 	  }
 	  else Fatal("Operando incompatível", 9);
+	  break;
 	case LT:
-	  Operando op;
-	  op.t = NUM;
-	  Operando opA = desempilha(pil);
-	  Operando opB = desempilha(pil);
-	  if (opA.t == NUM && opB.t == NUM) {
-	  if (opA.n > opB.n) {
-		op.n = 1;
-		empilha(pil, op);
-	  }
-	  else {
-	  	op.n = 0;
-		empilha(pil, op);
-	  }
-	  break;
+	  op1.t = NUM;
+	  op2 = desempilha(pil);
+	  op3 = desempilha(pil);
+	  if (op2.t == NUM && op3.t == NUM) {
+	  	if (op3.n > op3.n) {
+			op1.n = 1;
+			empilha(pil, op1);
+	  	}
+	  	else {
+	  		op1.n = 0;
+			empilha(pil, op1);
+	  	}
 	  }
 	  else Fatal("Operando incompatível", 9);
+	  break;
 	case LE:
-	  Operando op;
-	  op.t = NUM;
-	  Operando opA = desempilha(pil);
-	  Operando opB = desempilha(pil);
-	  if (opA.t == NUM && opB.t == NUM) {
-	  if (opA.n >= opB.n) {
-		op.n = 1;
-		empilha(pil, op);
-	  }
-	  else {
-	  	op.n = 0;
-		empilha(pil, op);
-	  }
-	  break;
+	  op1.t = NUM;
+	  op2 = desempilha(pil);
+	  op3 = desempilha(pil);
+	  if (op2.t == NUM && op3.t == NUM) {
+	  	if (op2.n >= op3.n) {
+			op1.n = 1;
+			empilha(pil, op1);
+	 	 }
+	 	else {
+	  		op1.n = 0;
+			empilha(pil, op1);
+	  	}
 	  }
 	  else Fatal("Operando incompatível", 9);
+	  break;
 	case NE:
-	  Operando op;
-	  op.t = NUM;
-	  Operando opA = desempilha(pil);
-	  Operando opB = desempilha(pil);
-	  if (opA.t == NUM && opB.t == NUM) {
-	  if (opA.n != opB.n) {
-		op.n = 1;
-		empilha(pil, op);
+	  op1.t = NUM;
+	  op2 = desempilha(pil);
+	  op3 = desempilha(pil);
+	  if (op2.t == NUM && op2.t == NUM) {
+	  if (op2.n != op3.n) {
+		op1.n = 1;
+		empilha(pil, op1);
 	  }
 	  else {
-	  	op.n = 0;
-		empilha(pil, op);
+	  	op1.n = 0;
+		empilha(pil, op1);
 	  }
-	  break;
 	  }
 	  else Fatal("Operando incompatível", 9); 
+	  break;
 	case STO:
-	  Operando op;
-	  op.t = NUM;
-	  op.n = desempilha(pil);
-	  m->Mem[arg.n] = op.n;
+	  op1 = desempilha(pil);
+	  m->Mem[arg.n] = op1;
 	  break;
 	case RCL:
-	  Operando op;
-	  op.t = NUM;
-	  op.n = m->Mem[arg.n];
-	  empilha(pil, op);
+	  op1 = m->Mem[arg.n];
+	  empilha(pil, op1);
 	  break;
 	case END:
 	  return;                   
 	case PRN:
-	  Operando op;
-	  op = desempilha(pil);
-	  printf("%d\n", op.n); 
+	  op1 = desempilha(pil);
+	  printf("%d\n", op1.n); 
 	  break;
 	case RCE:
-	  empilha(pil,exec->val[arg + m->rbp ]); //Empilha em pil o valor de pilha exec[arg + base]
+	  empilha(pil,exec->val[arg.n + m->rbp ]); //Empilha em pil o valor de pilha exec[arg + base]
 	  break;
 	case STL:
-	  exec->val[m->rbp+arg] = desempilha(pil); //Desempilha da pilha de dados e coloca na de execucao na posição do arg mais rbp
+	  exec->val[m->rbp + arg.n] = desempilha(pil); //Desempilha da pilha de dados e coloca na de execucao na posição do arg mais rbp
 	  break;
 	case ALC:
 	  if (arg.t == NUM) {
 	  m->rbp = exec->topo-1; // Aponta a base para o inicio das variaveis locais (aponta para o valor de rbp antigo)
 	  exec->topo = exec->topo + arg.n; //Soma arg no topo da pilha de exec
-	  break;
 	  }
 	  else Fatal("Operando incompatível", 9); 
+	  break;
 	case FRE:
 	  exec->topo = m->rbp+1; //Volta o topo para sua posicao original
 	  break;
@@ -333,10 +319,32 @@ void exec_maquina(Maquina *m, int n) {
 	  if(arg.t == NUM){
 	    empilha(pil,arg);
 	  	Sistema(1);
-	  	break;
 	  }
-	  else Fatal("Operando incompatível", 9);  
+	  else Fatal("Operando incompatível", 9); 
+	  break;
+	case SRC:
+	   if(arg.t == NUM){
+	   	empilha(pil,arg);
+	  	Sistema(2);
+	   }
+	   else Fatal("Operando incompatível", 9);
+	   break;
+	case GRB:
+	  if(arg.t == NUM){
+	    empilha(pil,arg);
+	  	Sistema(2);
+	  }
+	  else Fatal("Operando incompatível", 9);
+	  break;
+	case DRP:
+	  if(arg.t == NUM){
+	    empilha(pil,arg);
+	  	Sistema(3);
+	  }
+	  else Fatal("Operando incompatível", 9);
+	  break;
 	}
+
 	D(imprime(pil,5));
 	D(printf("\n     "));
 	D(imprime(exec,20));
