@@ -1,8 +1,9 @@
 #include "maq.h"
 
+#define GRID 21
 
 typedef struct {
-	Celula cell[21][21];
+	Celula cell[GRID][GRID];
 	int time;
 } Arena;
 
@@ -11,10 +12,8 @@ typedef struct {
 } Exercito;
 
 Maquina *maquinas[100];
-Exercito exercito[20];
-int nmaquinas;
+Exercito exercito[4];
 int nexercitos;
-int robonow;
 int escalonador;
 
 Arena *init_arena();

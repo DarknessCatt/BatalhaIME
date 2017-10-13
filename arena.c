@@ -3,8 +3,7 @@
 #include "arena.h"
 
 #define GRID 21
-
-
+#define RopoPerExerc 5
 
 INSTR programa[] = {
   {PUSH,{NUM, 3}},
@@ -18,8 +17,6 @@ INSTR programa[] = {
 
 Arena *init_arena() {
 	Arena *arena = (Arena*)malloc(sizeof(Arena));
-	nmaquinas = 0;
-	robonow = 0;
 	nexercitos = 0;
 	int i,j;
 	for(i=1;i<GRID;i++) {
@@ -34,21 +31,23 @@ Arena *init_arena() {
 
 	for(i=0;i<GRID;i++){
 		arena->cell[i][0].ocup = 1;
-		arena->cell[i][20].ocup = 1;
+		arena->cell[i][GRID-1].ocup = 1;
 	}
 
 	for(i=0;i<GRID;i++){
 		arena->cell[0][i].ocup = 1;
-		arena->cell[20][i].ocup = 1;
+		arena->cell[GRID-1][i].ocup = 1;
 	}
 
 	return arena;
 }
 
 void Escalonador(int rodadas) {
-	for(int k = 0; k < nmaquinas; k++) {
-		escalonador = k;
-		exec_maquina(maquinas[k], 50);	
+	for(int i = 0; i < RoboPerExerc; i++) {
+		for(int j = 0; j < nexercitos; j++){
+			escalonador = j*5+i;
+			exec_maquina(exercito[j]->robos[i],50);	
+		}
 	}
 }
 
