@@ -60,6 +60,13 @@ void InsereExercito(Exercito exct) {
 	nexercitos++;
 }
 
+// Localiza a coordenada pedida pelo robo e tenta executar a ação baseada na coordenada.
+// Caso SRC, retorna a celula. Para os outros casos, retorna 1 caso tenha conseguido executar a ação.
+// M:
+// 0 = Mover
+// 1 = Olhar espaço
+// 2 = Pegar Cristal
+// 3 = Soltar Cristal
 OPERANDO Vizinhos(int M) {
 
 	OPERANDO op =  desempilha(&maquinas[escalonador]->pil);
@@ -120,7 +127,7 @@ OPERANDO Vizinhos(int M) {
 
 	switch (M) {
 		case 0:
-			r.t = CELULA;
+			r.t = NUM;
 			r.n = Mover(nx,ny);
 			break;
 
@@ -222,14 +229,6 @@ void Sistema(int op) {
 	}
 
 }
-
-// Localiza a coordenada pedida pelo robo e tenta executar a ação baseada na coordenada.
-// Caso SRC, retorna a celula. Para os outros casos, retorna 1 caso tenha conseguido executar a ação.
-// M:
-// 0 = Mover
-// 1 = Olhar espaço
-// 2 = Pegar Cristal
-// 3 = Soltar Cristal
 
 int main() {
 	Arena *arena = init_arena();
