@@ -3,7 +3,7 @@
 #include "arena.h"
 
 #define GRID 21
-#define RopoPerExerc 5
+#define RoboPerExerc 5
 
 INSTR programa[] = {
   {PUSH,{NUM, 3}},
