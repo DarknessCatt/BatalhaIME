@@ -21,6 +21,6 @@ void Atualiza();
 void InsereExercito();
 void RemoveExercito();
 OPERANDO Vizinhos(int M);
-int Mover(int nx, int ny);
-int Cristal(int nx, int ny, int c);
+int Mover(int nx, int ny, Maquina *maq);
+int Cristal(int nx, int ny, int c, Maquina *maq)
 void Sistema(int op);
