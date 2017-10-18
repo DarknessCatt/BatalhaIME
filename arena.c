@@ -30,7 +30,7 @@ void *init_arena() {
 
 	for(i=0;i<GRID;i++){
 		arena.cell[i][0].ocup = 1;
-		arena.cell[i][GRID-1].ocup = 1;
+		arena.cell[i][GRID-1].ocup = 1;	
 	}
 
 	for(i=0;i<GRID;i++){
@@ -41,8 +41,9 @@ void *init_arena() {
 
 void Escalonador(int rodadas) {
 	for(int i = 0; i < RoboPerExerc; i++) {
+		arena.robonow = i;
 		for(int j = 0; j < arena.nexercitos; j++){
-			//arena.escalonador = j*5+i;
+			arena.exercitonow = j;
 			exec_maquina(arena.exercitos[j].robos[i],50);	
 		}
 	}
@@ -124,7 +125,7 @@ OPERANDO Vizinhos(int M) {
 	switch (M) {
 		case 0:
 			r.t = NUM;
-			r.n = Mover(nx,ny);
+			r.n = Mover(nx,ny,maq);
 			break;
 
 		case 1:
@@ -134,19 +135,19 @@ OPERANDO Vizinhos(int M) {
 
 		 case 2:
 		 	r.t = NUM;
-		 	r.n = Cristal(nx,ny,1);
+		 	r.n = Cristal(nx,ny,1,maq);
 		 	break;
 
 		 case 3:
 		 	r.t = NUM;
-		 	r.n = Cristal(nx,ny,0);;
+		 	r.n = Cristal(nx,ny,0,maq);
 		 	break;
 	}
 	return r;
 }
 
-int Mover(int nx, int ny) {
-	Maquina *maq = arena.exercitos[arena.exercitonow].robos[arena.robonow];
+int Mover(int nx, int ny, Maquina *maq) {
+
 	int x = maq->x;
 	int y = maq->y;
 
@@ -160,8 +161,8 @@ int Mover(int nx, int ny) {
 	return 0;
 }
 
-int Cristal(int nx, int ny, int c) {
-	Maquina *maq = arena.exercitos[arena.exercitonow].robos[arena.robonow];
+int Cristal(int nx, int ny, int c, Maquina *maq) {
+
 	if(c) {
 		if(arena.cell[nx][ny].cristais){
 			maq->cristais++;

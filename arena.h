@@ -20,4 +20,7 @@ void *init_arena();
 void Atualiza();
 void InsereExercito();
 void RemoveExercito();
+OPERANDO Vizinhos(int M);
+int Mover(int nx, int ny);
+int Cristal(int nx, int ny, int c);
 void Sistema(int op);
