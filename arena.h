@@ -4,6 +4,7 @@
 
 typedef struct {
 	Maquina *robos[5];
+	int jogando;
 } Exercito;
 
 typedef struct {
@@ -19,7 +20,7 @@ Arena arena;
 void *init_arena();
 void Escalonador(int rodadas);
 void InsereExercito(Exercito exct);
-void RemoveExercito();
+void RemoveExercito(int base);
 OPERANDO Vizinhos(int M);
 int Mover(int nx, int ny, Maquina *maq);
 int Cristal(int nx, int ny, int c, Maquina *maq);

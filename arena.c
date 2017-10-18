@@ -33,22 +33,31 @@ void Escalonador(int rodadas) {
 	for(int r = 0; r < rodadas; r++) {
 		for(int i = 0; i < RoboPerExerc; i++) {
 			arena.robonow = i;
-			for(int j = 0; j < arena.nexercitos; j++){
-				arena.exercitonow = j;
-				printf("Executando robo %d e exercito %d \n",i,j);
-				exec_maquina(arena.exercitos[j].robos[i],50);	
+			for(int j = 0; j < arena.nexercitos; j++) {
+				if(arena.exercitos[j].jogando) {
+					arena.exercitonow = j;
+					printf("Executando robo %d e exercito %d \n",i,j);
+					exec_maquina(arena.exercitos[j].robos[i],50);
+				}	
 			}
 		}
 	}
 }
 
 void InsereExercito(Exercito exct) {
+	
 	arena.exercitos[arena.nexercitos] = exct;
 	arena.nexercitos++;
 }
 
-void RemoveExercito() {
-
+void RemoveExercito(int base) {
+	arena.exercitos[base].jogando = 0;
+	for(int i = 0; i < 5; i++) {
+		int x = arena.exercitos[base].robos[i]->x;
+		int y = arena.exercitos[base].robos[i]->y;
+		arena.cell[x][y].ocup = 0;
+		destroi_maquina(arena.exercitos[base].robos[i]);
+	}
 }
 
 // Localiza a coordenada pedida pelo robo e tenta executar a ação baseada na coordenada.
@@ -158,7 +167,7 @@ int Mover(int nx, int ny, Maquina *maq) {
 int Cristal(int nx, int ny, int c, Maquina *maq) {
 
 	if(c) {
-		if(arena.cell[nx][ny].cristais){
+		if(arena.cell[nx][ny].cristais) {
 			maq->cristais++;
 			arena.cell[nx][ny].cristais--;
 			return 1;
@@ -167,9 +176,12 @@ int Cristal(int nx, int ny, int c, Maquina *maq) {
 			return 0;
 	}
 	else {
-		if(maq->cristais){
+		if(maq->cristais) {
 			maq->cristais--;
 			arena.cell[nx][ny].cristais++;
+			if(arena.cell[nx][ny].base && arena.cell[nx][ny].cristais >= 5) {
+				RemoveExercito(arena.cell[nx][ny].base - 1);
+			}
 			return 1;
 		}
 		else
