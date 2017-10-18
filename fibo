@@ -1,26 +1,25 @@
-          PUSH  1 NUM
-          DUP   0 NUM
-          STO   0 NUM # x 
-          STO   1 NUM # y
+          PUSH  1
+          STO   0 # x 
+          STO   1 # y
 
-          PUSH 10 NUM
-          STO   2 NUM # i
+          PUSH 10
+          STO   2  # i
 
-  LOOP:   RCL   0 NUM
-          RCL   1 NUM
-          DUP   0 NUM
-          STO   0 NUM # x' = y
-          ADD   0 NUM # x+y
-          DUP   0 NUM
-          STO   1 NUM #y = x+y 
-          PRN   0 NUM
-          RCL   2 NUM
-          PUSH  1 NUM
-          SUB   0 NUM #i-1
-          DUP   0 NUM
-          STO   2 NUM # i = i-1 
-          PUSH  0 NUM
-          EQ    0 NUM # i == 0?
-          JIF  LOOP NUM
+  LOOP:   RCL   0
+          RCL   1
+          DUP
+          STO   0 # x' = y
+          ADD     # x+y
+          DUP
+          STO   1 #y = x+y 
+          PRN
+          RCL   2
+          PUSH  1
+          SUB     #i-1
+          DUP
+          STO   2  # i = i-1 
+          PUSH  0
+          EQ       # i == 0?
+          JIF  LOOP
 
           END

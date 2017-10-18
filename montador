@@ -19,7 +19,7 @@ print("INSTR prog[] = {")
 while l:
     label = op = ""
     arg   = 0
-    tipo  = ""
+    tipo  = "NUM"
     try:
         l = l[:l.index('#')]
     except:
