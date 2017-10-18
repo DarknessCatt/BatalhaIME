@@ -85,8 +85,9 @@ int main()
 	op.n = 23;
 	op1.n = 23;
 	op.c.cristais = 22;
+	char *c = "Coco";
 	printf("%d\n", op.c.cristais);
-	printf("%c\n", op.t);
+	printf("%s\n",op.t);
 	/*OPERANDO op;
 	op.t = NUM;
 	op.n = 72;
