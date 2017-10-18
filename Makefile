@@ -1,5 +1,5 @@
-motor: maq.o pilha.o motor.o
+ARENA: maq.o pilha.o arena.o
 
 clean:
-	rm -f motor *.o
+	rm -f ARENA *.o
 
