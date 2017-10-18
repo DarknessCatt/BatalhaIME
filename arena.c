@@ -15,48 +15,45 @@ INSTR programa[] = {
   {RET, {NUM, 0}}
 };
 
-Arena *init_arena() {
-	Arena *arena = (Arena*)malloc(sizeof(Arena));
-	nexercitos = 0;
+void *init_arena() {
+	arena.nexercitos = 0;
 	int i,j;
 	for(i=1;i<GRID;i++) {
 		for(j=1; j<GRID; j++) {
-			arena->cell[i][j].terreno = rand() % 4;
-			arena->cell[i][j].cristais = rand() % 5;
-			arena->cell[i][j].ocup = 0;
-			arena->cell[i][j].base = 0;
+			arena.cell[i][j].terreno = rand() % 4;
+			arena.cell[i][j].cristais = rand() % 5;
+			arena.cell[i][j].ocup = 0;
+			arena.cell[i][j].base = 0;
 			//printf("%d",arena->cell[i][j].cristais);
 		}
 	}
 
 	for(i=0;i<GRID;i++){
-		arena->cell[i][0].ocup = 1;
-		arena->cell[i][GRID-1].ocup = 1;
+		arena.cell[i][0].ocup = 1;
+		arena.cell[i][GRID-1].ocup = 1;
 	}
 
 	for(i=0;i<GRID;i++){
-		arena->cell[0][i].ocup = 1;
-		arena->cell[GRID-1][i].ocup = 1;
+		arena.cell[0][i].ocup = 1;
+		arena.cell[GRID-1][i].ocup = 1;
 	}
-
-	return arena;
 }
 
 void Escalonador(int rodadas) {
 	for(int i = 0; i < RoboPerExerc; i++) {
-		for(int j = 0; j < nexercitos; j++){
-			escalonador = j*5+i;
-			exec_maquina(exercito[j]->robos[i],50);	
+		for(int j = 0; j < arena.nexercitos; j++){
+			//arena.escalonador = j*5+i;
+			exec_maquina(arena.exercitos[j].robos[i],50);	
 		}
 	}
 }
 
 void InsereExercito(Exercito exct) {
-	exercito[nexercitos] = exct;
+	arena.exercitos[arena.nexercitos] = exct;
 	for(int i =0; i < 5; i++) {
-		maquinas[nexercitos*5 + i] = exercito->robos[i];
+		//maquinas[nexercitos*5 + i] = exercito->robos[i];
 	}
-	nexercitos++;
+	arena.nexercitos++;
 }
 
 // Localiza a coordenada pedida pelo robo e tenta executar a ação baseada na coordenada.
@@ -67,10 +64,10 @@ void InsereExercito(Exercito exct) {
 // 2 = Pegar Cristal
 // 3 = Soltar Cristal
 OPERANDO Vizinhos(int M) {
-
-	OPERANDO op =  desempilha(&maquinas[escalonador]->pil);
-	int x = maquinas[escalonador]->x;
-	int y = maquinas[escalonador]->y;
+	Maquina *maq = arena.exercitos[arena.exercitonow].robos[arena.robonow];
+	OPERANDO op =  desempilha(&maq->pil);
+	int x = maq->x;
+	int y = maq->y;
 	int nx = x, ny = y;
 
 	if(x%2) { //impar
@@ -132,7 +129,7 @@ OPERANDO Vizinhos(int M) {
 
 		case 1:
 			r.t = CELULA;
-			r.cel = arena->cell[nx][ny];
+			r.cel = arena.cell[nx][ny];
 		 	break;
 
 		 case 2:
@@ -149,35 +146,35 @@ OPERANDO Vizinhos(int M) {
 }
 
 int Mover(int nx, int ny) {
+	Maquina *maq = arena.exercitos[arena.exercitonow].robos[arena.robonow];
+	int x = maq->x;
+	int y = maq->y;
 
-	int x = maquinas[escalonador]->x;
-	int y = maquinas[escalonador]->y;
-
-	if(!arena->cell[nx][ny].ocupada){
-		maquinas[escalonador]->x = nx;
-		maquinas[escalonador]->y = ny;
-		arena->cell[x][y].ocupada = 0;
-		arena->cell[nx][ny].ocupada = 1;
+	if(!arena.cell[nx][ny].ocup){
+		maq->x = nx;
+		maq->y = ny;
+		arena.cell[x][y].ocup = 0;
+		arena.cell[nx][ny].ocup = 1;
 		return 1;
 	}
 	return 0;
 }
 
 int Cristal(int nx, int ny, int c) {
-
+	Maquina *maq = arena.exercitos[arena.exercitonow].robos[arena.robonow];
 	if(c) {
-		if(arena->cell[nx][ny].cristais){
-			maquinas[escalonador]->cristais++;
-			arena->cell[nx][ny].cristais--;
+		if(arena.cell[nx][ny].cristais){
+			maq->cristais++;
+			arena.cell[nx][ny].cristais--;
 			return 1;
 		}
 		else
 			return 0;
 	}
 	else {
-		if(maquinas[escalonador]->cristais){
-			maquinas[escalonador]->cristais--;
-			arena->cell[nx][ny].cristais++;
+		if(maq->cristais){
+			maq->cristais--;
+			arena.cell[nx][ny].cristais++;
 			return 1;
 		}
 		else
@@ -191,10 +188,11 @@ void Sistema(int op) {
 		OPERANDO atr;
 		OPERANDO opr;
 		OPERANDO cel;
+		Maquina *maq = arena.exercitos[arena.exercitonow].robos[arena.robonow];
 		case 0: // Chamada do ATR
-			opr = desempilha(&maquinas[escalonador]->pil);
+			opr = desempilha(&maq->pil);
 			atr.t = NUM;
-			cel = desempilha(&maquinas[escalonador]->pil);
+			cel = desempilha(&maq->pil);
 			if(cel.t == CELULA) {
 				switch (opr.n) {
 					case 0:
@@ -211,19 +209,19 @@ void Sistema(int op) {
 						break;
 				}
 			}
-			empilha(&maquinas[escalonador]->pil,atr);
+			empilha(&maq->pil,atr);
 			break;
 		case 1: // MOV
-			empilha(&maquinas[escalonador]->pil,Vizinhos(0));
+			empilha(&maq->pil,Vizinhos(0));
 			break;
 		case 2: // SRC
-			empilha(&maquinas[escalonador]->pil,Vizinhos(1));
+			empilha(&maq->pil,Vizinhos(1));
 			break;
 		case 3: // GRB
-			empilha(&maquinas[escalonador]->pil,Vizinhos(2));
+			empilha(&maq->pil,Vizinhos(2));
 			break;
 		case 4: // DRP
-			empilha(&maquinas[escalonador]->pil,Vizinhos(3));
+			empilha(&maq->pil,Vizinhos(3));
 			break;
 	}
 

@@ -88,10 +88,7 @@ void exec_maquina(Maquina *m, int n) {
 	  OPERANDO op2;
 	  OPERANDO op3;
 	case PUSH:
-		if (arg.t == NUM) { 
-			empilha(pil, arg); 
-		}
-		else Fatal("Operando incompatível", 9);
+		empilha(pil, arg); 
 		break;
 	case POP:
 	  desempilha(pil);

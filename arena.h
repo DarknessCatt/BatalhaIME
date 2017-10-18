@@ -3,20 +3,20 @@
 #define GRID 21
 
 typedef struct {
-	Celula cell[GRID][GRID];
-	int time;
-} Arena;
-
-typedef struct {
 	Maquina *robos[5];
 } Exercito;
 
-Maquina *maquinas[100];
-Exercito exercito[4];
-int nexercitos;
-int escalonador;
+typedef struct {
+	Celula cell[GRID][GRID];
+	int time;
+	Exercito exercitos[4];
+	int nexercitos;
+	int robonow;
+	int exercitonow;
+} Arena;
 
-Arena *init_arena();
+Arena arena;
+void *init_arena();
 void Atualiza();
 void InsereExercito();
 void RemoveExercito();
