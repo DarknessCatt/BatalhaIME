@@ -5,16 +5,6 @@
 #define GRID 21
 #define RoboPerExerc 5
 
-INSTR programa[] = {
-  {PUSH,{NUM, 3}},
-  {PUSH,{NUM, 6}},
-  {CALL,{NUM,5}},
-  {PRN, {NUM,0}},
-  {END, {NUM,0}},
-  {ADD, {NUM,0}},
-  {RET, {NUM, 0}}
-};
-
 void *init_arena() {
 	arena.nexercitos = 0;
 	int i,j;
@@ -40,21 +30,25 @@ void *init_arena() {
 }
 
 void Escalonador(int rodadas) {
-	for(int i = 0; i < RoboPerExerc; i++) {
-		arena.robonow = i;
-		for(int j = 0; j < arena.nexercitos; j++){
-			arena.exercitonow = j;
-			exec_maquina(arena.exercitos[j].robos[i],50);	
+	for(int r = 0; r < rodadas; r++) {
+		for(int i = 0; i < RoboPerExerc; i++) {
+			arena.robonow = i;
+			for(int j = 0; j < arena.nexercitos; j++){
+				arena.exercitonow = j;
+				printf("Executando robo %d e exercito %d \n",i,j);
+				exec_maquina(arena.exercitos[j].robos[i],50);	
+			}
 		}
 	}
 }
 
 void InsereExercito(Exercito exct) {
 	arena.exercitos[arena.nexercitos] = exct;
-	for(int i =0; i < 5; i++) {
-		//maquinas[nexercitos*5 + i] = exercito->robos[i];
-	}
 	arena.nexercitos++;
+}
+
+void RemoveExercito() {
+
 }
 
 // Localiza a coordenada pedida pelo robo e tenta executar a ação baseada na coordenada.
@@ -226,10 +220,4 @@ void Sistema(int op) {
 			break;
 	}
 
-}
-
-int main() {
-	Arena *arena = init_arena();
-	Maquina *maq = cria_maquina(programa);
-	printf("%d",arena->cell[1][1].cristais);
 }

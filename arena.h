@@ -17,8 +17,8 @@ typedef struct {
 
 Arena arena;
 void *init_arena();
-void Atualiza();
-void InsereExercito();
+void Escalonador(int rodadas);
+void InsereExercito(Exercito exct);
 void RemoveExercito();
 OPERANDO Vizinhos(int M);
 int Mover(int nx, int ny, Maquina *maq);
