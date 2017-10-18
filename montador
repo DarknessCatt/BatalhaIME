@@ -19,6 +19,7 @@ print("INSTR prog[] = {")
 while l:
     label = op = ""
     arg   = 0
+    tipo  = ""
     try:
         l = l[:l.index('#')]
     except:
@@ -34,13 +35,16 @@ while l:
         arg = keys.pop(0)
         if arg in tabsim:
             arg = tabsim[arg]
+    if len(keys) > 0:
+        tipo = keys.pop(0)
     if op != "":
-        print("  {%s, %s},"%(op,arg))
+        print("{ %s, {%s, %s} },"%(op,tipo,arg))
     else:
         print()
         ip -= 1
     l = stdin.readline()
     ip += 1
+
 print("};")
 print("int main(int ac, char **av) {")   
 print("Maquina *maq = cria_maquina(prog);")
