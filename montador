@@ -13,9 +13,13 @@ l = stdin.readline()
 ip = 0
 
 tabsim = {}
+
+# Adiciona os Includes necessarios do maq.c
 print("#include <stdio.h>")
 print("#include \"maq.h\"")
 print("INSTR prog[] = {")
+
+# Traduz os codigos em maquina para a estrutura do Instruct
 while l:
     label = op = ""
     arg   = 0
@@ -46,6 +50,8 @@ while l:
     ip += 1
 
 print("};")
+
+#Cria um main para teste do cliente ( igual ao motor.c )
 print("int main(int ac, char **av) {")   
 print("Maquina *maq = cria_maquina(prog);")
 print("exec_maquina(maq, 1000);")
