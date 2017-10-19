@@ -21,3 +21,5 @@ Finalmente, criamos um Makefile novo que constrói o executável contendo todos 
 $ make progteste
 
 Tivemos algumas dificuldades em modularizar nossos arquivos de modo coerente com o que foi requisitado.
+
+Para facilitar a correção e o entendimento da execução do código, deixamos diversos prints que indicam o tipo de instrução sendo executada e se ela foi realizada corretamente.
