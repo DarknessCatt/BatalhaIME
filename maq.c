@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "maq.h"
 
-//#define DEBUG 
+#define DEBUG 
 
 #ifdef DEBUG
 #  define D(X) X
@@ -60,6 +60,8 @@ Maquina *cria_maquina(INSTR *p) {
   m->ip = 0;
   m->prog = p;
   m->rbp = 0;
+  m->pil.topo = 0;
+  m->exec.topo = 0;
   return m;
 }
 
@@ -75,7 +77,6 @@ void destroi_maquina(Maquina *m) {
 
 void exec_maquina(Maquina *m, int n) {
   int i;
-
   for (i = 0; i < n; i++) {
 	OpCode   opc = prg[ip].instr;
 	OPERANDO arg = prg[ip].op;

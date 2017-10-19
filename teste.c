@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 typedef struct {
 int terreno;
@@ -78,16 +80,13 @@ INSTR programa[] = {
 int main()
 {
 	//OpCode   opc = programa[0].instr; //Linha ip do programa pegando o OpCode instr
-	OPERANDO op;
-	OPERANDO op1;
-	op.t = CELULA;
-	op1.t = NUM;
-	op.n = 23;
-	op1.n = 23;
-	op.c.cristais = 22;
-	char *c = "Coco";
-	printf("%d\n", op.c.cristais);
-	printf("%s\n",op.t);
+  srand( (unsigned)time(NULL) );
+	int k = rand() % 4;
+  int p = rand() % 4;
+  int l = rand() % 4;
+  
+	printf("%d\n%d\n%d\n", k,p,l);
+	//printf("%s\n",op.t);
 	/*OPERANDO op;
 	op.t = NUM;
 	op.n = 72;

@@ -1,9 +1,10 @@
 #include "maq.h"
 
 #define GRID 21
+#define RoboPerExerc 5
 
 typedef struct {
-	Maquina *robos[5];
+	Maquina *robos[RoboPerExerc];
 	int jogando;
 } Exercito;
 
@@ -15,8 +16,8 @@ typedef struct {
 	int robonow;
 	int exercitonow;
 } Arena;
-
 Arena arena;
+
 void *init_arena();
 void Escalonador(int rodadas);
 void InsereExercito(Exercito exct);

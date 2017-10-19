@@ -58,30 +58,8 @@ INSTR fibonacci[] = {
 
 INSTR teste[] = {
   {PUSH,{NUM, 1}},
-  {DUP, {NUM, 0}},
-  {STO, {NUM, 0}},
-  {STO, {NUM, 1}},
-
   {PUSH,{NUM, 10}},
-  {STO, {NUM, 2}},
-
-  {RCL,{NUM, 0}},
-  {RCL,{NUM ,1}},
-  {DUP,{NUM ,0}},
-  {STO,{NUM ,0}},
-  {ADD,{NUM ,0}},
-  {DUP,{NUM ,0}},
-  {STO,{NUM ,1}},
-  {PRN,{NUM ,0}},
-  {RCL,{NUM ,2}},
-  {PUSH,{NUM ,1}},
-  {SUB,{NUM ,0}},
-  {DUP,{NUM ,0}},
-  {STO,{NUM ,2}},
-  {PUSH,{NUM ,0}},
-  {EQ,{NUM ,0}},
-  {JIF,{NUM ,6}},
-
+  {MOV, {NUM, 1}},
   {END,{NUM ,0}},
 };
 
@@ -104,6 +82,8 @@ int main(int ac, char **av) {
   exercito.robos[3] = cria_maquina(teste);
   exercito.robos[4] = cria_maquina(fibonacci);
   InsereExercito(exercito);
-  Escalonador(2);
+  exec_maquina(exercito.robos[3],50);
+  //Escalonador(10);
   //destroi_maquina(exercito.robos[0]);
+  return(0);
 }

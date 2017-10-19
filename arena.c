@@ -1,32 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "arena.h"
 
-#define GRID 21
-#define RoboPerExerc 5
-
 void *init_arena() {
-	arena.nexercitos = 0;
-	int i,j;
-	for(i=1;i<GRID;i++) {
-		for(j=1; j<GRID; j++) {
-			arena.cell[i][j].terreno = rand() % 4;
-			arena.cell[i][j].cristais = rand() % 5;
-			arena.cell[i][j].ocup = 0;
-			arena.cell[i][j].base = 0;
-			//printf("%d",arena->cell[i][j].cristais);
-		}
-	}
+    arena.nexercitos = 0;
+    int i,j;
+    for(i=1;i<GRID;i++) {
+        for(j=1; j<GRID; j++) {
+            arena.cell[i][j].terreno = rand() % 4;
+            arena.cell[i][j].cristais = rand() % 5;
+            arena.cell[i][j].ocup = 0;
+            arena.cell[i][j].base = 0;
+            //printf("%d",arena->cell[i][j].cristais);
+        }
+    }
 
-	for(i=0;i<GRID;i++){
-		arena.cell[i][0].ocup = 1;
-		arena.cell[i][GRID-1].ocup = 1;	
-	}
+    for(i=0;i<GRID;i++){
+        arena.cell[i][0].ocup = 1;
+        arena.cell[i][GRID-1].ocup = 1;
+    }
 
-	for(i=0;i<GRID;i++){
-		arena.cell[0][i].ocup = 1;
-		arena.cell[GRID-1][i].ocup = 1;
-	}
+    for(i=0;i<GRID;i++){
+        arena.cell[0][i].ocup = 1;
+        arena.cell[GRID-1][i].ocup = 1;
+    }
 }
 
 void Escalonador(int rodadas) {
@@ -45,8 +43,21 @@ void Escalonador(int rodadas) {
 }
 
 void InsereExercito(Exercito exct) {
-	
+	//dando uma posicao aleatoria para cada robo
 	arena.exercitos[arena.nexercitos] = exct;
+	for(int i = 0; i< RoboPerExerc; i++) {
+		int x = 1 + rand() % 19;
+		int y = 1 + rand() % 19;
+		printf("[%d][%d]",x,y);
+		while(arena.cell[x][y].ocup) {
+			x = 1 + rand() % 19;
+		    y = 1 + rand() % 19;
+		}
+		arena.exercitos[arena.nexercitos].robos[i]->x = x;
+		arena.exercitos[arena.nexercitos].robos[i]->y = y;
+		arena.cell[x][y].ocup = 1;
+		printf("Robo:%d, pos[%d][%d]\n",i,arena.exercitos[arena.nexercitos].robos[i]->x,arena.exercitos[arena.nexercitos].robos[i]->y);
+	}
 	arena.nexercitos++;
 }
 
@@ -150,7 +161,7 @@ OPERANDO Vizinhos(int M) {
 }
 
 int Mover(int nx, int ny, Maquina *maq) {
-
+	printf("Tentando mover...\n");
 	int x = maq->x;
 	int y = maq->y;
 
@@ -159,6 +170,7 @@ int Mover(int nx, int ny, Maquina *maq) {
 		maq->y = ny;
 		arena.cell[x][y].ocup = 0;
 		arena.cell[nx][ny].ocup = 1;
+		printf("Movido com sucesso\n");
 		return 1;
 	}
 	return 0;

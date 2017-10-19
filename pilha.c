@@ -35,12 +35,12 @@ OPERANDO desempilha(Pilha *p) {
   else Erro("Pilha vazia");
 }
 
-void imprime(Pilha *p, int n) {
+void imprime(Pilha *p, int n) { 
   int t = p->topo-1;
   int i;
   printf("[");
   for (i = t; i >= 0; i--) 
-	printf("%4d, ", p->val[i]);
+	printf("%4d, ", p->val[i].n);
   printf("]");
   return;
 }
