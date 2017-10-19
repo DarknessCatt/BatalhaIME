@@ -30,7 +30,7 @@ typedef enum {
   FRE,
   ATR,
   MOV,
-  SRC,
+  SCH,
   GRB,
   DRP
 } OpCode;

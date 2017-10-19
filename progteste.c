@@ -59,7 +59,11 @@ INSTR fibonacci[] = {
 INSTR teste[] = {
   {PUSH,{NUM, 1}},
   {PUSH,{NUM, 10}},
-  {MOV, {NUM, 1}},
+  {MOV, {NUM, 3}},
+  {SCH, {NUM, 4}},
+  {ATR, {NUM, 1}},
+  {GRB, {NUM, 4}},
+  {DRP, {NUM, 5}},
   {END,{NUM ,0}},
 };
 
@@ -78,7 +82,6 @@ INSTR progbranco[] = {
   {PUSH,{NUM, 10}},
   {END,{NUM ,0}},
 };
-
 int main(int ac, char **av) {
   srand( (unsigned)time(NULL) );
   init_arena();
@@ -89,8 +92,8 @@ int main(int ac, char **av) {
   exercito.robos[3] = cria_maquina(teste);
   exercito.robos[4] = cria_maquina(fibonacci);
   InsereExercito(exercito);
-  //exec_maquina(exercito.robos[3],50);
-  Escalonador(10);
+  Escalonador(2);
+  //RemoveExercito(0);
   //destroi_maquina(exercito.robos[0]);
   return(0);
 }

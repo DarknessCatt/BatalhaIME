@@ -37,7 +37,7 @@ char *CODES[] = {
   "FRE",
   "ATR",
   "MOV",
-  "SRC",
+  "SCH",
   "GRB",
   "DRP"
 };
@@ -81,7 +81,7 @@ void exec_maquina(Maquina *m, int n) {
 	OpCode   opc = prg[ip].instr;
 	OPERANDO arg = prg[ip].op;
 
-	D(printf("%3d: %-4.4s %d\n     ", ip, CODES[opc], arg));
+	D(printf("%3d: %-4.4s %d\n     ", ip, CODES[opc], arg.n));
 
 	switch (opc) {
 	  OPERANDO tmp;
@@ -316,12 +316,11 @@ void exec_maquina(Maquina *m, int n) {
 	case MOV:
 	  if(arg.t == NUM){
 	    empilha(pil,arg);
-	    printf("arg.n do mov: %d\n",arg.n);
 	  	Sistema(1);
 	  }
 	  else Fatal("Operando incompatível", 9); 
 	  break;
-	case SRC:
+	case SCH:
 	   if(arg.t == NUM){
 	   	empilha(pil,arg);
 	  	Sistema(2);
@@ -331,14 +330,14 @@ void exec_maquina(Maquina *m, int n) {
 	case GRB:
 	  if(arg.t == NUM){
 	    empilha(pil,arg);
-	  	Sistema(2);
+	  	Sistema(3);
 	  }
 	  else Fatal("Operando incompatível", 9);
 	  break;
 	case DRP:
 	  if(arg.t == NUM){
 	    empilha(pil,arg);
-	  	Sistema(3);
+	  	Sistema(4);
 	  }
 	  else Fatal("Operando incompatível", 9);
 	  break;
