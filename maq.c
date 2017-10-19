@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "maq.h"
 
-#define DEBUG 
+//#define DEBUG 
 
 #ifdef DEBUG
 #  define D(X) X

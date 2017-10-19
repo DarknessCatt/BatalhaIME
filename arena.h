@@ -23,6 +23,6 @@ void Escalonador(int rodadas);
 void InsereExercito(Exercito exct);
 void RemoveExercito(int base);
 OPERANDO Vizinhos(int M);
-int Mover(int nx, int ny, Maquina *maq);
-int Cristal(int nx, int ny, int c, Maquina *maq);
+int Mover(int nx, int ny);
+int Cristal(int nx, int ny, int c);
 void Sistema(int op);

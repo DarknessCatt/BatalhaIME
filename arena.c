@@ -3,6 +3,8 @@
 #include <time.h>
 #include "arena.h"
 
+#define maqnow (arena.exercitos[arena.exercitonow].robos[arena.robonow])
+
 void *init_arena() {
     arena.nexercitos = 0;
     int i,j;
@@ -80,11 +82,9 @@ void RemoveExercito(int base) {
 // 2 = Pegar Cristal
 // 3 = Soltar Cristal
 OPERANDO Vizinhos(int M) {
-	Maquina *maq = arena.exercitos[arena.exercitonow].robos[arena.robonow];
-	OPERANDO op =  desempilha(&maq->pil);
-	printf("Op.n:%d \n", op.n);
-	int x = maq->x;
-	int y = maq->y;
+	OPERANDO op =  desempilha(&maqnow->pil);
+	int x = maqnow->x;
+	int y = maqnow->y;
 	int nx = x, ny = y;
 
 	if(x%2) { //impar
@@ -141,7 +141,7 @@ OPERANDO Vizinhos(int M) {
 	switch (M) {
 		case 0:
 			r.t = NUM;
-			r.n = Mover(nx,ny,maq);
+			r.n = Mover(nx,ny);
 			break;
 
 		case 1:
@@ -151,26 +151,26 @@ OPERANDO Vizinhos(int M) {
 
 		 case 2:
 		 	r.t = NUM;
-		 	r.n = Cristal(nx,ny,1,maq);
+		 	r.n = Cristal(nx,ny,1);
 		 	break;
 
 		 case 3:
 		 	r.t = NUM;
-		 	r.n = Cristal(nx,ny,0,maq);
+		 	r.n = Cristal(nx,ny,0);
 		 	break;
 	}
 	return r;
 }
 
-int Mover(int nx, int ny, Maquina *maq) {
+int Mover(int nx, int ny) {
 	printf("Tentando mover...\n");
-	printf("De [%d][%d] para [%d][%d]\n",maq->x,maq->y,nx,ny );
-	int x = maq->x;
-	int y = maq->y;
+	printf("De [%d][%d] para [%d][%d]\n",maqnow->x,maqnow->y,nx,ny );
+	int x = maqnow->x;
+	int y = maqnow->y;
 
 	if(!arena.cell[nx][ny].ocup){
-		maq->x = nx;
-		maq->y = ny;
+		maqnow->x = nx;
+		maqnow->y = ny;
 		arena.cell[x][y].ocup = 0;
 		arena.cell[nx][ny].ocup = 1;
 		printf("Movido com sucesso\n");
@@ -179,11 +179,11 @@ int Mover(int nx, int ny, Maquina *maq) {
 	return 0;
 }
 
-int Cristal(int nx, int ny, int c, Maquina *maq) {
+int Cristal(int nx, int ny, int c) {
 
 	if(c) {
 		if(arena.cell[nx][ny].cristais) {
-			maq->cristais++;
+			maqnow->cristais++;
 			arena.cell[nx][ny].cristais--;
 			return 1;
 		}
@@ -191,8 +191,8 @@ int Cristal(int nx, int ny, int c, Maquina *maq) {
 			return 0;
 	}
 	else {
-		if(maq->cristais) {
-			maq->cristais--;
+		if(maqnow->cristais) {
+			maqnow->cristais--;
 			arena.cell[nx][ny].cristais++;
 			if(arena.cell[nx][ny].base && arena.cell[nx][ny].cristais >= 5) {
 				RemoveExercito(arena.cell[nx][ny].base - 1);
@@ -210,11 +210,10 @@ void Sistema(int op) {
 		OPERANDO atr;
 		OPERANDO opr;
 		OPERANDO cel;
-		Maquina *maq = arena.exercitos[arena.exercitonow].robos[arena.robonow];
 		case 0: // Chamada do ATR
-			opr = desempilha(&maq->pil);
+			opr = desempilha(&maqnow->pil);
 			atr.t = NUM;
-			cel = desempilha(&maq->pil);
+			cel = desempilha(&maqnow->pil);
 			if(cel.t == CELULA) {
 				switch (opr.n) {
 					case 0:
@@ -231,19 +230,19 @@ void Sistema(int op) {
 						break;
 				}
 			}
-			empilha(&maq->pil,atr);
+			empilha(&maqnow->pil,atr);
 			break;
 		case 1: // MOV
-			empilha(&maq->pil,Vizinhos(0));
+			empilha(&maqnow->pil,Vizinhos(0));
 			break;
 		case 2: // SRC
-			empilha(&maq->pil,Vizinhos(1));
+			empilha(&maqnow->pil,Vizinhos(1));
 			break;
 		case 3: // GRB
-			empilha(&maq->pil,Vizinhos(2));
+			empilha(&maqnow->pil,Vizinhos(2));
 			break;
 		case 4: // DRP
-			empilha(&maq->pil,Vizinhos(3));
+			empilha(&maqnow->pil,Vizinhos(3));
 			break;
 	}
 
