@@ -73,17 +73,22 @@ INSTR programa[] = {
   {RET, {NUM, 0}}
 };
 
+INSTR progbranco[] = {
+
+};
+
 int main(int ac, char **av) {
+  srand( (unsigned)time(NULL) );
   init_arena();
   Exercito exercito;
-  exercito.robos[0] = cria_maquina(fatorial);
-  exercito.robos[1] = cria_maquina(fibonacci);
-  exercito.robos[2] = cria_maquina(programa);
+  exercito.robos[0] = cria_maquina(teste);
+  exercito.robos[1] = cria_maquina(teste);
+  exercito.robos[2] = cria_maquina(teste);
   exercito.robos[3] = cria_maquina(teste);
-  exercito.robos[4] = cria_maquina(fibonacci);
+  exercito.robos[4] = cria_maquina(teste);
   InsereExercito(exercito);
-  exec_maquina(exercito.robos[3],50);
-  //Escalonador(10);
+  //exec_maquina(exercito.robos[3],50);
+  Escalonador(10);
   //destroi_maquina(exercito.robos[0]);
   return(0);
 }

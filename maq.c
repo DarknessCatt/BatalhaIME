@@ -316,6 +316,7 @@ void exec_maquina(Maquina *m, int n) {
 	case MOV:
 	  if(arg.t == NUM){
 	    empilha(pil,arg);
+	    printf("arg.n do mov: %d\n",arg.n);
 	  	Sistema(1);
 	  }
 	  else Fatal("Operando incompatível", 9); 

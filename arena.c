@@ -45,6 +45,7 @@ void Escalonador(int rodadas) {
 void InsereExercito(Exercito exct) {
 	//dando uma posicao aleatoria para cada robo
 	arena.exercitos[arena.nexercitos] = exct;
+	arena.exercitos[arena.nexercitos].jogando = 1;
 	for(int i = 0; i< RoboPerExerc; i++) {
 		int x = 1 + rand() % 19;
 		int y = 1 + rand() % 19;
@@ -81,6 +82,7 @@ void RemoveExercito(int base) {
 OPERANDO Vizinhos(int M) {
 	Maquina *maq = arena.exercitos[arena.exercitonow].robos[arena.robonow];
 	OPERANDO op =  desempilha(&maq->pil);
+	printf("Op.n:%d \n", op.n);
 	int x = maq->x;
 	int y = maq->y;
 	int nx = x, ny = y;
@@ -162,6 +164,7 @@ OPERANDO Vizinhos(int M) {
 
 int Mover(int nx, int ny, Maquina *maq) {
 	printf("Tentando mover...\n");
+	printf("De [%d][%d] para [%d][%d]\n",maq->x,maq->y,nx,ny );
 	int x = maq->x;
 	int y = maq->y;
 
