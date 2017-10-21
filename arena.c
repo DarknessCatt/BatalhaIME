@@ -63,6 +63,7 @@ void InsereExercito(Exercito exct) {
 	int v = 1 + rand() % 19;
 	int w = 1 + rand() % 19;
 	arena.cell[v][w].base = arena.nexercitos + 1;
+	arena.cell[v][w].cristais = 0;
 	printf("A base do exercito %d esta em [%d][%d].\n",arena.nexercitos,v,w);
 	arena.nexercitos++;
 }
@@ -213,6 +214,8 @@ int Cristal(int nx, int ny, int c) {
 			arena.cell[nx][ny].cristais++;
 			if(arena.cell[nx][ny].base && arena.cell[nx][ny].cristais >= 5) {
 				RemoveExercito(arena.cell[nx][ny].base - 1);
+				arena.cell[nx][ny].base  = 0;
+				arena.cell[nx][ny].cristais  = 0;
 			}
 			return 1;
 		}
