@@ -53,11 +53,11 @@ void Escalonador(int rodadas) {
 				if(arena.exercitos[j].jogando) {
 					arena.exercitonow = j;
 					//printf("O robo %d do exercito %d esta jogando agora!\n",i,j);
-					exec_maquina(arena.exercitos[j].robos[i],50);
+					exec_maquina(arena.exercitos[j].robos[i],20);
+					Draw();
 				}	
 			}
-		}
-		Draw();
+		}		
 	}
 	printf("\n");
 }
@@ -81,17 +81,20 @@ void InsereExercito(Exercito exct) {
 	int v = 1 + rand() % 19;
 	int w = 1 + rand() % 19;
 	arena.cell[v][w].base = arena.nexercitos + 1;
+	arena.cell[v][w].cristais = 0;
 	//printf("A base do exercito %d esta em [%d][%d].\n",arena.nexercitos,v,w);
 	arena.nexercitos++;
 	Draw();
 }
 
 void RemoveExercito(int base) {
+	//printf("\n");
 	arena.exercitos[base].jogando = 0;
 	for(int i = 0; i < 5; i++) {
 		int x = arena.exercitos[base].robos[i]->x;
 		int y = arena.exercitos[base].robos[i]->y;
 		arena.cell[x][y].ocup = 0;
+		//printf("Destruindo robo: [%d][%d] \n",x,y);
 		destroi_maquina(arena.exercitos[base].robos[i]);
 	}
 	//printf("O Exercito %d foi destruido!",base);
@@ -215,6 +218,7 @@ int Cristal(int nx, int ny, int c) {
 			maqnow->cristais++;
 			//printf("%d.\n",maqnow->cristais);
 			arena.cell[nx][ny].cristais--;
+			Draw();
 			return 1;
 		}
 		else {
@@ -233,14 +237,15 @@ int Cristal(int nx, int ny, int c) {
 			arena.cell[nx][ny].cristais++;
 			if(arena.cell[nx][ny].base && arena.cell[nx][ny].cristais >= 5) {
 				RemoveExercito(arena.cell[nx][ny].base - 1);
+				arena.cell[nx][ny].base  = 0;
+				arena.cell[nx][ny].cristais  = 0;
 			}
+			Draw();
 			return 1;
 		}
 		else
 			return 0;
 	}
-
-	Draw();
 
 }
 
@@ -306,9 +311,13 @@ void Draw(){
     		printf(" ");
         for(int j=0; j<GRID; j++) {
         	if(i==0 | i==GRID-1 | j==0 | j==GRID-1)
-        		printf("∏ ");
-            else if(arena.cell[i][j].ocup)
-            	printf("☺︎ ");
+        		printf("⬢ ");
+            else if(arena.cell[i][j].ocup){
+            	if(maqnow->x==i && maqnow->y==j)
+            		printf("\033[31m☻\033[30m ");            	
+            	else
+            		printf("☻ ");
+            }
             else if(arena.cell[i][j].base)
             	printf("♖ ");
             else if(arena.cell[i][j].cristais)
@@ -319,6 +328,6 @@ void Draw(){
     }
 
     printf("\n");
-    sleep(1);
+    usleep(700000);
 
 }
