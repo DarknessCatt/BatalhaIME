@@ -22,4 +22,6 @@ $ make progteste
 
 Tivemos algumas dificuldades em modularizar nossos arquivos de modo coerente com o que foi requisitado.
 
-Para facilitar a correção e o entendimento da execução do código, deixamos diversos prints que indicam o tipo de instrução sendo executada e se ela foi realizada corretamente.
+Para facilitar a correção e o entendimento da execução do código, deixamos diversos prints que indicam o tipo de instrução sendo executada e se ela foi realizada corretamente. 
+
+Além disso, é importante notar que nosso arena.c executa as máquinas com 50 ciclos de instrução, como foi pedido. Entretanto, alguns de nossos testes requerem mais do que isso para funcionar corretamente, então é recomendável alterar o valor "50" da função "exec_maquina", na linha 40 de arena.c, para "200".
