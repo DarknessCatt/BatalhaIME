@@ -21,6 +21,7 @@ typedef struct {
 
 //Arena Global
 Arena arena;
+display = popen("./apres", "w");
 
 //Gera a arena aleatoriamente, colocando o terreno e os cristais
 void *init_arena();
