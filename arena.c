@@ -7,14 +7,40 @@
 
 void *init_arena() {
     arena.nexercitos = 0;
-    int i,j;
+    int i,j,r,g,b;
     for(i=1;i<GRID;i++) {
         for(j=1; j<GRID; j++) {
+
             arena.cell[i][j].terreno = rand() % 4;
             arena.cell[i][j].cristais = rand() % 5;
             arena.cell[i][j].ocup = 0;
             arena.cell[i][j].base = 0;
-            //printf("%d",arena->cell[i][j].cristais);
+
+            switch (arena.cell[i][j].terreno){
+            	case 0:
+            		r = 255;
+            		g = 0;
+            		b = 0;
+            		break;
+            	case 1:
+            		r = 255;
+            		g = 255;
+            		b = 0;
+            		break;
+            	case 2:
+            		r = 255;
+            		g = 0;
+            		b = 255;
+            		break;
+            	case 3:
+            		r = 0;
+            		g = 255;
+            		b = 0;
+            		break;
+            }
+
+            fprintf(display, "cell %d %d %d %d %d\n",i,j,r,g,b);
+            fprintf(display, "cristais %d %d %d\n",arena.cell[i][j].cristais,i,j);
         }
     }
 
@@ -59,12 +85,14 @@ void InsereExercito(Exercito exct) {
 		arena.exercitos[arena.nexercitos].robos[i]->y = y;
 		arena.cell[x][y].ocup = 1;
 		printf("Robo:%d, pos[%d][%d]\n",i,arena.exercitos[arena.nexercitos].robos[i]->x,arena.exercitos[arena.nexercitos].robos[i]->y);
+		fprintf(display, "rob crystal.png %d %d\n",x,y);
 	}
 	int v = 1 + rand() % 19;
 	int w = 1 + rand() % 19;
 	arena.cell[v][w].base = arena.nexercitos + 1;
 	arena.cell[v][w].cristais = 0;
 	printf("A base do exercito %d esta em [%d][%d].\n",arena.nexercitos,v,w);
+	fprintf(display, "base tower_a.png %d %d\n",v,w);
 	arena.nexercitos++;
 }
 
@@ -181,6 +209,7 @@ int Mover(int nx, int ny) {
 		arena.cell[x][y].ocup = 0;
 		arena.cell[nx][ny].ocup = 1;
 		printf("Movido com sucesso\n");
+		fprintf(display, "%d %d %d %d %d\n", ID, x, y, nx, ny);
 		return 1;
 	}
 	printf("Nao foi possivel se mover, a celula [%d][%d] ja esta ocupada\n",nx,ny);
@@ -196,6 +225,7 @@ int Cristal(int nx, int ny, int c) {
 			maqnow->cristais++;
 			printf("%d.\n",maqnow->cristais);
 			arena.cell[nx][ny].cristais--;
+			fprintf(display, "cristais %d %d %d\n",arena.cell[nx][ny].cristais,nx,ny);
 			return 1;
 		}
 		else {
@@ -212,6 +242,7 @@ int Cristal(int nx, int ny, int c) {
 				printf("nao havia nenhuma base na celula.\n");
 			maqnow->cristais--;
 			arena.cell[nx][ny].cristais++;
+			fprintf(display, "cristais %d %d %d\n",arena.cell[nx][ny].cristais,nx,ny);
 			if(arena.cell[nx][ny].base && arena.cell[nx][ny].cristais >= 5) {
 				RemoveExercito(arena.cell[nx][ny].base - 1);
 				arena.cell[nx][ny].base  = 0;
