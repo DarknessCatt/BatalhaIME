@@ -58,19 +58,46 @@ class Robô(pg.sprite.Sprite):
         # desenha
         scr.blit(s.image, s.rect)
 
+
+class Base(pg.sprite.Sprite):
+    """
+    Representa um Robô, possui uma imagem
+    """
+    def __init__(s, img):
+        """
+        Construtor, img é o nome do arquivo com a imagem
+        """
+        pg.sprite.Sprite.__init__(s)
+        s.image = pg.image.load(img)
+        s.rect = s.image.get_rect()
+
+    def draw(s, i,j):
+        """
+        Desenha o robô na célula (i,j)
+        """
+        x, y = convert(i,j)
+
+        # fronteiras do sprite
+        l0,h0,l1,h1 = s.rect
+
+        # corrije a posição de acordo com o tamanho do sprite
+        s.rect.topleft = [x-l1/2,y-h1/2]
+        # desenha
+        scr.blit(s.image, s.rect)
+
     
-class cell:
+class Cell:
     """
     Representa uma das células da arena
     """
-    def __init__(s,i,j):
+    def __init__(s,i,j,r,g,b):
         """
         Construtor, i e j formam a coordenada
         """
         # Posição do centro
         s.cx, s.cy = convert(i,j)
         # Cor (pode ser passada para o construtor no futuro)
-        s.cor = (200,200,200)
+        s.cor = (r,g,b)
 
         # Vértices do hexágono
         s.pontos = (
@@ -89,17 +116,32 @@ class cell:
         pg.draw.polygon(scr, s.cor, s.pontos, 0)
         pg.draw.lines(scr, (0,0,0), True, s.pontos, 2)
 
+    def drawCrystals(s,n) :
+        """
+        Desenha a célula
+        """
+        s.cristais = (
+            (s.cx,   s.cy-L/2),
+            (s.cx+l/2, s.cy-L/4),
+            (s.cx+l/2, s.cy+L/4),
+            (s.cx-l/2, s.cy-L/4)
+            )
+
+        pg.draw.polygon(scr, (255,255,255), s.cristais, 0)
+        pg.draw.lines(scr, (0,0,0), True, s.pontos, 2)    
+
 
 # Construção da matriz que representa a arena
 arena = []
-for i in range(15):
+for i in range(20):
     arena.append([])
-    for j in range(15):
-        arena[i].append(cell(i,j))
+    for j in range(20):
+        arena[i].append(Cell(i,j,125,12,125))
         arena[i][j].draw()
 
 # lista dos robôs definidos
 robs = []
+bases = []
 
 # atualiza a janela
 atu()
@@ -118,6 +160,25 @@ for line in fileinput.input():
         robs.append(Robô(r[1]))
         continue
 
+    if r[0] == 'base':
+        bases.append(Base(r[1]))
+        i, j = list(map(int,r[2:]))
+        bases[0].draw(i,j)
+        continue
+
+    if r[0] == 'cristais':
+        i, j, n = list(map(int, r[1:]))
+        arena[i][j].drawCrystals(n)
+        atu()
+        pg.time.wait(300)
+        continue
+    if r[0] == 'cell':
+        i, j, r, g ,b = list(map(int, r[1:]))
+        arena[i][j].cor = (r,g,b)
+        arena[i][j].draw()
+        atu()
+        pg.time.wait(300)
+        continue
     # linha de movimentação:
     # robô, corrdenadas originais, coordenadas finais
     ri, oi, oj, di, dj = list(map(int, r))
@@ -130,7 +191,8 @@ for line in fileinput.input():
         robs[ri].draw(di,dj)
 
     # tempo de espera para atualização, apenas para testes
-    pg.time.wait(100)
+
+    pg.time.wait(300)
 
     atu()
 

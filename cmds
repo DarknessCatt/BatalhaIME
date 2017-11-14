@@ -1,5 +1,17 @@
-rob GILEAD_A.png
-rob GILEAD_B.png
+rob crystal_a.png
+rob crystal_b.png
+cell 0 0 0 0 0
+cell 0 1 23 46 122
+base tower_a.png 8 8
+cell 0 2 125 125 125
+cell 0 3 250 250 250
+cell 0 4 125 125 125
+cell 0 5 250 210 0
+cell 0 6 125 0 0
+cell 0 7 250 23 72
+cell 0 8 125 0 4 
+cell 0 9 250 10 40
+cristais 1 4 4
 0 1 1 1 1
 1 1 1 4 5
 0 1 1 1 2
