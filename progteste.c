@@ -134,7 +134,7 @@ INSTR tested[] = {
 };
 
 int main(int ac, char **av) {
-  srand( 100 );
+  srand( (unsigned)time(NULL) );
   init_arena();
   Exercito exercito;
   exercito.robos[0] = cria_maquina(robo8);
@@ -143,6 +143,13 @@ int main(int ac, char **av) {
   exercito.robos[3] = cria_maquina(teste);
   exercito.robos[4] = cria_maquina(fibonacci);
   InsereExercito(exercito);
+  Exercito exercito2;
+  exercito2.robos[0] = cria_maquina(robo8);
+  exercito2.robos[1] = cria_maquina(robo2);
+  exercito2.robos[2] = cria_maquina(tested);
+  exercito2.robos[3] = cria_maquina(teste);
+  exercito2.robos[4] = cria_maquina(fibonacci);
+  InsereExercito(exercito2);
   Escalonador(100);
   //RemoveExercito(0);
   //destroi_maquina(exercito.robos[0]);

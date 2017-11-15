@@ -60,7 +60,7 @@ class Robô(pg.sprite.Sprite):
 
 class Base(pg.sprite.Sprite):
     """
-    Representa um Robô, possui uma imagem
+    Representa uma Base, possui uma imagem
     """
     def __init__(s, img):
         """
@@ -72,7 +72,7 @@ class Base(pg.sprite.Sprite):
 
     def draw(s, i,j):
         """
-        Desenha o robô na célula (i,j)
+        Desenha a base na célula (i,j)
         """
         x, y = convert(i,j)
 
@@ -117,19 +117,14 @@ class Cell:
 
 class Cristais(pg.sprite.Sprite):
     """
-    Representa um Robô, possui uma imagem
+    Representa os Cristais, possui imagens
     """
     def __init__(s):
-        """
-        Construtor, img é o nome do arquivo com a imagem
-        """
         pg.sprite.Sprite.__init__(s)
-        '''s.image = pg.image.load(img)
-        s.rect = s.image.get_rect()'''
 
     def draw(s, i, j, n):
         """
-        Desenha o robô na célula (i,j)
+        Desenha os cristais na célula (i,j)
         """
         if n > 0:
             x, y = convert(i,j)
@@ -178,7 +173,7 @@ for line in fileinput.input():
     if r[0] == 'base':
         bases.append(Base(r[1]))
         i, j = list(map(int,r[2:]))
-        bases[0].draw(i,j)
+        bases[-1].draw(i,j)
         continue
 
     if r[0] == 'cristais':

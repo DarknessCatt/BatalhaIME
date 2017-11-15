@@ -6,7 +6,7 @@
 #define maqnow (arena.exercitos[arena.exercitonow].robos[arena.robonow])
 
 void *init_arena() {
-	display = popen("python3 apres", "w");
+	display = popen("python apres", "w");
     arena.nexercitos = 0;
     int i,j,r,g,b;
     for(i=1;i<GRID;i++) {
@@ -92,7 +92,7 @@ void InsereExercito(Exercito exct) {
 		arena.exercitos[arena.nexercitos].robos[i]->y = y;
 		arena.cell[x][y].ocup = 1;
 		printf("Robo:%d, pos[%d][%d]\n",i,arena.exercitos[arena.nexercitos].robos[i]->x,arena.exercitos[arena.nexercitos].robos[i]->y);
-		fprintf(display, "rob crystal_a.png %d %d\n",x,y);
+		fprintf(display, "rob crystal%d.png %d %d\n",arena.nexercitos,x,y);
 	}
 	int v = 1 + rand() % (GRID-1);
 	int w = 1 + rand() % (GRID-1);
@@ -101,8 +101,9 @@ void InsereExercito(Exercito exct) {
 	arena.cell[v][w].ocup = 1;
 	printf("A base do exercito %d esta em [%d][%d].\n",arena.nexercitos,v,w);
 	fprintf(display, "cristais 0 %d %d\n",v,w);
-	fprintf(display, "base tower_a.png %d %d\n",v,w);
+	fprintf(display, "base tower%d.png %d %d\n",arena.nexercitos,v,w);
 	arena.nexercitos++;
+	
 }
 
 void RemoveExercito(int base) {
@@ -245,21 +246,27 @@ int Cristal(int nx, int ny, int c) {
 	}
 	else {
 		if(maqnow->cristais) {
-			printf("O Robo %d depositou um cristal na celula[%d][%d],", arena.robonow,nx,ny);
-			if(arena.cell[nx][ny].base)
-				printf("a celula continha uma base do exercito %d .\n",arena.cell[nx][ny].base - 1);
-			else
-				printf("nao havia nenhuma base na celula.\n");
-			maqnow->cristais--;
-			arena.cell[nx][ny].cristais++;
-			printf("Depositei cristais, a arena tem agora %d\n",arena.cell[nx][ny].cristais);
-			fprintf(display, "cristais %d %d %d\n",arena.cell[nx][ny].cristais,nx,ny);
-			if(arena.cell[nx][ny].base && arena.cell[nx][ny].cristais >= 5) {
-				RemoveExercito(arena.cell[nx][ny].base - 1);
-				arena.cell[nx][ny].base  = 0;
-				arena.cell[nx][ny].cristais  = 0;
+			if(nx == 0 || nx == (GRID-1) || ny == 0 || ny == (GRID-1)) {
+				printf("Nao e possivel depositar cristais na borda! Tentou depositar em [%d][%d].\n",nx,ny);
+				return 0;
 			}
-			return 1;
+			else {
+				maqnow->cristais--;
+				arena.cell[nx][ny].cristais++;
+				printf("O Robo %d depositou um cristal na celula[%d][%d],", arena.robonow,nx,ny);
+				if(arena.cell[nx][ny].base)
+					printf("a celula continha uma base do exercito %d .\n",arena.cell[nx][ny].base - 1);
+				else
+					printf("nao havia nenhuma base na celula.\n");
+				fprintf(display, "cristais %d %d %d\n",arena.cell[nx][ny].cristais,nx,ny);
+				if(arena.cell[nx][ny].base && arena.cell[nx][ny].cristais >= 5) {
+					RemoveExercito(arena.cell[nx][ny].base - 1);
+					arena.cell[nx][ny].base  = 0;
+					arena.cell[nx][ny].cristais  = 0;
+					fprintf(display, "base towerdestroyed.png %d %d\n",nx,ny);
+				}
+				return 1;
+			}
 		}
 		else
 			return 0;
