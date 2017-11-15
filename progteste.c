@@ -68,6 +68,9 @@ INSTR teste[] = {
   {SCH, {NUM, 0}},
   {ATR, {NUM, 1}},
   {GRB, {NUM, 4}},
+  {GRB, {NUM, 2}},
+  {GRB, {NUM, 0}},
+  {GRB, {NUM, 1}},
   {DRP, {NUM, 5}},
   {END,{NUM ,0}},
 };

@@ -183,6 +183,7 @@ for line in fileinput.input():
     if r[0] == 'cristais':
         n, i, j = list(map(int, r[1:]))
         arena[i][j].cristais = n
+        arena[i][j].draw()
         cristais[0].draw(i,j,n)
         atu()
         pg.time.wait(10)
