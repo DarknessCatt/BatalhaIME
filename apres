@@ -7,7 +7,7 @@ from math import *
 pg.init()                                 # inicialização do sistema
 
 # altura e largura da arena, em células
-H, W = 22,22
+H, W = 12,12
 # largura da célula
 l = 30
 # altura da célula
@@ -117,17 +117,23 @@ class Cell:
 
     def drawCrystals(s,n) :
         """
-        Desenha a célula
+        Desenha o robô na célula (i,j)
         """
-        s.cristais = (
-            (s.cx,   s.cy-L/2),
-            (s.cx+l/2, s.cy-L/4),
-            (s.cx+l/2, s.cy+L/4),
-            (s.cx-l/2, s.cy-L/4)
-            )
+        if n > 0:
+            pg.sprite.Sprite.__init__(s)
+            img = 'salt'+ str(n) +'.png'
+            s.image = pg.image.load(img)
+            s.rect = s.image.get_rect()
 
-        pg.draw.polygon(scr, (255,255,255), s.cristais, 0)
-        pg.draw.lines(scr, (0,0,0), True, s.pontos, 2)    
+            x, y = convert(i,j)
+
+            # fronteiras do sprite
+            l0,h0,l1,h1 = s.rect
+
+            # corrije a posição de acordo com o tamanho do sprite
+            s.rect.topleft = [x-l1/2,y-h1/2]
+            # desenha
+            scr.blit(s.image, s.rect)  
 
 
 # Construção da matriz que representa a arena
@@ -135,7 +141,7 @@ arena = []
 for i in range(H):
     arena.append([])
     for j in range(W):
-        arena[i].append(Cell(i,j,125,12,125))
+        arena[i].append(Cell(i,j,0,0,0))
         arena[i][j].draw()
 
 # lista dos robôs definidos
@@ -166,7 +172,7 @@ for line in fileinput.input():
         continue
 
     if r[0] == 'cristais':
-        i, j, n = list(map(int, r[1:]))
+        n, i, j = list(map(int, r[1:]))
         arena[i][j].drawCrystals(n)
         atu()
         pg.time.wait(1)

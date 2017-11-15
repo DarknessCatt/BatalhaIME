@@ -1,6 +1,6 @@
 #include "maq.h"
 
-#define GRID 21
+#define GRID 12
 #define RoboPerExerc 5
 
 //define a estrutura do exercito

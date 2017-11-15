@@ -86,7 +86,7 @@ void InsereExercito(Exercito exct) {
 		arena.exercitos[arena.nexercitos].robos[i]->y = y;
 		arena.cell[x][y].ocup = 1;
 		printf("Robo:%d, pos[%d][%d]\n",i,arena.exercitos[arena.nexercitos].robos[i]->x,arena.exercitos[arena.nexercitos].robos[i]->y);
-		fprintf(display, "rob crystal.png %d %d\n",x,y);
+		fprintf(display, "rob crystal_a.png %d %d\n",x,y);
 	}
 	int v = 1 + rand() % 19;
 	int w = 1 + rand() % 19;
