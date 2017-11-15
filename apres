@@ -97,7 +97,7 @@ class Cell:
         s.cx, s.cy = convert(i,j)
         # Cor (pode ser passada para o construtor no futuro)
         s.cor = (r,g,b)
-
+        s.cristais = 0
         # Vértices do hexágono
         s.pontos = (
             (s.cx,   s.cy-L),
@@ -115,25 +115,33 @@ class Cell:
         pg.draw.polygon(scr, s.cor, s.pontos, 0)
         pg.draw.lines(scr, (0,0,0), True, s.pontos, 2)
 
-    def drawCrystals(s,n) :
+class Cristais(pg.sprite.Sprite):
+    """
+    Representa um Robô, possui uma imagem
+    """
+    def __init__(s):
+        """
+        Construtor, img é o nome do arquivo com a imagem
+        """
+        pg.sprite.Sprite.__init__(s)
+        '''s.image = pg.image.load(img)
+        s.rect = s.image.get_rect()'''
+
+    def draw(s, i, j, n):
         """
         Desenha o robô na célula (i,j)
         """
         if n > 0:
-            pg.sprite.Sprite.__init__(s)
-            img = 'salt'+ str(n) +'.png'
+            x, y = convert(i,j)
+            img = 'salt'+ str(n) + '.png'
             s.image = pg.image.load(img)
             s.rect = s.image.get_rect()
-
-            x, y = convert(i,j)
-
             # fronteiras do sprite
             l0,h0,l1,h1 = s.rect
-
             # corrije a posição de acordo com o tamanho do sprite
             s.rect.topleft = [x-l1/2,y-h1/2]
             # desenha
-            scr.blit(s.image, s.rect)  
+            scr.blit(s.image, s.rect)
 
 
 # Construção da matriz que representa a arena
@@ -147,7 +155,8 @@ for i in range(H):
 # lista dos robôs definidos
 robs = []
 bases = []
-
+cristais = []
+cristais.append(Cristais())
 # atualiza a janela
 atu()
 
@@ -173,7 +182,8 @@ for line in fileinput.input():
 
     if r[0] == 'cristais':
         n, i, j = list(map(int, r[1:]))
-        arena[i][j].drawCrystals(n)
+        arena[i][j].cristais = n
+        cristais[0].draw(i,j,n)
         atu()
         pg.time.wait(10)
         continue
@@ -191,15 +201,15 @@ for line in fileinput.input():
     # redesenha a célula original (apaga o robô)
     if 0 <= oi  < W and 0 <= oj < H:
         arena[oi][oj].draw()
+        cristais[0].draw(oi,oj,arena[oi][oj].cristais)
     # desenha o robô na célula de destino
     if 0 <= di  < W and 0 <= dj < H and ri < len(robs):
         robs[ri].draw(di,dj)
-
     # tempo de espera para atualização, apenas para testes
 
-    pg.time.wait(3000)
-
     atu()
+
+    pg.time.wait(3000)
 
 pg.quit()
 # Local variables:
