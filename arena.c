@@ -69,7 +69,7 @@ void Escalonador(int rodadas) {
 					else{
 						arena.exercitonow = j;
 						printf("O robo %d do exercito %d esta jogando agora!\n",i,j);
-						exec_maquina(arena.exercitos[j].robos[i],50);
+						exec_maquina(arena.exercitos[j].robos[i],1);
 					}
 				}	
 			}
