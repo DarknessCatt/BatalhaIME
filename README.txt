@@ -16,3 +16,5 @@ Logo, dependendo da sua versão de Python, talvez seja necessário alterar ess l
 display = popen("python3 apres", "w");
 
 Ademais, adicionamos em nossas funções InsereExercito e Cristais comandos que imprimem as informações necessárias para que elas imprimam o texto que "apres" necessita para desenhar os robôs e os cristais.
+
+Finalmente, criamos mais uma instrução no Makefile (make edit) apenas para facilitar nosso trabalho de edição do código. O comando make progteste executa nossos programas de exemplo.
