@@ -73,7 +73,7 @@ void Escalonador(int rodadas) {
 						arena.exercitos[j].robos[i]->HP++;
 						if(arena.exercitos[j].robos[i]->HP>4){
 							printf("O robo se recuperou!\n");
-							//fprintf(display, "rest %d bot%d.png %d %d\n",arena.cell[nx][ny].ocup,arena.exercitonow,maqnow->x,maqnow->y);
+							fprintf(display, "rest bot%d.png %d %d %d\n",arena.exercitonow,arena.cell[maqnow->x][maqnow->y].ocup-1,maqnow->x,maqnow->y);
 							arena.exercitos[j].robos[i]->rest = 0;
 						}
 					}
@@ -332,7 +332,7 @@ int Atacar(int nx, int ny){
 		if(arena.exercitos[e].robos[r]->HP<1){
 			arena.exercitos[e].robos[r]->rest=1;
 			printf("Ele desmaiou!\n");
-			fprintf(display, "rest %d brkbot%d.png %d %d\n",arena.cell[nx][ny].ocup,arena.exercitonow,maqnow->x,maqnow->y);
+			fprintf(display, "rest brkbot%d.png %d %d %d\n",arena.exercitonow,arena.cell[nx][ny].ocup-1,nx,ny);
 		}
 		else{
 			printf("Ele ainda tem %d de HP!\n",arena.exercitos[e].robos[r]->HP);

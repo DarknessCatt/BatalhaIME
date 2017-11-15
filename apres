@@ -200,6 +200,14 @@ for line in fileinput.input():
         pg.time.wait(10)
         continue  
 
+    if r[0] == 'rest':
+        rid,i, j = list(map(int,r[2:]))
+        robs[ri].image = pg.image.load(r[1])
+        arena[i][j].draw()
+        robs[ri].draw(i,j)
+        atu()
+        continue
+
     if r[0] == 'cristais':
         n, i, j = list(map(int, r[1:]))
         arena[i][j].cristais = n
