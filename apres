@@ -7,7 +7,7 @@ from math import *
 pg.init()                                 # inicialização do sistema
 
 # altura e largura da arena, em células
-H, W = 12,12
+H, W = 13,13
 # largura da célula
 l = 30
 # altura da célula
@@ -175,14 +175,14 @@ for line in fileinput.input():
         n, i, j = list(map(int, r[1:]))
         arena[i][j].drawCrystals(n)
         atu()
-        pg.time.wait(1)
+        pg.time.wait(10)
         continue
     if r[0] == 'cell':
         i, j, r, g ,b = list(map(int, r[1:]))
         arena[i][j].cor = (r,g,b)
         arena[i][j].draw()
         atu()
-        pg.time.wait(1)
+        pg.time.wait(10)
         continue
     # linha de movimentação:
     # robô, corrdenadas originais, coordenadas finais
@@ -197,7 +197,7 @@ for line in fileinput.input():
 
     # tempo de espera para atualização, apenas para testes
 
-    pg.time.wait(1000)
+    pg.time.wait(3000)
 
     atu()
 

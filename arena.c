@@ -76,11 +76,11 @@ void InsereExercito(Exercito exct) {
 	arena.exercitos[arena.nexercitos] = exct;
 	arena.exercitos[arena.nexercitos].jogando = 1;
 	for(int i = 0; i< RoboPerExerc; i++) {
-		int x = 1 + rand() % 19;
-		int y = 1 + rand() % 19;
+		int x = 1 + rand() % GRID-1;
+		int y = 1 + rand() % GRID-1;
 		while(arena.cell[x][y].ocup) {
-			x = 1 + rand() % 19;
-		    y = 1 + rand() % 19;
+			x = 1 + rand() % GRID-1;
+		    y = 1 + rand() % GRID-1;
 		}
 		arena.exercitos[arena.nexercitos].robos[i]->x = x;
 		arena.exercitos[arena.nexercitos].robos[i]->y = y;
@@ -88,8 +88,8 @@ void InsereExercito(Exercito exct) {
 		printf("Robo:%d, pos[%d][%d]\n",i,arena.exercitos[arena.nexercitos].robos[i]->x,arena.exercitos[arena.nexercitos].robos[i]->y);
 		fprintf(display, "rob crystal_a.png %d %d\n",x,y);
 	}
-	int v = 1 + rand() % 19;
-	int w = 1 + rand() % 19;
+	int v = 1 + rand() % GRID-1;
+	int w = 1 + rand() % GRID-1;
 	arena.cell[v][w].base = arena.nexercitos + 1;
 	arena.cell[v][w].cristais = 0;
 	printf("A base do exercito %d esta em [%d][%d].\n",arena.nexercitos,v,w);
