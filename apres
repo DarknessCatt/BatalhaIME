@@ -168,6 +168,8 @@ for line in fileinput.input():
     # o segundo argumento na linha é a imagem   
     if r[0] == 'rob':
         robs.append(Robô(r[1]))
+        i, j = list(map(int,r[2:]))
+        robs[-1].draw(i,j)
         continue
 
     if r[0] == 'base':
