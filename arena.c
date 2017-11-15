@@ -6,7 +6,7 @@
 #define maqnow (arena.exercitos[arena.exercitonow].robos[arena.robonow])
 
 void *init_arena() {
-	display = popen("python3 apres", "w");
+	display = popen("python apres", "w");
     arena.nexercitos = 0;
     int i,j,r,g,b;
     for(i=1;i<GRID;i++) {
@@ -148,49 +148,49 @@ OPERANDO Vizinhos(int M) {
 
 	if(x%2) { //impar
 		switch(op.n) {
-			case 0: // N (x,y+1)
-				ny++;
+			case 0: // NW (x,y+1)
+				nx--;
 				break;
 			case 1: // NE (x+1,y+1)
+				nx--;
+				ny++;
+				break;
+			case 2: // E (x+1,y)
+				ny++;
+				break;
+			case 3: // SE (x+1,y-1)
 				nx++;
 				ny++;
 				break;
-			case 2: // SE (x+1,y)
+			case 4: // SW (x,y-1)
 				nx++;
 				break;
-			case 3: // S (x,y-1)
+			case 5: // W (x-1,y+1)
 				ny--;
-				break;
-			case 4: // SW (x-1,y)
-				nx--;
-				break;
-			case 5: // NW (x-1,y+1)
-				nx--;
-				ny++;
 				break;
 		}
 	}
 	else { //par
 		switch(op.n) {
-			case 0: // N (x,y+1)
+			case 0: // NW (x-1,y+1)
+				ny--;
+				nx--;
+				break;
+			case 1: // NE (x,y+1)
+				nx--;
+				break;
+			case 2: // E (x+1,y)
 				ny++;
 				break;
-			case 1: // NE (x+1,y)
+			case 3: // SE (x,y-1)
 				nx++;
-				break;
-			case 2: // SE (x+1,y-1)
-				nx++;
-				ny--;
-				break;
-			case 3: // S (x,y-1)
-				ny--;
 				break;
 			case 4: // SW (x-1,y-1)
-				nx--;
+				nx++;
 				ny--;
 				break;
-			case 5: // NW (x-1,y)
-				nx--;
+			case 5: // W (x-1,y)
+				ny--;
 				break;
 		}
 	}
