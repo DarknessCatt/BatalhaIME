@@ -85,18 +85,61 @@ INSTR programa[] = {
   {RET, {NUM, 0}}
 };
 
-INSTR progbranco[] = {
+INSTR robo2[] = {
+  {MOV, {NUM, 5}},
+  {MOV, {NUM, 4}},
+  {MOV, {NUM, 5}},
+  {MOV, {NUM, 4}},
+  {MOV, {NUM, 5}},
+  {MOV, {NUM, 4}},
+  {MOV, {NUM, 3}},
+  {MOV, {NUM, 3}},
+  {MOV, {NUM, 3}},
+  {MOV, {NUM, 5}},
+  {MOV, {NUM, 0}},
+  {MOV, {NUM, 2}},
+  {MOV, {NUM, 3}},
+  {MOV, {NUM, 4}},
+  {MOV, {NUM, 4}},
+  {END, {NUM, 0}}
+};
+
+INSTR robo8[] = {
+  {MOV, {NUM, 3}},
+  {MOV, {NUM, 3}},
+  {GRB, {NUM, 1}},
+  {GRB, {NUM, 2}},
+  {GRB, {NUM, 3}},
+  {MOV, {NUM, 3}},
+  {GRB, {NUM, 2}},
+  {MOV, {NUM, 2}},
+  {GRB, {NUM, 2}},
+  {DRP, {NUM, 3}},
+  {DRP, {NUM, 3}},
+  {DRP, {NUM, 3}},
+  {DRP, {NUM, 3}},
+  {DRP, {NUM, 3}},
+  {END, {NUM, 0}}
+};
+
+INSTR tested[] = {
   {PUSH,{NUM, 1}},
   {PUSH,{NUM, 10}},
-  {END,{NUM ,0}},
+  {MOV, {NUM, 3}},
+  {SCH, {NUM, 4}},
+  {ATR, {NUM, 1}},
+  {GRB, {NUM, 4}},
+  {DRP, {NUM, 5}},
+  {END,{NUM ,0}}
 };
+
 int main(int ac, char **av) {
   srand( (unsigned)time(NULL) );
   init_arena();
   Exercito exercito;
-  exercito.robos[0] = cria_maquina(fibonacci);
-  exercito.robos[1] = cria_maquina(fibonacci);
-  exercito.robos[2] = cria_maquina(fibonacci);
+  exercito.robos[0] = cria_maquina(robo8);
+  exercito.robos[1] = cria_maquina(robo2);
+  exercito.robos[2] = cria_maquina(tested);
   exercito.robos[3] = cria_maquina(teste);
   exercito.robos[4] = cria_maquina(fibonacci);
   InsereExercito(exercito);
