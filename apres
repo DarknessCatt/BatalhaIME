@@ -7,8 +7,7 @@ from math import *
 pg.init()                                 # inicialização do sistema
 
 # altura e largura da arena, em células
-H, W = 21,21
-
+H, W = 22,22
 # largura da célula
 l = 30
 # altura da célula
