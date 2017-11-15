@@ -6,7 +6,7 @@
 #define maqnow (arena.exercitos[arena.exercitonow].robos[arena.robonow])
 
 void *init_arena() {
-	display = popen("python apres", "w");
+	display = popen("python3 apres", "w");
     arena.nexercitos = 0;
     int i,j,r,g,b;
     for(i=1;i<GRID;i++) {
@@ -19,24 +19,24 @@ void *init_arena() {
 
             switch (arena.cell[i][j].terreno){
             	case 0:
-            		r = 255;
-            		g = 0;
+            		r = 153;
+            		g = 76;
             		b = 0;
             		break;
             	case 1:
-            		r = 255;
-            		g = 255;
+            		r = 0;
+            		g = 204;
             		b = 0;
             		break;
             	case 2:
-            		r = 255;
-            		g = 0;
-            		b = 255;
+            		r = 0;
+            		g = 51;
+            		b = 0;
             		break;
             	case 3:
             		r = 0;
-            		g = 255;
-            		b = 0;
+            		g = 128;
+            		b = 255;
             		break;
             }
 
@@ -63,6 +63,7 @@ void Escalonador(int rodadas) {
 			for(int j = 0; j < arena.nexercitos; j++) {
 				if(arena.exercitos[j].jogando) {
 					if(arena.exercitos[j].robos[i]->contador > 0){
+						printf("O robo %d do exercito %d está atrasado!\n",i,j);
 						arena.exercitos[j].robos[i]->contador--;
 					}
 					else{
@@ -216,6 +217,7 @@ int Mover(int nx, int ny) {
 		maqnow->y = ny;
 		arena.cell[x][y].ocup = 0;
 		arena.cell[nx][ny].ocup = 1;
+		maqnow->contador = arena.cell[nx][ny].terreno;
 		printf("Movido com sucesso\n");
 		fprintf(display, "%d %d %d %d %d\n", arena.exercitonow*5 + arena.robonow, x, y, nx, ny);
 		return 1;
