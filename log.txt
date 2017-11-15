@@ -1,0 +1,562 @@
+Robo:0, pos[1][7]
+Robo:1, pos[5][4]
+Robo:2, pos[6][7]
+Robo:3, pos[3][1]
+Robo:4, pos[7][1]
+A base do exercito 0 esta em [9][1].
+Robo:0, pos[10][7]
+Robo:1, pos[2][1]
+Robo:2, pos[9][2]
+Robo:3, pos[3][6]
+Robo:4, pos[4][1]
+A base do exercito 1 esta em [8][6].
+O robo 0 do exercito 0 esta jogando agora!
+Tentando mover...
+De [1][7] para [2][8]
+Movido com sucesso
+Tentando mover...
+De [2][8] para [3][8]
+Movido com sucesso
+O robo 0 do exercito 1 esta jogando agora!
+Tentando mover...
+De [10][7] para [11][7]
+Nao foi possivel se mover, a celula [11][7] ja esta ocupada
+Tentando mover...
+De [10][7] para [11][7]
+Nao foi possivel se mover, a celula [11][7] ja esta ocupada
+O robo 1 do exercito 0 esta jogando agora!
+Tentando mover...
+De [5][4] para [5][3]
+Movido com sucesso
+Tentando mover...
+De [5][3] para [6][3]
+Movido com sucesso
+O robo 1 do exercito 1 esta jogando agora!
+Tentando mover...
+De [2][1] para [2][0]
+Nao foi possivel se mover, a celula [2][0] ja esta ocupada
+Tentando mover...
+De [2][1] para [3][0]
+Nao foi possivel se mover, a celula [3][0] ja esta ocupada
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+O robo 4 do exercito 0 esta jogando agora!
+Tentando mover...
+De [7][1] para [7][2]
+Movido com sucesso
+O robo 4 do exercito 0 vai atacar a posição [6][3]!
+O robo acertou um soco em cheio na cara do robo 1 do exercito 0! Ele ainda tem 4 de HP!
+O robo 4 do exercito 1 esta jogando agora!
+Tentando mover...
+De [4][1] para [4][2]
+Movido com sucesso
+O robo 4 do exercito 1 vai atacar a posição [3][2]!
+Parece que não havia nada ali!
+O robo 0 do exercito 0 está atrasado!
+O robo 0 do exercito 1 esta jogando agora!
+Tentando pegar cristais...
+Nao ha cristais.
+Tentando pegar cristais...
+Sucesso! O Robo 0 tinha 0 cristais agora tem 1.
+O robo 1 do exercito 0 está atrasado!
+O robo 1 do exercito 1 esta jogando agora!
+Tentando mover...
+De [2][1] para [2][0]
+Nao foi possivel se mover, a celula [2][0] ja esta ocupada
+Tentando mover...
+De [2][1] para [3][0]
+Nao foi possivel se mover, a celula [3][0] ja esta ocupada
+O robo 2 do exercito 0 esta jogando agora!
+Tentando mover...
+De [6][7] para [7][7]
+Movido com sucesso
+Olhando para a cel[8][7].
+O robo 2 do exercito 1 esta jogando agora!
+Tentando mover...
+De [9][2] para [10][3]
+Movido com sucesso
+Olhando para a cel[11][2].
+O robo 3 do exercito 0 esta jogando agora!
+Tentando mover...
+De [3][1] para [4][2]
+Nao foi possivel se mover, a celula [4][2] ja esta ocupada
+Tentando mover...
+De [3][1] para [4][2]
+Nao foi possivel se mover, a celula [4][2] ja esta ocupada
+O robo 3 do exercito 1 esta jogando agora!
+Tentando mover...
+De [3][6] para [4][7]
+Movido com sucesso
+Tentando mover...
+De [4][7] para [5][7]
+Movido com sucesso
+O robo 4 do exercito 0 está atrasado!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 4 do exercito 1 vai atacar a posição [4][1]!
+Parece que não havia nada ali!
+O robo 4 do exercito 1 vai atacar a posição [4][1]!
+Parece que não havia nada ali!
+O robo 0 do exercito 0 esta jogando agora!
+Tentando pegar cristais...
+Nao ha cristais.
+Tentando pegar cristais...
+Nao ha cristais.
+O robo 0 do exercito 1 esta jogando agora!
+Tentando pegar cristais...
+Nao ha cristais.
+Tentando mover...
+De [10][7] para [11][7]
+Nao foi possivel se mover, a celula [11][7] ja esta ocupada
+O robo 1 do exercito 0 está atrasado!
+O robo 1 do exercito 1 esta jogando agora!
+Tentando mover...
+De [2][1] para [2][0]
+Nao foi possivel se mover, a celula [2][0] ja esta ocupada
+Tentando mover...
+De [2][1] para [3][0]
+Nao foi possivel se mover, a celula [3][0] ja esta ocupada
+O robo 2 do exercito 0 está atrasado!
+O robo 2 do exercito 1 está atrasado!
+O robo 3 do exercito 0 esta jogando agora!
+Tentando mover...
+De [3][1] para [4][1]
+Movido com sucesso
+Tentando mover...
+De [4][1] para [4][0]
+Nao foi possivel se mover, a celula [4][0] ja esta ocupada
+O robo 3 do exercito 1 está atrasado!
+O robo 4 do exercito 0 está atrasado!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 4 do exercito 1 vai atacar a posição [4][1]!
+Ele ainda tem 4 de HP!
+O robo 4 do exercito 1 vai atacar a posição [4][1]!
+O robo acertou um soco em cheio na cara do robo 3 do exercito 0! Ele ainda tem 3 de HP!
+O robo 0 do exercito 0 esta jogando agora!
+Tentando pegar cristais...
+Sucesso! O Robo 0 tinha 0 cristais agora tem 1.
+Tentando mover...
+De [3][8] para [4][9]
+Movido com sucesso
+O robo 0 do exercito 1 esta jogando agora!
+Tentando pegar cristais...
+Nao ha cristais.
+Tentando mover...
+De [10][7] para [10][8]
+Movido com sucesso
+O robo 1 do exercito 0 esta jogando agora!
+Tentando mover...
+De [6][3] para [6][2]
+Movido com sucesso
+Tentando mover...
+De [6][2] para [7][1]
+Movido com sucesso
+O robo 1 do exercito 1 esta jogando agora!
+Tentando mover...
+De [2][1] para [3][1]
+Movido com sucesso
+Tentando mover...
+De [3][1] para [4][2]
+Nao foi possivel se mover, a celula [4][2] ja esta ocupada
+O robo 2 do exercito 0 está atrasado!
+O robo 2 do exercito 1 está atrasado!
+O robo 3 do exercito 0 está atrasado!
+O robo 3 do exercito 1 está atrasado!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 0 vai atacar a posição [7][1]!
+O robo acertou um soco em cheio na cara do robo 1 do exercito 0! Ele ainda tem 3 de HP!
+O robo 4 do exercito 0 vai atacar a posição [7][1]!
+O robo deu uma cabeçada no robo 1 do exercito 0 com força! Ele ainda tem 2 de HP!
+O robo 4 do exercito 1 esta jogando agora!
+Tentando mover...
+De [4][2] para [4][1]
+Nao foi possivel se mover, a celula [4][1] ja esta ocupada
+O robo 4 do exercito 1 vai atacar a posição [5][1]!
+Parece que não havia nada ali!
+O robo 0 do exercito 0 está atrasado!
+O robo 0 do exercito 1 está atrasado!
+O robo 1 do exercito 0 está atrasado!
+O robo 1 do exercito 1 está atrasado!
+O robo 2 do exercito 0 esta jogando agora!
+Tem 0 cristais na celula.
+Tentando pegar cristais...
+Nao ha cristais.
+O robo 2 do exercito 1 está atrasado!
+O robo 3 do exercito 0 está atrasado!
+O robo 3 do exercito 1 está atrasado!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 0 vai atacar a posição [7][1]!
+O robo mordeu o braço do robo 1 do exercito 0! Ele ainda tem 1 de HP!
+O robo 4 do exercito 0 vai atacar a posição [7][1]!
+O robo acertou um soco em cheio na cara do robo 1 do exercito 0! Ele desmaiou!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+Tentando pegar cristais...
+Nao ha cristais.
+Tentando mover...
+De [4][9] para [4][10]
+Movido com sucesso
+O robo 0 do exercito 1 está atrasado!
+O robo 1 do exercito 0 está desmaiado!
+O robo 1 do exercito 1 esta jogando agora!
+Tentando mover...
+De [3][1] para [4][2]
+Nao foi possivel se mover, a celula [4][2] ja esta ocupada
+Tentando mover...
+De [3][1] para [3][0]
+Nao foi possivel se mover, a celula [3][0] ja esta ocupada
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+Tem 1 cristais na celula.
+Tentando pegar cristais...
+Sucesso! O Robo 2 tinha 0 cristais agora tem 1.
+O robo 3 do exercito 0 esta jogando agora!
+Tentando mover...
+De [4][1] para [4][2]
+Nao foi possivel se mover, a celula [4][2] ja esta ocupada
+Tentando mover...
+De [4][1] para [3][1]
+Nao foi possivel se mover, a celula [3][1] ja esta ocupada
+O robo 3 do exercito 1 esta jogando agora!
+Tentando mover...
+De [5][7] para [6][7]
+Movido com sucesso
+Tentando mover...
+De [6][7] para [6][6]
+Movido com sucesso
+O robo 4 do exercito 0 esta jogando agora!
+Tentando mover...
+De [7][2] para [7][1]
+Nao foi possivel se mover, a celula [7][1] ja esta ocupada
+O robo 4 do exercito 0 vai atacar a posição [8][2]!
+Parece que não havia nada ali!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 está atrasado!
+O robo 0 do exercito 1 está atrasado!
+O robo 1 do exercito 0 está desmaiado!
+O robo 1 do exercito 1 esta jogando agora!
+Tentando mover...
+De [3][1] para [2][1]
+Movido com sucesso
+Tentando mover...
+De [2][1] para [2][2]
+Movido com sucesso
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O Robo 2 depositou um cristal na celula[10][2], nao havia nenhuma base na celula.
+O robo 3 do exercito 0 esta jogando agora!
+Olhando para a cel[3][0].
+Tem 0 cristais na celula.
+O robo 3 do exercito 1 esta jogando agora!
+Tentando mover...
+De [6][6] para [6][7]
+Movido com sucesso
+Tentando mover...
+De [6][7] para [5][7]
+Movido com sucesso
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 está atrasado!
+O robo 0 do exercito 1 esta jogando agora!
+Tentando pegar cristais...
+Nao ha cristais.
+Nao e possivel depositar cristais na borda! Tentou depositar em [11][8].
+O robo 1 do exercito 0 está desmaiado!
+O robo 1 do exercito 1 esta jogando agora!
+Tentando mover...
+De [2][2] para [3][2]
+Movido com sucesso
+Tentando mover...
+De [3][2] para [4][2]
+Nao foi possivel se mover, a celula [4][2] ja esta ocupada
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+Tentando pegar cristais...
+Nao ha cristais.
+Tentando pegar cristais...
+Nao ha cristais.
+O robo 3 do exercito 1 está atrasado!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+Tentando pegar cristais...
+Nao ha cristais.
+O Robo 0 depositou um cristal na celula[5][10], nao havia nenhuma base na celula.
+O robo 0 do exercito 1 esta jogando agora!
+Nao e possivel depositar cristais na borda! Tentou depositar em [11][8].
+Nao e possivel depositar cristais na borda! Tentou depositar em [11][8].
+O robo 1 do exercito 0 está desmaiado!
+O robo 1 do exercito 1 esta jogando agora!
+Tentando mover...
+De [3][2] para [4][2]
+Nao foi possivel se mover, a celula [4][2] ja esta ocupada
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+Tentando pegar cristais...
+Nao ha cristais.
+Tentando pegar cristais...
+Sucesso! O Robo 3 tinha 0 cristais agora tem 1.
+O robo 3 do exercito 1 está atrasado!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+Nao e possivel depositar cristais na borda! Tentou depositar em [11][8].
+Nao e possivel depositar cristais na borda! Tentou depositar em [11][8].
+O robo 1 do exercito 0 está desmaiado!
+O robo se recuperou!
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+Nao e possivel depositar cristais na borda! Tentou depositar em [4][0].
+O robo 3 do exercito 1 está atrasado!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+O robo 1 do exercito 0 está atrasado!
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+Olhando para a cel[4][7].
+Tem 3 cristais na celula.
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+O robo 1 do exercito 0 está atrasado!
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+Tentando pegar cristais...
+Sucesso! O Robo 3 tinha 0 cristais agora tem 1.
+Tentando pegar cristais...
+Sucesso! O Robo 3 tinha 1 cristais agora tem 2.
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+O robo 1 do exercito 0 esta jogando agora!
+Tentando mover...
+De [7][1] para [7][0]
+Nao foi possivel se mover, a celula [7][0] ja esta ocupada
+Tentando mover...
+De [7][1] para [8][1]
+Movido com sucesso
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+Tentando pegar cristais...
+Sucesso! O Robo 3 tinha 2 cristais agora tem 3.
+Tentando pegar cristais...
+Nao ha cristais.
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+O robo 1 do exercito 0 está atrasado!
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+O Robo 3 depositou um cristal na celula[5][6], nao havia nenhuma base na celula.
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+O robo 1 do exercito 0 está atrasado!
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+O robo 1 do exercito 0 está atrasado!
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+O robo 1 do exercito 0 esta jogando agora!
+Tentando mover...
+De [8][1] para [9][1]
+Nao foi possivel se mover, a celula [9][1] ja esta ocupada
+Tentando mover...
+De [8][1] para [9][1]
+Nao foi possivel se mover, a celula [9][1] ja esta ocupada
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+O robo 1 do exercito 0 esta jogando agora!
+Tentando mover...
+De [8][1] para [9][1]
+Nao foi possivel se mover, a celula [9][1] ja esta ocupada
+Tentando mover...
+De [8][1] para [8][0]
+Nao foi possivel se mover, a celula [8][0] ja esta ocupada
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+O robo 1 do exercito 0 esta jogando agora!
+Tentando mover...
+De [8][1] para [7][0]
+Nao foi possivel se mover, a celula [7][0] ja esta ocupada
+Tentando mover...
+De [8][1] para [8][2]
+Movido com sucesso
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+O robo 1 do exercito 0 está atrasado!
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+O robo 1 do exercito 0 está atrasado!
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+O robo 1 do exercito 0 está atrasado!
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+O robo 1 do exercito 0 esta jogando agora!
+Tentando mover...
+De [8][2] para [9][2]
+Movido com sucesso
+Tentando mover...
+De [9][2] para [10][2]
+Movido com sucesso
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+O robo 1 do exercito 0 está atrasado!
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+O robo 1 do exercito 0 está atrasado!
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+O robo 1 do exercito 0 esta jogando agora!
+Tentando mover...
+De [10][2] para [11][1]
+Nao foi possivel se mover, a celula [11][1] ja esta ocupada
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+O robo 1 do exercito 0 esta jogando agora!
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+O robo 1 do exercito 0 esta jogando agora!
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+O robo 1 do exercito 0 esta jogando agora!
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!
+O robo 0 do exercito 0 esta jogando agora!
+O robo 0 do exercito 1 esta jogando agora!
+O robo 1 do exercito 0 esta jogando agora!
+O robo 1 do exercito 1 esta jogando agora!
+O robo 2 do exercito 0 esta jogando agora!
+O robo 2 do exercito 1 esta jogando agora!
+O robo 3 do exercito 0 esta jogando agora!
+O robo 3 do exercito 1 esta jogando agora!
+O robo 4 do exercito 0 esta jogando agora!
+O robo 4 do exercito 1 esta jogando agora!

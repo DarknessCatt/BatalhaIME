@@ -73,6 +73,7 @@ void Escalonador(int rodadas) {
 						arena.exercitos[j].robos[i]->HP++;
 						if(arena.exercitos[j].robos[i]->HP>4){
 							printf("O robo se recuperou!\n");
+							fprintf(display, "rest %d bot%d.png %d %d\n",arena.cell[nx][ny].ocup,arena.exercitonow,maqnow->x,maqnow->y);
 							arena.exercitos[j].robos[i]->rest = 0;
 						}
 					}
@@ -104,7 +105,7 @@ void InsereExercito(Exercito exct) {
 		}
 		arena.exercitos[arena.nexercitos].robos[i]->x = x;
 		arena.exercitos[arena.nexercitos].robos[i]->y = y;
-		arena.cell[x][y].ocup = arena.exercitonow*5+arena.robonow;
+		arena.cell[x][y].ocup = arena.exercitonow*5+arena.robonow+1;
 		printf("Robo:%d, pos[%d][%d]\n",i,arena.exercitos[arena.nexercitos].robos[i]->x,arena.exercitos[arena.nexercitos].robos[i]->y);
 		fprintf(display, "rob bot%d.png %d %d\n",arena.nexercitos,x,y);
 		arena.robonow++;
@@ -237,7 +238,7 @@ int Mover(int nx, int ny) {
 		maqnow->x = nx;
 		maqnow->y = ny;
 		arena.cell[x][y].ocup = 0;
-		arena.cell[nx][ny].ocup = arena.exercitonow*5+arena.robonow;
+		arena.cell[nx][ny].ocup = arena.exercitonow*5+arena.robonow+1;
 		maqnow->contador = arena.cell[nx][ny].terreno;
 		printf("Movido com sucesso\n");
 		fprintf(display, "%d %d %d %d %d\n", arena.exercitonow*5 + arena.robonow, x, y, nx, ny);
@@ -301,11 +302,9 @@ int Atacar(int nx, int ny){
 		return 0;
 	}
 	else{
-		int e = arena.cell[nx][ny].ocup/5;
-		int r = arena.cell[nx][ny].ocup%5;
+		int e = (arena.cell[nx][ny].ocup-1)/5;
+		int r = (arena.cell[nx][ny].ocup-1)%5;
 		int a = rand()%5;
-
-		arena.exercitos[e].robos[r]->HP--;
 
 		switch(a){
 
@@ -327,11 +326,13 @@ int Atacar(int nx, int ny){
 
 		}
 
-		fprintf(display, "atk botatk%d.png %d %d\n",arena.exercitonow,maqnow->x,maqnow->y);
+		arena.exercitos[e].robos[r]->HP--;
+		fprintf(display, "atk %d botatk%d.png bot%d.png %d %d\n",arena.cell[nx][ny].ocup,arena.exercitonow,arena.exercitonow,maqnow->x,maqnow->y);
 
 		if(arena.exercitos[e].robos[r]->HP<1){
 			arena.exercitos[e].robos[r]->rest=1;
 			printf("Ele desmaiou!\n");
+			fprintf(display, "rest %d brkbot%d.png %d %d\n",arena.cell[nx][ny].ocup,arena.exercitonow,maqnow->x,maqnow->y);
 		}
 		else{
 			printf("Ele ainda tem %d de HP!\n",arena.exercitos[e].robos[r]->HP);
