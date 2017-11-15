@@ -17,4 +17,6 @@ display = popen("python3 apres", "w");
 
 Ademais, adicionamos em nossas funções InsereExercito e Cristais comandos que imprimem as informações necessárias para que elas imprimam o texto que "apres" necessita para desenhar os robôs e os cristais.
 
+Implementamos também uma nova função para nossos robôs, o comando ATK, que corresponde a um ataque de um robô. Cada robô possui cinco pontos de vida e perde um ponto cada vez que é atingido por um ataque. Quando os pontos de vida do robô se esgotam, ele entra em estado de repouso (indicado por um sprite diferente) e deve ficar 5 turnos recarregando (10 ciclos de máquina), sem poder realizar nenhuma ação. Após esse período, ele resume suas ações normalmente. 
+
 Finalmente, criamos mais uma instrução no Makefile (make edit) apenas para facilitar nosso trabalho de edição do código. O comando make progteste executa nossos programas de exemplo.
