@@ -6,7 +6,7 @@
 #define maqnow (arena.exercitos[arena.exercitonow].robos[arena.robonow])
 
 void *init_arena() {
-	display = popen("python apres", "w");
+	display = popen("python3 apres", "w");
     arena.nexercitos = 0;
     int i,j,r,g,b;
     for(i=1;i<GRID;i++) {
@@ -69,7 +69,7 @@ void Escalonador(int rodadas) {
 			for(int j = 0; j < arena.nexercitos; j++) {
 				if(arena.exercitos[j].jogando) {
 					if(arena.exercitos[j].robos[i]->rest){
-						printf("O robo %d do exercito %d está descansando!\n",i,j);
+						printf("O robo %d do exercito %d está desmaiado!\n",i,j);
 						arena.exercitos[j].robos[i]->HP++;
 						if(arena.exercitos[j].robos[i]->HP>4){
 							printf("O robo se recuperou!\n");
@@ -273,9 +273,9 @@ int Cristal(int nx, int ny, int c) {
 			else {
 				maqnow->cristais--;
 				arena.cell[nx][ny].cristais++;
-				printf("O Robo %d depositou um cristal na celula[%d][%d],", arena.robonow,nx,ny);
+				printf("O Robo %d depositou um cristal na celula[%d][%d], ", arena.robonow,nx,ny);
 				if(arena.cell[nx][ny].base)
-					printf("a celula continha uma base do exercito %d .\n",arena.cell[nx][ny].base - 1);
+					printf("a celula continha uma base do exercito %d.\n",arena.cell[nx][ny].base - 1);
 				else
 					printf("nao havia nenhuma base na celula.\n");
 				fprintf(display, "cristais %d %d %d\n",arena.cell[nx][ny].cristais,nx,ny);
@@ -295,7 +295,7 @@ int Cristal(int nx, int ny, int c) {
 }
 
 int Atacar(int nx, int ny){
-	printf("Um robo vai atacar a posição [%d;%d]!\n",nx,ny);
+	printf("Um robo vai atacar a posição [%d][%d]!\n",nx,ny);
 	if(!arena.cell[nx][ny].ocup || arena.cell[nx][ny].ocup>20){
 		printf("Parece que não havia nada ali!\n");
 		return 0;
@@ -307,13 +307,14 @@ int Atacar(int nx, int ny){
 		arena.exercitos[e].robos[r]->HP--;
 
 		printf("O robo acertou em cheio, machucando o robo %d do exercito %d! ",r,e);
+		fprintf(display, "atk botatk%d.png %d %d\n",arena.exercitonow,maqnow->x,maqnow->y);
 
 		if(arena.exercitos[e].robos[r]->HP<1){
 			arena.exercitos[e].robos[r]->rest=1;
 			printf("Ele desmaiou!\n");
 		}
 		else{
-			printf("Ele ainda tem %d de HP!",arena.exercitos[e].robos[r]->HP);
+			printf("Ele ainda tem %d de HP!\n",arena.exercitos[e].robos[r]->HP);
 		}
 
 		return 1;

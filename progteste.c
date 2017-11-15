@@ -133,15 +133,15 @@ INSTR tested[] = {
   {END,{NUM ,0}}
 };
 
-INSTR anda[] = {
-  {MOV, {NUM, 3}},
-  {MOV, {NUM, 0}},
-  {MOV, {NUM, 3}},
-  {MOV, {NUM, 0}},
-  {MOV, {NUM, 3}},
-  {MOV, {NUM, 0}},
-  {MOV, {NUM, 3}},
-  {MOV, {NUM, 0}},
+INSTR oi[] = {
+  {MOV, {NUM, 2}},
+  {ATK, {NUM, 1}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {MOV, {NUM, 5}},
+  {ATK, {NUM, 4}},
   {END,{NUM ,0}}
 };
 
@@ -153,14 +153,14 @@ int main(int ac, char **av) {
   exercito.robos[1] = cria_maquina(robo2);
   exercito.robos[2] = cria_maquina(tested);
   exercito.robos[3] = cria_maquina(teste);
-  exercito.robos[4] = cria_maquina(anda);
+  exercito.robos[4] = cria_maquina(oi);
   InsereExercito(exercito);
   Exercito exercito2;
   exercito2.robos[0] = cria_maquina(robo8);
   exercito2.robos[1] = cria_maquina(robo2);
   exercito2.robos[2] = cria_maquina(tested);
   exercito2.robos[3] = cria_maquina(teste);
-  exercito2.robos[4] = cria_maquina(anda);
+  exercito2.robos[4] = cria_maquina(oi);
   InsereExercito(exercito2);
   Escalonador(30);
   //RemoveExercito(0);
