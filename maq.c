@@ -62,6 +62,7 @@ Maquina *cria_maquina(INSTR *p) {
   m->rbp = 0;
   m->pil.topo = 0;
   m->exec.topo = 0;
+  m->contador = 0;
   return m;
 }
 

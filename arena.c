@@ -6,7 +6,7 @@
 #define maqnow (arena.exercitos[arena.exercitonow].robos[arena.robonow])
 
 void *init_arena() {
-	display = popen("python apres", "w");
+	display = popen("python3 apres", "w");
     arena.nexercitos = 0;
     int i,j,r,g,b;
     for(i=1;i<GRID;i++) {
@@ -62,9 +62,14 @@ void Escalonador(int rodadas) {
 			arena.robonow = i;
 			for(int j = 0; j < arena.nexercitos; j++) {
 				if(arena.exercitos[j].jogando) {
-					arena.exercitonow = j;
-					printf("O robo %d do exercito %d esta jogando agora!\n",i,j);
-					exec_maquina(arena.exercitos[j].robos[i],50);
+					if(arena.exercitos[j].robos[i]->contador > 0){
+						arena.exercitos[j].robos[i]->contador--;
+					}
+					else{
+						arena.exercitonow = j;
+						printf("O robo %d do exercito %d esta jogando agora!\n",i,j);
+						exec_maquina(arena.exercitos[j].robos[i],50);
+					}
 				}	
 			}
 		}
