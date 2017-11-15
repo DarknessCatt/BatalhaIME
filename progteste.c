@@ -133,24 +133,36 @@ INSTR tested[] = {
   {END,{NUM ,0}}
 };
 
+INSTR anda[] = {
+  {MOV, {NUM, 3}},
+  {MOV, {NUM, 0}},
+  {MOV, {NUM, 3}},
+  {MOV, {NUM, 0}},
+  {MOV, {NUM, 3}},
+  {MOV, {NUM, 0}},
+  {MOV, {NUM, 3}},
+  {MOV, {NUM, 0}},
+  {END,{NUM ,0}}
+};
+
 int main(int ac, char **av) {
-  srand( (unsigned)time(NULL) );
+  srand( 1 );
   init_arena();
   Exercito exercito;
   exercito.robos[0] = cria_maquina(robo8);
   exercito.robos[1] = cria_maquina(robo2);
   exercito.robos[2] = cria_maquina(tested);
   exercito.robos[3] = cria_maquina(teste);
-  exercito.robos[4] = cria_maquina(fibonacci);
+  exercito.robos[4] = cria_maquina(anda);
   InsereExercito(exercito);
   Exercito exercito2;
   exercito2.robos[0] = cria_maquina(robo8);
   exercito2.robos[1] = cria_maquina(robo2);
   exercito2.robos[2] = cria_maquina(tested);
   exercito2.robos[3] = cria_maquina(teste);
-  exercito2.robos[4] = cria_maquina(fibonacci);
+  exercito2.robos[4] = cria_maquina(anda);
   InsereExercito(exercito2);
-  Escalonador(100);
+  Escalonador(30);
   //RemoveExercito(0);
   //destroi_maquina(exercito.robos[0]);
   return(0);

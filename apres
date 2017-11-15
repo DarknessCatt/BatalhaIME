@@ -206,7 +206,7 @@ for line in fileinput.input():
 
     atu()
 
-    pg.time.wait(3000)
+    pg.time.wait(1500)
 
 pg.quit()
 # Local variables:

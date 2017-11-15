@@ -39,7 +39,8 @@ char *CODES[] = {
   "MOV",
   "SCH",
   "GRB",
-  "DRP"
+  "DRP",
+  "ATK"
 };
 #else
 #  define D(X)
@@ -63,6 +64,8 @@ Maquina *cria_maquina(INSTR *p) {
   m->pil.topo = 0;
   m->exec.topo = 0;
   m->contador = 0;
+  m->HP = 5;
+  m->rest = 0;
   return m;
 }
 
@@ -343,6 +346,13 @@ void exec_maquina(Maquina *m, int n) {
 	  	Sistema(4);
 	  }
 	  else Fatal("Operando incompatível DRP", 9);
+	  break;
+	case ATK:
+	  if(arg.t == NUM){
+	    empilha(pil,arg);
+	  	Sistema(5);
+	  }
+	  else Fatal("Operando incompatível ATK", 9);
 	  break;
 	}
 

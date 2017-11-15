@@ -32,7 +32,8 @@ typedef enum {
   MOV,
   SCH,
   GRB,
-  DRP
+  DRP,
+  ATK
 } OpCode;
 
 
