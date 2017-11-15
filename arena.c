@@ -295,7 +295,7 @@ int Cristal(int nx, int ny, int c) {
 }
 
 int Atacar(int nx, int ny){
-	printf("Um robo vai atacar a posição [%d][%d]!\n",nx,ny);
+	printf("O robo %d do exercito %d vai atacar a posição [%d][%d]!\n",arena.robonow,arena.exercitonow,nx,ny);
 	if(!arena.cell[nx][ny].ocup || arena.cell[nx][ny].ocup>20){
 		printf("Parece que não havia nada ali!\n");
 		return 0;
@@ -303,10 +303,30 @@ int Atacar(int nx, int ny){
 	else{
 		int e = arena.cell[nx][ny].ocup/5;
 		int r = arena.cell[nx][ny].ocup%5;
+		int a = rand()%5;
 
 		arena.exercitos[e].robos[r]->HP--;
 
-		printf("O robo acertou em cheio, machucando o robo %d do exercito %d! ",r,e);
+		switch(a){
+
+			case 0:
+				printf("O robo acertou um soco em cheio na cara do robo %d do exercito %d! ",r,e);
+				break;
+			case 1:
+				printf("O robo deu uma cabeçada no robo %d do exercito %d com força! ",r,e);
+				break;
+			case 2:
+				printf("O robo atropelou o robo %d do exercito %d! ",r,e);
+				break;
+			case 3:
+				printf("O robo mordeu o braço do robo %d do exercito %d! ",r,e);
+				break;
+			case 5:
+				printf("O robo deu uma voadora nas costas do robo %d do exercito %d! ",r,e);
+				break;
+
+		}
+
 		fprintf(display, "atk botatk%d.png %d %d\n",arena.exercitonow,maqnow->x,maqnow->y);
 
 		if(arena.exercitos[e].robos[r]->HP<1){
