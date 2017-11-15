@@ -209,7 +209,7 @@ int Mover(int nx, int ny) {
 		arena.cell[x][y].ocup = 0;
 		arena.cell[nx][ny].ocup = 1;
 		printf("Movido com sucesso\n");
-		fprintf(display, "%d %d %d %d %d\n", ID, x, y, nx, ny);
+		fprintf(display, "%d %d %d %d %d\n", exercitonow*5+robonow, x, y, nx, ny);
 		return 1;
 	}
 	printf("Nao foi possivel se mover, a celula [%d][%d] ja esta ocupada\n",nx,ny);
