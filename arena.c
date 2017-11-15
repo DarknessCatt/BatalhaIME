@@ -6,6 +6,7 @@
 #define maqnow (arena.exercitos[arena.exercitonow].robos[arena.robonow])
 
 void *init_arena() {
+	display = popen("python apres", "w");
     arena.nexercitos = 0;
     int i,j,r,g,b;
     for(i=1;i<GRID;i++) {
@@ -209,7 +210,7 @@ int Mover(int nx, int ny) {
 		arena.cell[x][y].ocup = 0;
 		arena.cell[nx][ny].ocup = 1;
 		printf("Movido com sucesso\n");
-		fprintf(display, "%d %d %d %d %d\n", exercitonow*5+robonow, x, y, nx, ny);
+		fprintf(display, "%d %d %d %d %d\n", arena.exercitonow*5 + arena.robonow, x, y, nx, ny);
 		return 1;
 	}
 	printf("Nao foi possivel se mover, a celula [%d][%d] ja esta ocupada\n",nx,ny);

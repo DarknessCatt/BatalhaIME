@@ -170,14 +170,14 @@ for line in fileinput.input():
         i, j, n = list(map(int, r[1:]))
         arena[i][j].drawCrystals(n)
         atu()
-        pg.time.wait(100)
+        pg.time.wait(1)
         continue
     if r[0] == 'cell':
         i, j, r, g ,b = list(map(int, r[1:]))
         arena[i][j].cor = (r,g,b)
         arena[i][j].draw()
         atu()
-        pg.time.wait(100)
+        pg.time.wait(1)
         continue
     # linha de movimentação:
     # robô, corrdenadas originais, coordenadas finais
@@ -192,7 +192,7 @@ for line in fileinput.input():
 
     # tempo de espera para atualização, apenas para testes
 
-    pg.time.wait(100)
+    pg.time.wait(1000)
 
     atu()
 
