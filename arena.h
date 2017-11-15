@@ -44,5 +44,8 @@ int Mover(int nx, int ny);
 //quando c = 0, o robo deposita um cristal, quando c != 0, coleta o cristal de uma casa vizinha
 int Cristal(int nx, int ny, int c);
 
+//O robo na posição nx, ny ( se houver ) perde 1 de HP e demaia se ela chegar a 0
+int Atacar(int nx, int ny);
+
 //A chamada do sistema, chamando Vizinhos() no caso de MOV, SRC, DRP, GRB, ou retorna o atributo da celula quando ATR 
 void Sistema(int op);

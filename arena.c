@@ -6,14 +6,17 @@
 #define maqnow (arena.exercitos[arena.exercitonow].robos[arena.robonow])
 
 void *init_arena() {
-	display = popen("python apres", "w");
+	display = popen("python3 apres", "w");
     arena.nexercitos = 0;
     int i,j,r,g,b;
     for(i=1;i<GRID;i++) {
         for(j=1; j<GRID; j++) {
 
             arena.cell[i][j].terreno = rand() % 4;
-            arena.cell[i][j].cristais = rand() % 5;
+            if(rand()%10<3)
+            	arena.cell[i][j].cristais = rand() % 5;
+            else
+            	arena.cell[i][j].cristais = 0;
             arena.cell[i][j].ocup = 0;
             arena.cell[i][j].base = 0;
 
@@ -54,6 +57,9 @@ void *init_arena() {
         arena.cell[0][i].ocup = 1;
         arena.cell[GRID-1][i].ocup = 1;
     }
+
+    arena.exercitonow = 0;
+    arena.robonow = 0;
 }
 
 void Escalonador(int rodadas) {
@@ -62,14 +68,22 @@ void Escalonador(int rodadas) {
 			arena.robonow = i;
 			for(int j = 0; j < arena.nexercitos; j++) {
 				if(arena.exercitos[j].jogando) {
-					if(arena.exercitos[j].robos[i]->contador > 0){
+					if(arena.exercitos[j].robos[i]->rest){
+						printf("O robo %d do exercito %d está descansando!\n",i,j);
+						arena.exercitos[j].robos[i]->HP++;
+						if(arena.exercitos[j].robos[i]->HP>4){
+							printf("O robo se recuperou!\n");
+							arena.exercitos[j].robos[i]->rest = 0;
+						}
+					}
+					else if(arena.exercitos[j].robos[i]->contador > 0){
 						printf("O robo %d do exercito %d está atrasado!\n",i,j);
 						arena.exercitos[j].robos[i]->contador--;
 					}
 					else{
 						arena.exercitonow = j;
 						printf("O robo %d do exercito %d esta jogando agora!\n",i,j);
-						exec_maquina(arena.exercitos[j].robos[i],1);
+						exec_maquina(arena.exercitos[j].robos[i],2);
 					}
 				}	
 			}
@@ -90,20 +104,21 @@ void InsereExercito(Exercito exct) {
 		}
 		arena.exercitos[arena.nexercitos].robos[i]->x = x;
 		arena.exercitos[arena.nexercitos].robos[i]->y = y;
-		arena.cell[x][y].ocup = 1;
+		arena.cell[x][y].ocup = arena.exercitonow*5+arena.robonow;
 		printf("Robo:%d, pos[%d][%d]\n",i,arena.exercitos[arena.nexercitos].robos[i]->x,arena.exercitos[arena.nexercitos].robos[i]->y);
 		fprintf(display, "rob crystal%d.png %d %d\n",arena.nexercitos,x,y);
+		arena.robonow++;
 	}
 	int v = 1 + rand() % (GRID-1);
 	int w = 1 + rand() % (GRID-1);
 	arena.cell[v][w].base = arena.nexercitos + 1;
 	arena.cell[v][w].cristais = 0;
-	arena.cell[v][w].ocup = 1;
+	arena.cell[v][w].ocup = 21+arena.exercitonow;
 	printf("A base do exercito %d esta em [%d][%d].\n",arena.nexercitos,v,w);
 	fprintf(display, "cristais 0 %d %d\n",v,w);
 	fprintf(display, "base tower%d.png %d %d\n",arena.nexercitos,v,w);
 	arena.nexercitos++;
-	
+	arena.exercitonow++;
 }
 
 void RemoveExercito(int base) {
@@ -203,6 +218,11 @@ OPERANDO Vizinhos(int M) {
 		 	r.t = NUM;
 		 	r.n = Cristal(nx,ny,0);
 		 	break;
+
+		 case 4:
+		 	r.t = NUM;
+		 	r.n = Atacar(nx,ny);
+		 	break;
 	}
 	return r;
 }
@@ -217,7 +237,7 @@ int Mover(int nx, int ny) {
 		maqnow->x = nx;
 		maqnow->y = ny;
 		arena.cell[x][y].ocup = 0;
-		arena.cell[nx][ny].ocup = 1;
+		arena.cell[nx][ny].ocup = arena.exercitonow*5+arena.robonow;
 		maqnow->contador = arena.cell[nx][ny].terreno;
 		printf("Movido com sucesso\n");
 		fprintf(display, "%d %d %d %d %d\n", arena.exercitonow*5 + arena.robonow, x, y, nx, ny);
@@ -274,6 +294,32 @@ int Cristal(int nx, int ny, int c) {
 
 }
 
+int Atacar(int nx, int ny){
+	printf("Um robo vai atacar a posição [%d;%d]!\n",nx,ny);
+	if(!arena.cell[nx][ny].ocup || arena.cell[nx][ny].ocup>20){
+		printf("Parece que não havia nada ali!\n");
+		return 0;
+	}
+	else{
+		int e = arena.cell[nx][ny].ocup/5;
+		int r = arena.cell[nx][ny].ocup%5;
+
+		arena.exercitos[e].robos[r]->HP--;
+
+		printf("O robo acertou em cheio, machucando o robo %d do exercito %d! ",r,e);
+
+		if(arena.exercitos[e].robos[r]->HP<1){
+			arena.exercitos[e].robos[r]->rest=1;
+			printf("Ele desmaiou!\n");
+		}
+		else{
+			printf("Ele ainda tem %d de HP!",arena.exercitos[e].robos[r]->HP);
+		}
+
+		return 1;
+	}
+}
+
 void Sistema(int op) {
 	switch (op) {
 		OPERANDO atr;
@@ -321,6 +367,9 @@ void Sistema(int op) {
 			break;
 		case 4: // DRP
 			empilha(&maqnow->pil,Vizinhos(3));
+			break;
+		case 5: //ATK
+			empilha(&maqnow->pil,Vizinhos(4));
 			break;
 	}
 
