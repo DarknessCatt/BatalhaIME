@@ -297,7 +297,7 @@ int Cristal(int nx, int ny, int c) {
 
 int Atacar(int nx, int ny){
 	printf("O robo %d do exercito %d vai atacar a posição [%d][%d]!\n",arena.robonow,arena.exercitonow,nx,ny);
-	fprintf(display, "atk botatk%d.png bot%d.png %d %d %d\n",arena.cell[nx][ny].ocup,arena.exercitonow,arena.exercitonow,maqnow->x,maqnow->y);
+	fprintf(display, "atk botatk%d.png bot%d.png %d %d %d\n",arena.exercitonow,arena.exercitonow,arena.cell[maqnow->x][maqnow->y].ocup-1,maqnow->x,maqnow->y);
 	if(!arena.cell[nx][ny].ocup || arena.cell[nx][ny].ocup>20){
 		printf("Parece que não havia nada ali!\n");
 		return 0;
