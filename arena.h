@@ -33,7 +33,7 @@ void Escalonador(int rodadas);
 void InsereExercito(Exercito exct);
 
 //Destroi as maquinas, remove os robos e a base do mapa
-void RemoveExercito(int base);
+void RemoveExercito(int base,int x, int y);
 
 //Usado para achar as casas vizinhas ao robo, e ou retorna a celula ou chama Mover() ou Cristal()
 OPERANDO Vizinhos(int M);

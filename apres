@@ -178,6 +178,28 @@ for line in fileinput.input():
         bases[-1].draw(i,j)
         continue
 
+    if r[0] == 'atk':
+        rid,i, j = list(map(int,r[3:]))
+        robs[ri].image = pg.image.load(r[1])
+        arena[i][j].draw()
+        robs[ri].draw(i,j)
+        atu()
+        pg.time.wait(2000)
+        arena[i][j].draw()
+        robs[ri].image = pg.image.load(r[2])
+        robs[ri].draw(i,j)
+        atu()
+        continue
+
+    if r[0] == 'destroy':
+        base,i, j = list(map(int,r[2:]))
+        bases[base].image = pg.image.load(r[1])
+        arena[i][j].draw()
+        bases[base].draw(i,j)
+        atu()
+        pg.time.wait(10)
+        continue  
+
     if r[0] == 'cristais':
         n, i, j = list(map(int, r[1:]))
         arena[i][j].cristais = n
@@ -208,8 +230,10 @@ for line in fileinput.input():
 
     atu()
 
-    pg.time.wait(1500)
+    pg.time.wait(300)
 
+
+pg.time.wait(10000)
 pg.quit()
 # Local variables:
 # mode: python

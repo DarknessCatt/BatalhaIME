@@ -163,7 +163,7 @@ int main(int ac, char **av) {
   exercito2.robos[4] = cria_maquina(oi);
   InsereExercito(exercito2);
   Escalonador(30);
-  //RemoveExercito(0);
+  RemoveExercito(0,1,2);
   //destroi_maquina(exercito.robos[0]);
   return(0);
 }
