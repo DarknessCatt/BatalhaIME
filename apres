@@ -20,7 +20,7 @@ atu = pg.display.update
 
 
 # pinta o fundo da janela
-scr.fill((0,200,0))
+scr.fill((0,0,0))
 atu()
 
 def convert(i ,j):
@@ -133,7 +133,8 @@ class Cristais(pg.sprite.Sprite):
         """
         if n > 0:
             x, y = convert(i,j)
-            img = 'salt'+ str(n) + '.png'
+            if n >5: img = 'salt'+ str(5) + '.png'
+            else:    img = 'salt'+ str(n) + '.png'
             s.image = pg.image.load(img)
             s.rect = s.image.get_rect()
             # fronteiras do sprite
@@ -149,7 +150,7 @@ arena = []
 for i in range(H):
     arena.append([])
     for j in range(W):
-        arena[i].append(Cell(i,j,0,0,0))
+        arena[i].append(Cell(i,j,125,125,125))
         arena[i][j].draw()
 
 # lista dos robôs definidos

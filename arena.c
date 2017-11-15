@@ -6,7 +6,7 @@
 #define maqnow (arena.exercitos[arena.exercitonow].robos[arena.robonow])
 
 void *init_arena() {
-	display = popen("python3 apres", "w");
+	display = popen("python apres", "w");
     arena.nexercitos = 0;
     int i,j,r,g,b;
     for(i=1;i<GRID;i++) {
@@ -81,11 +81,11 @@ void InsereExercito(Exercito exct) {
 	arena.exercitos[arena.nexercitos] = exct;
 	arena.exercitos[arena.nexercitos].jogando = 1;
 	for(int i = 0; i< RoboPerExerc; i++) {
-		int x = 1 + rand() % GRID-1;
-		int y = 1 + rand() % GRID-1;
+		int x = 1 + rand() % (GRID-1);
+		int y = 1 + rand() % (GRID-1);
 		while(arena.cell[x][y].ocup) {
-			x = 1 + rand() % GRID-1;
-		    y = 1 + rand() % GRID-1;
+			x = 1 + rand() % (GRID-1);
+		    y = 1 + rand() % (GRID-1);
 		}
 		arena.exercitos[arena.nexercitos].robos[i]->x = x;
 		arena.exercitos[arena.nexercitos].robos[i]->y = y;
@@ -93,11 +93,13 @@ void InsereExercito(Exercito exct) {
 		printf("Robo:%d, pos[%d][%d]\n",i,arena.exercitos[arena.nexercitos].robos[i]->x,arena.exercitos[arena.nexercitos].robos[i]->y);
 		fprintf(display, "rob crystal_a.png %d %d\n",x,y);
 	}
-	int v = 1 + rand() % GRID-1;
-	int w = 1 + rand() % GRID-1;
+	int v = 1 + rand() % (GRID-1);
+	int w = 1 + rand() % (GRID-1);
 	arena.cell[v][w].base = arena.nexercitos + 1;
 	arena.cell[v][w].cristais = 0;
+	arena.cell[v][w].ocup = 1;
 	printf("A base do exercito %d esta em [%d][%d].\n",arena.nexercitos,v,w);
+	fprintf(display, "cristais 0 %d %d\n",v,w);
 	fprintf(display, "base tower_a.png %d %d\n",v,w);
 	arena.nexercitos++;
 }
@@ -248,6 +250,7 @@ int Cristal(int nx, int ny, int c) {
 				printf("nao havia nenhuma base na celula.\n");
 			maqnow->cristais--;
 			arena.cell[nx][ny].cristais++;
+			printf("Depositei cristais, a arena tem agora %d\n",arena.cell[nx][ny].cristais);
 			fprintf(display, "cristais %d %d %d\n",arena.cell[nx][ny].cristais,nx,ny);
 			if(arena.cell[nx][ny].base && arena.cell[nx][ny].cristais >= 5) {
 				RemoveExercito(arena.cell[nx][ny].base - 1);
