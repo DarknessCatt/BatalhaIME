@@ -7,11 +7,11 @@
 #define ID (arena.exercitonow*5 + arena.robonow)
 
 void *init_arena() {
-	display = popen("python3 apres", "w");
+	display = popen("python apres", "w");
     arena.nexercitos = 0;
     int i,j,r,g,b;
-    for(i=1;i<GRID;i++) {
-        for(j=1; j<GRID; j++) {
+    for(i=1;i<GRID-1;i++) {
+        for(j=1; j<GRID-1; j++) {
 
             arena.cell[i][j].terreno = rand() % 4;
             if(rand()%10<3)
@@ -113,6 +113,10 @@ void InsereExercito(Exercito exct) {
 	}
 	int v = 1 + rand() % (GRID-1);
 	int w = 1 + rand() % (GRID-1);
+	while(arena.cell[v][w].base) {
+		v = 1 + rand() % (GRID-1);
+		w = 1 + rand() % (GRID-1);
+	}
 	arena.cell[v][w].base = arena.nexercitos + 1;
 	arena.cell[v][w].cristais = 0;
 	arena.cell[v][w].ocup = 21+arena.exercitonow;

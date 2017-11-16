@@ -42,13 +42,14 @@ class Robô(pg.sprite.Sprite):
         pg.sprite.Sprite.__init__(s)
         s.image = pg.image.load(img)
         s.rect = s.image.get_rect()
+        s.x = 0
+        s.y = 0
 
     def draw(s, i,j):
         """
         Desenha o robô na célula (i,j)
         """
         x, y = convert(i,j)
-
         # fronteiras do sprite
         l0,h0,l1,h1 = s.rect
 
@@ -69,13 +70,13 @@ class Base(pg.sprite.Sprite):
         pg.sprite.Sprite.__init__(s)
         s.image = pg.image.load(img)
         s.rect = s.image.get_rect()
-
+        s.x = 0
+        s.y = 0
     def draw(s, i,j):
         """
         Desenha a base na célula (i,j)
         """
         x, y = convert(i,j)
-
         # fronteiras do sprite
         l0,h0,l1,h1 = s.rect
 
@@ -142,9 +143,9 @@ class Cristais(pg.sprite.Sprite):
 
 # Construção da matriz que representa a arena
 arena = []
-for i in range(H):
+for i in range(H-1):
     arena.append([])
-    for j in range(W):
+    for j in range(W-1):
         arena[i].append(Cell(i,j,125,125,125))
         arena[i][j].draw()
 
@@ -176,6 +177,8 @@ for line in fileinput.input():
         bases.append(Base(r[1]))
         i, j = list(map(int,r[2:]))
         bases[-1].draw(i,j)
+        bases[-1].x = i
+        bases[-1].y = j
         continue
 
     if r[0] == 'atk':
@@ -208,6 +211,7 @@ for line in fileinput.input():
         print(i,j)
         robs[rid].image = pg.image.load(r[1])
         arena[i][j].draw()
+        cristais[0].draw(i,j,arena[i][j].cristais)
         robs[rid].draw(i,j)
         atu()
         continue
@@ -217,6 +221,12 @@ for line in fileinput.input():
         arena[i][j].cristais = n
         arena[i][j].draw()
         cristais[0].draw(i,j,n)
+        for robo in robs:
+            if robo.x == i and robo.y == j:
+                robo.draw(robo.x,robo.y)
+        for base in bases:
+            if base.x == i and base.y == j:
+                base.draw(i,j)
         atu()
         pg.time.wait(10)
         continue
@@ -238,6 +248,8 @@ for line in fileinput.input():
     # desenha o robô na célula de destino
     if 0 <= di  < W and 0 <= dj < H and ri < len(robs):
         robs[ri].draw(di,dj)
+        robs[ri].x = di
+        robs[ri].y = dj
     # tempo de espera para atualização, apenas para testes
 
     atu()
