@@ -73,7 +73,7 @@ void Escalonador(int rodadas) {
 						arena.exercitos[j].robos[i]->HP++;
 						if(arena.exercitos[j].robos[i]->HP>4){
 							printf("O robo se recuperou!\n");
-							fprintf(display, "rest bot%d.png %d %d %d\n",arena.exercitonow,arena.cell[maqnow->x][maqnow->y].ocup-1,maqnow->x,maqnow->y);
+							fprintf(display, "rest bot%d.png %d %d %d\n",j, 5*j + i,arena.exercitos[j].robos[i]->x,arena.exercitos[j].robos[i]->y);
 							arena.exercitos[j].robos[i]->rest = 0;
 						}
 					}
@@ -81,7 +81,7 @@ void Escalonador(int rodadas) {
 						printf("O robo %d do exercito %d está atrasado!\n",i,j);
 						arena.exercitos[j].robos[i]->contador--;
 					}
-					else{
+					else {
 						arena.exercitonow = j;
 						printf("O robo %d do exercito %d esta jogando agora!\n",i,j);
 						exec_maquina(arena.exercitos[j].robos[i],2);
