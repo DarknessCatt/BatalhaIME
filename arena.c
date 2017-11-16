@@ -4,9 +4,10 @@
 #include "arena.h"
 
 #define maqnow (arena.exercitos[arena.exercitonow].robos[arena.robonow])
+#define ID (arena.exercitonow*5 + arena.robonow)
 
 void *init_arena() {
-	display = popen("python apres", "w");
+	display = popen("python3 apres", "w");
     arena.nexercitos = 0;
     int i,j,r,g,b;
     for(i=1;i<GRID;i++) {
@@ -69,7 +70,7 @@ void Escalonador(int rodadas) {
 			for(int j = 0; j < arena.nexercitos; j++) {
 				if(arena.exercitos[j].jogando) {
 					if(arena.exercitos[j].robos[i]->rest){
-						printf("O robo %d do exercito %d está desmaiado!\n",i,j);
+						printf("O robo %d está desmaiado!\n",ID);						
 						arena.exercitos[j].robos[i]->HP++;
 						if(arena.exercitos[j].robos[i]->HP>4){
 							printf("O robo se recuperou!\n");
@@ -78,13 +79,13 @@ void Escalonador(int rodadas) {
 						}
 					}
 					else if(arena.exercitos[j].robos[i]->contador > 0){
-						printf("O robo %d do exercito %d está atrasado!\n",i,j);
+						printf("O robo %d está atrasado!\n",ID);						
 						arena.exercitos[j].robos[i]->contador--;
 					}
 					else {
 						arena.exercitonow = j;
-						printf("O robo %d do exercito %d esta jogando agora!\n",i,j);
-						exec_maquina(arena.exercitos[j].robos[i],2);
+						printf("O robo %d esta jogando agora!\n",ID);
+						exec_maquina(arena.exercitos[j].robos[i],1);
 					}
 				}	
 			}
@@ -106,7 +107,7 @@ void InsereExercito(Exercito exct) {
 		arena.exercitos[arena.nexercitos].robos[i]->x = x;
 		arena.exercitos[arena.nexercitos].robos[i]->y = y;
 		arena.cell[x][y].ocup = arena.exercitonow*5+arena.robonow+1;
-		printf("Robo:%d, pos[%d][%d]\n",i,arena.exercitos[arena.nexercitos].robos[i]->x,arena.exercitos[arena.nexercitos].robos[i]->y);
+		printf("Robo:%d, pos[%d][%d]\n",ID,arena.exercitos[arena.nexercitos].robos[i]->x,arena.exercitos[arena.nexercitos].robos[i]->y);
 		fprintf(display, "rob bot%d.png %d %d\n",arena.nexercitos,x,y);
 		arena.robonow++;
 	}
@@ -118,6 +119,7 @@ void InsereExercito(Exercito exct) {
 	printf("A base do exercito %d esta em [%d][%d].\n",arena.nexercitos,v,w);
 	fprintf(display, "cristais 0 %d %d\n",v,w);
 	fprintf(display, "base tower%d.png %d %d\n",arena.nexercitos,v,w);
+	arena.robonow = 0;
 	arena.nexercitos++;
 	arena.exercitonow++;
 }
@@ -230,8 +232,8 @@ OPERANDO Vizinhos(int M) {
 }
 
 int Mover(int nx, int ny) {
-	printf("Tentando mover...\n");
-	printf("De [%d][%d] para [%d][%d]\n",maqnow->x,maqnow->y,nx,ny );
+	printf("Tentando mover ");
+	printf("de [%d][%d] para [%d][%d]\n",maqnow->x,maqnow->y,nx,ny );
 	int x = maqnow->x;
 	int y = maqnow->y;
 
@@ -252,7 +254,7 @@ int Mover(int nx, int ny) {
 int Cristal(int nx, int ny, int c) {
 
 	if(c) {
-	printf("Tentando pegar cristais...\n");
+	printf("Tentando pegar cristais. ");
 		if(arena.cell[nx][ny].cristais) {
 			printf("Sucesso! O Robo %d tinha %d cristais agora tem ",arena.robonow, maqnow->cristais);
 			maqnow->cristais++;
@@ -275,7 +277,7 @@ int Cristal(int nx, int ny, int c) {
 			else {
 				maqnow->cristais--;
 				arena.cell[nx][ny].cristais++;
-				printf("O Robo %d depositou um cristal na celula[%d][%d], ", arena.robonow,nx,ny);
+				printf("O Robo %d depositou um cristal na celula[%d][%d], ",ID,nx,ny);
 				if(arena.cell[nx][ny].base)
 					printf("a celula continha uma base do exercito %d.\n",arena.cell[nx][ny].base - 1);
 				else
@@ -296,8 +298,7 @@ int Cristal(int nx, int ny, int c) {
 }
 
 int Atacar(int nx, int ny){
-	printf("O robo %d do exercito %d vai atacar a posição [%d][%d]!\n",arena.robonow,arena.exercitonow,nx,ny);
-	printf("arena.cell[nx][y].ocup = %d", arena.cell[nx][ny].ocup);
+	printf("O robo %d vai atacar a posição [%d][%d]! ",ID,nx,ny);
 	fprintf(display, "atk botatk%d.png bot%d.png %d %d %d\n",arena.exercitonow,arena.exercitonow,arena.cell[maqnow->x][maqnow->y].ocup-1,maqnow->x,maqnow->y);
 	if(arena.cell[nx][ny].ocup <= 0 || arena.cell[nx][ny].ocup>20){
 		printf("Parece que não havia nada ali!\n");
@@ -311,19 +312,19 @@ int Atacar(int nx, int ny){
 		switch(a){
 
 			case 0:
-				printf("O robo acertou um soco em cheio na cara do robo %d do exercito %d! ",r,e);
+				printf("O robo acertou um soco em cheio na cara do robo %d! ",arena.cell[nx][ny].ocup-1);
 				break;
 			case 1:
-				printf("O robo deu uma cabeçada no robo %d do exercito %d com força! ",r,e);
+				printf("O robo deu uma cabeçada no robo %d com força! ",arena.cell[nx][ny].ocup-1);
 				break;
 			case 2:
-				printf("O robo atropelou o robo %d do exercito %d! ",r,e);
+				printf("O robo atropelou o robo %d! ",arena.cell[nx][ny].ocup-1);
 				break;
 			case 3:
-				printf("O robo mordeu o braço do robo %d do exercito %d! ",r,e);
+				printf("O robo mordeu o braço do robo %d! ",arena.cell[nx][ny].ocup-1);
 				break;
-			case 5:
-				printf("O robo deu uma voadora nas costas do robo %d do exercito %d! ",r,e);
+			case 4:
+				printf("O robo deu uma voadora nas costas do robo %d! ",arena.cell[nx][ny].ocup-1);
 				break;
 
 		}
