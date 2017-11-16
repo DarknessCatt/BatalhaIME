@@ -180,16 +180,16 @@ for line in fileinput.input():
 
     if r[0] == 'atk':
         rid,i, j = list(map(int,r[3:]))
-        robs[ri].image = pg.image.load(r[1])
+        robs[rid].image = pg.image.load(r[1])
         arena[i][j].draw()
         cristais[0].draw(i,j,arena[i][j].cristais)
-        robs[ri].draw(i,j)
+        robs[rid].draw(i,j)
         atu()
         pg.time.wait(500)
         arena[i][j].draw()
         cristais[0].draw(i,j,arena[i][j].cristais)
-        robs[ri].image = pg.image.load(r[2])
-        robs[ri].draw(i,j)
+        robs[rid].image = pg.image.load(r[2])
+        robs[rid].draw(i,j)
         atu()
         continue
 
