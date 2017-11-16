@@ -84,7 +84,7 @@ void Escalonador(int rodadas) {
 					}
 					else {
 						arena.exercitonow = j;
-						printf("O robo %d esta jogando agora!\n",ID);
+						//printf("O robo %d esta jogando agora!\n",ID);
 						exec_maquina(arena.exercitos[j].robos[i],1);
 					}
 				}	
@@ -210,7 +210,7 @@ OPERANDO Vizinhos(int M) {
 		case 1:
 			r.t = CELULA;
 			r.cel = arena.cell[nx][ny];
-			printf("Olhando para a cel[%d][%d].\n",nx,ny);
+			printf("O robo %d está olhando para a cel[%d][%d].\n",ID,nx,ny);
 		 	break;
 
 		 case 2:
@@ -232,8 +232,8 @@ OPERANDO Vizinhos(int M) {
 }
 
 int Mover(int nx, int ny) {
-	printf("Tentando mover ");
-	printf("de [%d][%d] para [%d][%d]\n",maqnow->x,maqnow->y,nx,ny );
+	printf("O robo %d quer se mover ",ID);
+	printf("de [%d][%d] para [%d][%d]! ",maqnow->x,maqnow->y,nx,ny );
 	int x = maqnow->x;
 	int y = maqnow->y;
 
@@ -243,20 +243,20 @@ int Mover(int nx, int ny) {
 		arena.cell[x][y].ocup = 0;
 		arena.cell[nx][ny].ocup = arena.exercitonow*5+arena.robonow+1;
 		maqnow->contador = arena.cell[nx][ny].terreno;
-		printf("Movido com sucesso\n");
+		printf("Ele conseguiu!\n");
 		fprintf(display, "%d %d %d %d %d\n", arena.exercitonow*5 + arena.robonow, x, y, nx, ny);
 		return 1;
 	}
-	printf("Nao foi possivel se mover, a celula [%d][%d] ja esta ocupada\n",nx,ny);
+	printf("Não foi possivel se mover, a celula [%d][%d] já esta ocupada!\n",nx,ny);
 	return 0;
 }
 
 int Cristal(int nx, int ny, int c) {
 
 	if(c) {
-	printf("Tentando pegar cristais. ");
+	printf("O robo %d vai pegar alguns cristais! ",ID);
 		if(arena.cell[nx][ny].cristais) {
-			printf("Sucesso! O Robo %d tinha %d cristais agora tem ",arena.robonow, maqnow->cristais);
+			printf("Sucesso! O Robo %d tinha %d cristais agora tem ",ID, maqnow->cristais);
 			maqnow->cristais++;
 			printf("%d.\n",maqnow->cristais);
 			arena.cell[nx][ny].cristais--;
@@ -264,14 +264,14 @@ int Cristal(int nx, int ny, int c) {
 			return 1;
 		}
 		else {
-			printf("Nao ha cristais.\n");
+			printf("Mas não há cristal algum naquele espaço!\n");
 			return 0;
 		}
 	}
 	else {
 		if(maqnow->cristais) {
 			if(nx == 0 || nx == (GRID-1) || ny == 0 || ny == (GRID-1)) {
-				printf("Nao e possivel depositar cristais na borda! Tentou depositar em [%d][%d].\n",nx,ny);
+				printf("O robo %d tentou depositar em [%d][%d], mas não é possivel depositar cristais na borda!\n",ID,nx,ny);
 				return 0;
 			}
 			else {
@@ -281,7 +281,7 @@ int Cristal(int nx, int ny, int c) {
 				if(arena.cell[nx][ny].base)
 					printf("a celula continha uma base do exercito %d.\n",arena.cell[nx][ny].base - 1);
 				else
-					printf("nao havia nenhuma base na celula.\n");
+					printf("não havia nenhuma base na celula.\n");
 				fprintf(display, "cristais %d %d %d\n",arena.cell[nx][ny].cristais,nx,ny);
 				if(arena.cell[nx][ny].base && arena.cell[nx][ny].cristais >= 5) {
 					RemoveExercito(arena.cell[nx][ny].base - 1,nx,ny);
@@ -360,21 +360,21 @@ void Sistema(int op) {
 						break;
 					case 1:
 						atr.n = cel.cel.cristais;
-						printf("Tem %d cristais na celula.\n",atr.n);
+						printf("O robo %d nota que existem %d cristais na celula.\n",ID,atr.n);
 						break;
 					case 2:
 						atr.n = cel.cel.ocup;
 						if(atr.n)
-							printf("A celula esta ocupada.\n");
+							printf("O robo %d percebeu que a celula esta ocupada.\n",ID);
 						else
-							printf("A celula nao esta ocupada.\n");
+							printf("O robo %d percebeu que a celula nao esta ocupada.\n",ID);
 						break;
 					case 3:
 						atr.n = cel.cel.base;
 						if(atr.n)
-							printf("Eh uma base do exercito %d.\n", atr.n - 1);
+							printf("O robo %d observa uma base do exercito %d.\n",ID,atr.n - 1);
 						else
-							printf("A celula nao esta ocupada por nenhum exercito.");
+							printf("O robo %d observa que o espaço não ocupada por exercito algum.\n",ID);
 						break;
 				}
 			}

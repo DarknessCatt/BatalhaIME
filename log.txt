@@ -10,461 +10,154 @@ Robo:7, pos[9][2]
 Robo:8, pos[3][6]
 Robo:9, pos[4][1]
 A base do exercito 1 esta em [8][6].
-O robo 0 esta jogando agora!
-Tentando mover de [1][7] para [2][8]
-Movido com sucesso
-O robo 5 esta jogando agora!
-Tentando mover de [10][7] para [11][7]
-Nao foi possivel se mover, a celula [11][7] ja esta ocupada
-O robo 1 esta jogando agora!
-Tentando mover de [5][4] para [5][3]
-Movido com sucesso
-O robo 6 esta jogando agora!
-Tentando mover de [2][1] para [2][0]
-Nao foi possivel se mover, a celula [2][0] ja esta ocupada
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-O robo 8 esta jogando agora!
-O robo 4 esta jogando agora!
-Tentando mover de [7][1] para [7][2]
-Movido com sucesso
-O robo 9 esta jogando agora!
-Tentando mover de [4][1] para [4][2]
-Movido com sucesso
-O robo 0 esta jogando agora!
-Tentando mover de [2][8] para [3][8]
-Movido com sucesso
-O robo 5 esta jogando agora!
-Tentando mover de [10][7] para [11][7]
-Nao foi possivel se mover, a celula [11][7] ja esta ocupada
+O robo 0 quer se mover de [1][7] para [2][8]! Ele conseguiu!
+O robo 5 quer se mover de [10][7] para [11][7]! Não foi possivel se mover, a celula [11][7] já esta ocupada!
+O robo 1 quer se mover de [5][4] para [5][3]! Ele conseguiu!
+O robo 6 quer se mover de [2][1] para [2][0]! Não foi possivel se mover, a celula [2][0] já esta ocupada!
+O robo 4 quer se mover de [7][1] para [7][2]! Ele conseguiu!
+O robo 9 quer se mover de [4][1] para [4][2]! Ele conseguiu!
+O robo 0 quer se mover de [2][8] para [3][8]! Ele conseguiu!
+O robo 5 quer se mover de [10][7] para [11][7]! Não foi possivel se mover, a celula [11][7] já esta ocupada!
 O robo 6 está atrasado!
-O robo 6 esta jogando agora!
-Tentando mover de [2][1] para [3][0]
-Nao foi possivel se mover, a celula [3][0] ja esta ocupada
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-O robo 8 esta jogando agora!
+O robo 6 quer se mover de [2][1] para [3][0]! Não foi possivel se mover, a celula [3][0] já esta ocupada!
 O robo 9 está atrasado!
-O robo 9 esta jogando agora!
 O robo 9 vai atacar a posição [3][2]! Parece que não havia nada ali!
 O robo 5 está atrasado!
-O robo 5 esta jogando agora!
-Tentando pegar cristais. Nao ha cristais.
-O robo 1 esta jogando agora!
-Tentando mover de [5][3] para [6][3]
-Movido com sucesso
-O robo 6 esta jogando agora!
-Tentando mover de [2][1] para [2][0]
-Nao foi possivel se mover, a celula [2][0] ja esta ocupada
-O robo 2 esta jogando agora!
-Tentando mover de [6][7] para [7][7]
-Movido com sucesso
-O robo 7 esta jogando agora!
-Tentando mover de [9][2] para [10][3]
-Movido com sucesso
-O robo 3 esta jogando agora!
-Tentando mover de [3][1] para [4][2]
-Nao foi possivel se mover, a celula [4][2] ja esta ocupada
-O robo 8 esta jogando agora!
-Tentando mover de [3][6] para [4][7]
-Movido com sucesso
+O robo 5 vai pegar alguns cristais! Mas não há cristal nenhum naquele espaço!
+O robo 1 quer se mover de [5][3] para [6][3]! Ele conseguiu!
+O robo 6 quer se mover de [2][1] para [2][0]! Não foi possivel se mover, a celula [2][0] já esta ocupada!
+O robo 2 quer se mover de [6][7] para [7][7]! Ele conseguiu!
+O robo 7 quer se mover de [9][2] para [10][3]! Ele conseguiu!
+O robo 3 quer se mover de [3][1] para [4][2]! Não foi possivel se mover, a celula [4][2] já esta ocupada!
+O robo 8 quer se mover de [3][6] para [4][7]! Ele conseguiu!
 O robo 9 está atrasado!
-O robo 9 esta jogando agora!
 O robo 9 vai atacar a posição [4][1]! Parece que não havia nada ali!
-O robo 0 esta jogando agora!
-Tentando pegar cristais. Nao ha cristais.
-O robo 5 esta jogando agora!
-Tentando pegar cristais. Sucesso! O Robo 0 tinha 0 cristais agora tem 1.
+O robo 0 vai pegar alguns cristais! Mas não há cristal nenhum naquele espaço!
+O robo 5 vai pegar alguns cristais! Sucesso! O Robo 5 tinha 0 cristais agora tem 1.
 O robo 6 está atrasado!
-O robo 6 esta jogando agora!
-Tentando mover de [2][1] para [3][0]
-Nao foi possivel se mover, a celula [3][0] ja esta ocupada
+O robo 6 quer se mover de [2][1] para [3][0]! Não foi possivel se mover, a celula [3][0] já esta ocupada!
 O robo 7 está atrasado!
 O robo 7 está atrasado!
-O robo 3 esta jogando agora!
-Tentando mover de [3][1] para [4][2]
-Nao foi possivel se mover, a celula [4][2] ja esta ocupada
-O robo 8 esta jogando agora!
-Tentando mover de [4][7] para [5][7]
-Movido com sucesso
-O robo 4 esta jogando agora!
+O robo 3 quer se mover de [3][1] para [4][2]! Não foi possivel se mover, a celula [4][2] já esta ocupada!
+O robo 8 quer se mover de [4][7] para [5][7]! Ele conseguiu!
 O robo 4 vai atacar a posição [6][3]! O robo acertou um soco em cheio na cara do robo 1! Ele ainda tem 4 de HP!
-O robo 9 esta jogando agora!
 O robo 9 vai atacar a posição [4][1]! Parece que não havia nada ali!
-O robo 0 esta jogando agora!
-Tentando pegar cristais. Nao ha cristais.
-O robo 5 esta jogando agora!
-Tentando pegar cristais. Nao ha cristais.
+O robo 0 vai pegar alguns cristais! Mas não há cristal nenhum naquele espaço!
+O robo 5 vai pegar alguns cristais! Mas não há cristal nenhum naquele espaço!
 O robo 6 está atrasado!
-O robo 6 esta jogando agora!
-Tentando mover de [2][1] para [2][0]
-Nao foi possivel se mover, a celula [2][0] ja esta ocupada
+O robo 6 quer se mover de [2][1] para [2][0]! Não foi possivel se mover, a celula [2][0] já esta ocupada!
 O robo 7 está atrasado!
 O robo 7 está atrasado!
-O robo 3 esta jogando agora!
-Tentando mover de [3][1] para [4][1]
-Movido com sucesso
+O robo 3 quer se mover de [3][1] para [4][1]! Ele conseguiu!
 O robo 3 está atrasado!
-O robo 4 esta jogando agora!
 O robo 4 vai atacar a posição [7][1]! Parece que não havia nada ali!
-O robo 9 esta jogando agora!
 O robo 9 vai atacar a posição [4][1]! O robo deu uma voadora nas costas do robo 3! Ele ainda tem 4 de HP!
-O robo 0 esta jogando agora!
-Tentando pegar cristais. Sucesso! O Robo 0 tinha 0 cristais agora tem 1.
-O robo 5 esta jogando agora!
-Tentando mover de [10][7] para [11][7]
-Nao foi possivel se mover, a celula [11][7] ja esta ocupada
-O robo 1 esta jogando agora!
-Tentando mover de [6][3] para [6][2]
-Movido com sucesso
-O robo 6 esta jogando agora!
-Tentando mover de [2][1] para [3][0]
-Nao foi possivel se mover, a celula [3][0] ja esta ocupada
-O robo 2 esta jogando agora!
-Olhando para a cel[8][7].
+O robo 0 vai pegar alguns cristais! Sucesso! O Robo 0 tinha 0 cristais agora tem 1.
+O robo 5 quer se mover de [10][7] para [11][7]! Não foi possivel se mover, a celula [11][7] já esta ocupada!
+O robo 1 quer se mover de [6][3] para [6][2]! Ele conseguiu!
+O robo 6 quer se mover de [2][1] para [3][0]! Não foi possivel se mover, a celula [3][0] já esta ocupada!
+O robo 2 está olhando para a cel[8][7].
 O robo 2 está atrasado!
 O robo 3 está atrasado!
 O robo 3 está atrasado!
-O robo 4 esta jogando agora!
 O robo 4 vai atacar a posição [7][1]! Parece que não havia nada ali!
-O robo 9 esta jogando agora!
 O robo 9 vai atacar a posição [4][1]! O robo acertou um soco em cheio na cara do robo 3! Ele ainda tem 3 de HP!
-O robo 0 esta jogando agora!
-Tentando mover de [3][8] para [4][9]
-Movido com sucesso
-O robo 5 esta jogando agora!
-Tentando pegar cristais. Nao ha cristais.
+O robo 0 quer se mover de [3][8] para [4][9]! Ele conseguiu!
+O robo 5 vai pegar alguns cristais! Mas não há cristal nenhum naquele espaço!
 O robo 6 está atrasado!
-O robo 6 esta jogando agora!
-Tentando mover de [2][1] para [3][1]
-Movido com sucesso
-O robo 2 esta jogando agora!
-Tem 0 cristais na celula.
-O robo 7 esta jogando agora!
-Olhando para a cel[11][2].
+O robo 6 quer se mover de [2][1] para [3][1]! Ele conseguiu!
+O robo 2 nota que existem 0 cristais na celula.
+O robo 7 está olhando para a cel[11][2].
 O robo 8 está atrasado!
 O robo 8 está atrasado!
-O robo 4 esta jogando agora!
 O robo 4 vai atacar a posição [7][1]! Parece que não havia nada ali!
-O robo 9 esta jogando agora!
-Tentando mover de [4][2] para [4][1]
-Nao foi possivel se mover, a celula [4][1] ja esta ocupada
+O robo 9 quer se mover de [4][2] para [4][1]! Não foi possivel se mover, a celula [4][1] já esta ocupada!
 O robo 5 está atrasado!
-O robo 5 esta jogando agora!
-Tentando mover de [10][7] para [10][8]
-Movido com sucesso
+O robo 5 quer se mover de [10][7] para [10][8]! Ele conseguiu!
 O robo 6 está atrasado!
 O robo 6 está atrasado!
-O robo 2 esta jogando agora!
-Tentando pegar cristais. Nao ha cristais.
-O robo 7 esta jogando agora!
-Tem 1 cristais na celula.
-O robo 3 esta jogando agora!
-Tentando mover de [4][1] para [4][0]
-Nao foi possivel se mover, a celula [4][0] ja esta ocupada
-O robo 8 esta jogando agora!
-Tentando mover de [5][7] para [6][7]
-Movido com sucesso
-O robo 4 esta jogando agora!
+O robo 2 vai pegar alguns cristais! Mas não há cristal nenhum naquele espaço!
+O robo 7 nota que existem 1 cristais na celula.
+O robo 3 quer se mover de [4][1] para [4][0]! Não foi possivel se mover, a celula [4][0] já esta ocupada!
+O robo 8 quer se mover de [5][7] para [6][7]! Ele conseguiu!
 O robo 4 vai atacar a posição [7][1]! Parece que não havia nada ali!
-O robo 9 esta jogando agora!
 O robo 9 vai atacar a posição [5][1]! Parece que não havia nada ali!
-O robo 0 esta jogando agora!
-Tentando pegar cristais. Nao ha cristais.
+O robo 0 vai pegar alguns cristais! Mas não há cristal nenhum naquele espaço!
 O robo 0 está atrasado!
-O robo 1 esta jogando agora!
-Tentando mover de [6][2] para [7][1]
-Movido com sucesso
-O robo 6 esta jogando agora!
-Tentando mover de [3][1] para [4][2]
-Nao foi possivel se mover, a celula [4][2] ja esta ocupada
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-Tentando pegar cristais. Sucesso! O Robo 2 tinha 0 cristais agora tem 1.
-O robo 3 esta jogando agora!
-Tentando mover de [4][1] para [4][2]
-Nao foi possivel se mover, a celula [4][2] ja esta ocupada
+O robo 1 quer se mover de [6][2] para [7][1]! Ele conseguiu!
+O robo 6 quer se mover de [3][1] para [4][2]! Não foi possivel se mover, a celula [4][2] já esta ocupada!
+O robo 7 vai pegar alguns cristais! Sucesso! O Robo 7 tinha 0 cristais agora tem 1.
+O robo 3 quer se mover de [4][1] para [4][2]! Não foi possivel se mover, a celula [4][2] já esta ocupada!
 O robo 3 está atrasado!
-O robo 4 esta jogando agora!
-Tentando mover de [7][2] para [7][1]
-Nao foi possivel se mover, a celula [7][1] ja esta ocupada
-O robo 9 esta jogando agora!
-O robo 0 esta jogando agora!
-Tentando mover de [4][9] para [4][10]
-Movido com sucesso
+O robo 4 quer se mover de [7][2] para [7][1]! Não foi possivel se mover, a celula [7][1] já esta ocupada!
+O robo 0 quer se mover de [4][9] para [4][10]! Ele conseguiu!
 O robo 0 está atrasado!
 O robo 1 está atrasado!
-O robo 6 esta jogando agora!
-Tentando mover de [3][1] para [4][2]
-Nao foi possivel se mover, a celula [4][2] ja esta ocupada
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
+O robo 6 quer se mover de [3][1] para [4][2]! Não foi possivel se mover, a celula [4][2] já esta ocupada!
 O Robo 7 depositou um cristal na celula[10][2], nao havia nenhuma base na celula.
-O robo 3 esta jogando agora!
-Tentando mover de [4][1] para [3][1]
-Nao foi possivel se mover, a celula [3][1] ja esta ocupada
+O robo 3 quer se mover de [4][1] para [3][1]! Não foi possivel se mover, a celula [3][1] já esta ocupada!
 O robo 3 está atrasado!
-O robo 4 esta jogando agora!
 O robo 4 vai atacar a posição [8][2]! Parece que não havia nada ali!
-O robo 9 esta jogando agora!
 O robo 5 está atrasado!
 O robo 5 está atrasado!
 O robo 6 está atrasado!
-O robo 6 esta jogando agora!
-Tentando mover de [3][1] para [3][0]
-Nao foi possivel se mover, a celula [3][0] ja esta ocupada
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-Olhando para a cel[3][0].
-O robo 8 esta jogando agora!
-Tentando mover de [6][7] para [6][6]
-Movido com sucesso
-O robo 4 esta jogando agora!
-O robo 9 esta jogando agora!
+O robo 6 quer se mover de [3][1] para [3][0]! Não foi possivel se mover, a celula [3][0] já esta ocupada!
+O robo 3 está olhando para a cel[3][0].
+O robo 8 quer se mover de [6][7] para [6][6]! Ele conseguiu!
 O robo 5 está atrasado!
-O robo 5 esta jogando agora!
-Tentando pegar cristais. Nao ha cristais.
+O robo 5 vai pegar alguns cristais! Mas não há cristal nenhum naquele espaço!
 O robo 6 está atrasado!
-O robo 6 esta jogando agora!
-Tentando mover de [3][1] para [2][1]
-Movido com sucesso
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-Tem 0 cristais na celula.
-O robo 8 esta jogando agora!
-Tentando mover de [6][6] para [6][7]
-Movido com sucesso
-O robo 4 esta jogando agora!
-O robo 9 esta jogando agora!
-O robo 0 esta jogando agora!
-Tentando pegar cristais. Nao ha cristais.
-O robo 5 esta jogando agora!
-Nao e possivel depositar cristais na borda! Tentou depositar em [11][8].
-O robo 1 esta jogando agora!
-Tentando mover de [7][1] para [7][0]
-Nao foi possivel se mover, a celula [7][0] ja esta ocupada
+O robo 6 quer se mover de [3][1] para [2][1]! Ele conseguiu!
+O robo 3 nota que existem 0 cristais na celula.
+O robo 8 quer se mover de [6][6] para [6][7]! Ele conseguiu!
+O robo 0 vai pegar alguns cristais! Mas não há cristal nenhum naquele espaço!
+Nao e possivel depositar cristais na borda! O robo 5 tentou depositar em [11][8]!
+O robo 1 quer se mover de [7][1] para [7][0]! Não foi possivel se mover, a celula [7][0] já esta ocupada!
 O robo 1 está atrasado!
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-Tentando pegar cristais. Nao ha cristais.
+O robo 3 vai pegar alguns cristais! Mas não há cristal nenhum naquele espaço!
 O robo 3 está atrasado!
-O robo 4 esta jogando agora!
-O robo 9 esta jogando agora!
-O robo 0 esta jogando agora!
 O Robo 0 depositou um cristal na celula[5][10], nao havia nenhuma base na celula.
-O robo 5 esta jogando agora!
-Nao e possivel depositar cristais na borda! Tentou depositar em [11][8].
-O robo 1 esta jogando agora!
-Tentando mover de [7][1] para [8][1]
-Movido com sucesso
+Nao e possivel depositar cristais na borda! O robo 5 tentou depositar em [11][8]!
+O robo 1 quer se mover de [7][1] para [8][1]! Ele conseguiu!
 O robo 1 está atrasado!
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-Tentando pegar cristais. Nao ha cristais.
+O robo 3 vai pegar alguns cristais! Mas não há cristal nenhum naquele espaço!
 O robo 3 está atrasado!
-O robo 4 esta jogando agora!
-O robo 9 esta jogando agora!
-O robo 0 esta jogando agora!
-O robo 5 esta jogando agora!
-Nao e possivel depositar cristais na borda! Tentou depositar em [11][8].
+Nao e possivel depositar cristais na borda! O robo 5 tentou depositar em [11][8]!
 O robo 6 está atrasado!
 O robo 6 está atrasado!
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-Tentando pegar cristais. Nao ha cristais.
-O robo 8 esta jogando agora!
-Tentando mover de [6][7] para [5][7]
-Movido com sucesso
-O robo 4 esta jogando agora!
-O robo 9 esta jogando agora!
-O robo 0 esta jogando agora!
-O robo 5 esta jogando agora!
-Nao e possivel depositar cristais na borda! Tentou depositar em [11][8].
+O robo 3 vai pegar alguns cristais! Mas não há cristal nenhum naquele espaço!
+O robo 8 quer se mover de [6][7] para [5][7]! Ele conseguiu!
+Nao e possivel depositar cristais na borda! O robo 5 tentou depositar em [11][8]!
 O robo 6 está atrasado!
-O robo 6 esta jogando agora!
-Tentando mover de [2][1] para [2][2]
-Movido com sucesso
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-Tentando pegar cristais. Sucesso! O Robo 3 tinha 0 cristais agora tem 1.
+O robo 6 quer se mover de [2][1] para [2][2]! Ele conseguiu!
+O robo 3 vai pegar alguns cristais! Sucesso! O Robo 3 tinha 0 cristais agora tem 1.
 O robo 3 está atrasado!
-O robo 4 esta jogando agora!
-O robo 9 esta jogando agora!
-O robo 0 esta jogando agora!
-O robo 5 esta jogando agora!
-Nao e possivel depositar cristais na borda! Tentou depositar em [11][8].
+Nao e possivel depositar cristais na borda! O robo 5 tentou depositar em [11][8]!
 O robo 6 está atrasado!
-O robo 6 esta jogando agora!
-Tentando mover de [2][2] para [3][2]
-Movido com sucesso
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-Nao e possivel depositar cristais na borda! Tentou depositar em [4][0].
+O robo 6 quer se mover de [2][2] para [3][2]! Ele conseguiu!
+Nao e possivel depositar cristais na borda! O robo 3 tentou depositar em [4][0]!
 O robo 3 está atrasado!
-O robo 4 esta jogando agora!
-O robo 9 esta jogando agora!
-O robo 0 esta jogando agora!
-O robo 5 esta jogando agora!
-O robo 1 esta jogando agora!
-Tentando mover de [8][1] para [9][1]
-Nao foi possivel se mover, a celula [9][1] ja esta ocupada
-O robo 6 esta jogando agora!
-Tentando mover de [3][2] para [4][2]
-Nao foi possivel se mover, a celula [4][2] ja esta ocupada
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
+O robo 1 quer se mover de [8][1] para [9][1]! Não foi possivel se mover, a celula [9][1] já esta ocupada!
+O robo 6 quer se mover de [3][2] para [4][2]! Não foi possivel se mover, a celula [4][2] já esta ocupada!
 O robo 3 está atrasado!
-O robo 4 esta jogando agora!
-O robo 9 esta jogando agora!
-O robo 0 esta jogando agora!
-O robo 5 esta jogando agora!
-O robo 1 esta jogando agora!
-Tentando mover de [8][1] para [9][1]
-Nao foi possivel se mover, a celula [9][1] ja esta ocupada
-O robo 6 esta jogando agora!
-Tentando mover de [3][2] para [4][2]
-Nao foi possivel se mover, a celula [4][2] ja esta ocupada
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-O robo 8 esta jogando agora!
-Olhando para a cel[4][7].
-O robo 4 esta jogando agora!
-O robo 9 esta jogando agora!
-O robo 0 esta jogando agora!
-O robo 5 esta jogando agora!
-O robo 1 esta jogando agora!
-Tentando mover de [8][1] para [9][1]
-Nao foi possivel se mover, a celula [9][1] ja esta ocupada
-O robo 6 esta jogando agora!
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-O robo 8 esta jogando agora!
-Tem 3 cristais na celula.
-O robo 4 esta jogando agora!
-O robo 9 esta jogando agora!
-O robo 0 esta jogando agora!
-O robo 5 esta jogando agora!
-O robo 1 esta jogando agora!
-Tentando mover de [8][1] para [8][0]
-Nao foi possivel se mover, a celula [8][0] ja esta ocupada
-O robo 6 esta jogando agora!
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-O robo 8 esta jogando agora!
-Tentando pegar cristais. Sucesso! O Robo 3 tinha 0 cristais agora tem 1.
-O robo 4 esta jogando agora!
-O robo 9 esta jogando agora!
-O robo 0 esta jogando agora!
-O robo 5 esta jogando agora!
-O robo 1 esta jogando agora!
-Tentando mover de [8][1] para [7][0]
-Nao foi possivel se mover, a celula [7][0] ja esta ocupada
-O robo 6 esta jogando agora!
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-O robo 8 esta jogando agora!
-Tentando pegar cristais. Sucesso! O Robo 3 tinha 1 cristais agora tem 2.
-O robo 4 esta jogando agora!
-O robo 9 esta jogando agora!
-O robo 0 esta jogando agora!
-O robo 5 esta jogando agora!
-O robo 1 esta jogando agora!
-Tentando mover de [8][1] para [8][2]
-Movido com sucesso
-O robo 6 esta jogando agora!
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-O robo 8 esta jogando agora!
-Tentando pegar cristais. Sucesso! O Robo 3 tinha 2 cristais agora tem 3.
-O robo 4 esta jogando agora!
-O robo 9 esta jogando agora!
-O robo 0 esta jogando agora!
-O robo 5 esta jogando agora!
+O robo 1 quer se mover de [8][1] para [9][1]! Não foi possivel se mover, a celula [9][1] já esta ocupada!
+O robo 6 quer se mover de [3][2] para [4][2]! Não foi possivel se mover, a celula [4][2] já esta ocupada!
+O robo 8 está olhando para a cel[4][7].
+O robo 1 quer se mover de [8][1] para [9][1]! Não foi possivel se mover, a celula [9][1] já esta ocupada!
+O robo 8 nota que existem 3 cristais na celula.
+O robo 1 quer se mover de [8][1] para [8][0]! Não foi possivel se mover, a celula [8][0] já esta ocupada!
+O robo 8 vai pegar alguns cristais! Sucesso! O Robo 8 tinha 0 cristais agora tem 1.
+O robo 1 quer se mover de [8][1] para [7][0]! Não foi possivel se mover, a celula [7][0] já esta ocupada!
+O robo 8 vai pegar alguns cristais! Sucesso! O Robo 8 tinha 1 cristais agora tem 2.
+O robo 1 quer se mover de [8][1] para [8][2]! Ele conseguiu!
+O robo 8 vai pegar alguns cristais! Sucesso! O Robo 8 tinha 2 cristais agora tem 3.
 O robo 6 está atrasado!
-O robo 6 esta jogando agora!
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-O robo 8 esta jogando agora!
-Tentando pegar cristais. Nao ha cristais.
-O robo 4 esta jogando agora!
-O robo 9 esta jogando agora!
-O robo 0 esta jogando agora!
-O robo 5 esta jogando agora!
+O robo 8 vai pegar alguns cristais! Mas não há cristal nenhum naquele espaço!
 O robo 6 está atrasado!
-O robo 6 esta jogando agora!
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-O robo 8 esta jogando agora!
 O Robo 8 depositou um cristal na celula[5][6], nao havia nenhuma base na celula.
-O robo 4 esta jogando agora!
-O robo 9 esta jogando agora!
-O robo 0 esta jogando agora!
-O robo 5 esta jogando agora!
 O robo 6 está atrasado!
-O robo 6 esta jogando agora!
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-O robo 8 esta jogando agora!
-O robo 4 esta jogando agora!
-O robo 9 esta jogando agora!
-O robo 0 esta jogando agora!
-O robo 5 esta jogando agora!
-O robo 1 esta jogando agora!
-Tentando mover de [8][2] para [9][2]
-Movido com sucesso
-O robo 6 esta jogando agora!
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-O robo 8 esta jogando agora!
-O robo 4 esta jogando agora!
-O robo 9 esta jogando agora!
-O robo 0 esta jogando agora!
-O robo 5 esta jogando agora!
+O robo 1 quer se mover de [8][2] para [9][2]! Ele conseguiu!
 O robo 6 está atrasado!
-O robo 6 esta jogando agora!
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-O robo 8 esta jogando agora!
-O robo 4 esta jogando agora!
-O robo 9 esta jogando agora!
-O robo 0 esta jogando agora!
-O robo 5 esta jogando agora!
 O robo 6 está atrasado!
-O robo 6 esta jogando agora!
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-O robo 8 esta jogando agora!
-O robo 4 esta jogando agora!
-O robo 9 esta jogando agora!
-O robo 0 esta jogando agora!
-O robo 5 esta jogando agora!
 O robo 6 está atrasado!
-O robo 6 esta jogando agora!
-O robo 2 esta jogando agora!
-O robo 7 esta jogando agora!
-O robo 3 esta jogando agora!
-O robo 8 esta jogando agora!
-O robo 4 esta jogando agora!
-O robo 9 esta jogando agora!
 O Exercito 0 foi destruido!
