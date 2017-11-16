@@ -49,13 +49,13 @@ void *init_arena() {
     }
 
     for(i=0;i<GRID;i++){
-        arena.cell[i][0].ocup = 1;
-        arena.cell[i][GRID-1].ocup = 1;
+        arena.cell[i][0].ocup = -1;
+        arena.cell[i][GRID-1].ocup = -1;
     }
 
     for(i=0;i<GRID;i++){
-        arena.cell[0][i].ocup = 1;
-        arena.cell[GRID-1][i].ocup = 1;
+        arena.cell[0][i].ocup = -1;
+        arena.cell[GRID-1][i].ocup = -1;
     }
 
     arena.exercitonow = 0;
@@ -297,8 +297,9 @@ int Cristal(int nx, int ny, int c) {
 
 int Atacar(int nx, int ny){
 	printf("O robo %d do exercito %d vai atacar a posição [%d][%d]!\n",arena.robonow,arena.exercitonow,nx,ny);
+	printf("arena.cell[nx][y].ocup = %d", arena.cell[nx][ny].ocup);
 	fprintf(display, "atk botatk%d.png bot%d.png %d %d %d\n",arena.exercitonow,arena.exercitonow,arena.cell[maqnow->x][maqnow->y].ocup-1,maqnow->x,maqnow->y);
-	if(!arena.cell[nx][ny].ocup || arena.cell[nx][ny].ocup>20){
+	if(arena.cell[nx][ny].ocup <= 0 || arena.cell[nx][ny].ocup>20){
 		printf("Parece que não havia nada ali!\n");
 		return 0;
 	}
@@ -332,7 +333,7 @@ int Atacar(int nx, int ny){
 		if(arena.exercitos[e].robos[r]->HP<1){
 			arena.exercitos[e].robos[r]->rest=1;
 			printf("Ele desmaiou!\n");
-			fprintf(display, "rest brkbot%d.png %d %d %d\n",arena.exercitonow,arena.cell[nx][ny].ocup-1,nx,ny);
+			fprintf(display, "rest brkbot%d.png %d %d %d\n",e,arena.cell[nx][ny].ocup-1,nx,ny);
 		}
 		else{
 			printf("Ele ainda tem %d de HP!\n",arena.exercitos[e].robos[r]->HP);
