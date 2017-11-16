@@ -111,11 +111,11 @@ void InsereExercito(Exercito exct) {
 		fprintf(display, "rob bot%d.png %d %d\n",arena.nexercitos,x,y);
 		arena.robonow++;
 	}
-	int v = 1 + rand() % (GRID-1);
-	int w = 1 + rand() % (GRID-1);
+	int v = 1 + rand() % (GRID-2);
+	int w = 1 + rand() % (GRID-2);
 	while(arena.cell[v][w].base) {
-		v = 1 + rand() % (GRID-1);
-		w = 1 + rand() % (GRID-1);
+		v = 1 + rand() % (GRID-2);
+		w = 1 + rand() % (GRID-2);
 	}
 	arena.cell[v][w].base = arena.nexercitos + 1;
 	arena.cell[v][w].cristais = 0;
