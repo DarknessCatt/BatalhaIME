@@ -8,7 +8,7 @@
 
 // Função que inicializa a arena com uma quantidade aleatória de cristais em células aleatórias.
 // Também são definidas as bordas da arena.
-void *init_arena() {
+void init_arena() {
 	display = popen("python apres", "w");
     arena.nexercitos = 0;
     int i,j,r,g,b;

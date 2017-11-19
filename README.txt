@@ -1,4 +1,4 @@
-Relatório - Projeto Fase 3
+﻿Relatório - Projeto Fase 3
 MAC0216 - Professor Marcos Dimas Gubitoso
 
 Eduardo Nascimento - NºUSP 10267070
@@ -20,3 +20,5 @@ Ademais, adicionamos em nossas funções InsereExercito e Cristais comandos que 
 Implementamos também uma nova função para nossos robôs, o comando ATK, que corresponde a um ataque de um robô. Cada robô possui cinco pontos de vida e perde um ponto cada vez que é atingido por um ataque. Quando os pontos de vida do robô se esgotam, ele entra em estado de repouso (indicado por um sprite diferente) e deve ficar 5 turnos recarregando (10 ciclos de máquina), sem poder realizar nenhuma ação. Após esse período, ele resume suas ações normalmente. 
 
 Finalmente, criamos mais uma instrução no Makefile (make edit) apenas para facilitar nosso trabalho de edição do código. O comando make progteste executa nossos programas de exemplo.
+
+Foram feitas as correções necessárias relativas à segunda fase: adicionamos comentários às funções restantes e removemos os warnings da compilação.
