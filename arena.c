@@ -6,6 +6,8 @@
 #define maqnow (arena.exercitos[arena.exercitonow].robos[arena.robonow])
 #define ID (arena.exercitonow*5 + arena.robonow)
 
+// Função que inicializa a arena com uma quantidade aleatória de cristais em células aleatórias.
+// Também são definidas as bordas da arena.
 void *init_arena() {
 	display = popen("python apres", "w");
     arena.nexercitos = 0;
@@ -63,6 +65,7 @@ void *init_arena() {
     arena.robonow = 0;
 }
 
+// Função responsável por administrar o jogo, deixando apenas um robo por vez executar um determinado ciclo de instruções.
 void Escalonador(int rodadas) {
 	for(int r = 0; r < rodadas; r++) {
 		for(int i = 0; i < RoboPerExerc; i++) {
@@ -93,6 +96,7 @@ void Escalonador(int rodadas) {
 	}
 }
 
+//Função que insere um exercito na arena, definindo posições aleatórias para os robôs e sua base. 
 void InsereExercito(Exercito exct) {
 	//dando uma posicao aleatoria para cada robo
 	arena.exercitos[arena.nexercitos] = exct;
@@ -128,6 +132,7 @@ void InsereExercito(Exercito exct) {
 	arena.exercitonow++;
 }
 
+//Função chamada quando são depositados 5 ou mais cristais em uma base, remove o exercito do jogo e destroi sua base.
 void RemoveExercito(int base,int x, int y) {
 	arena.exercitos[base].jogando = 0;
 	for(int i = 0; i < 5; i++) {
@@ -235,6 +240,7 @@ OPERANDO Vizinhos(int M) {
 	return r;
 }
 
+// Função que iplementa a movimentação do robo da célula x,y para nx,ny.
 int Mover(int nx, int ny) {
 	printf("O robo %d quer se mover ",ID);
 	printf("de [%d][%d] para [%d][%d]! ",maqnow->x,maqnow->y,nx,ny );
@@ -255,6 +261,7 @@ int Mover(int nx, int ny) {
 	return 0;
 }
 
+// Função que implementa pegar/depositar cristais na direção passada como argumento.
 int Cristal(int nx, int ny, int c) {
 
 	if(c) {
@@ -301,6 +308,7 @@ int Cristal(int nx, int ny, int c) {
 
 }
 
+// Função que implementa o ataque do robo na posição da célula passada como argumento.
 int Atacar(int nx, int ny){
 	printf("O robo %d vai atacar a posição [%d][%d]! ",ID,nx,ny);
 	fprintf(display, "atk botatk%d.png bot%d.png %d %d %d\n",arena.exercitonow,arena.exercitonow,arena.cell[maqnow->x][maqnow->y].ocup-1,maqnow->x,maqnow->y);
@@ -348,6 +356,14 @@ int Atacar(int nx, int ny){
 	}
 }
 
+/* Função chamada pelo robô requisitando executar uma determinada ação, onde op:
+0 = ATR, olha atributo da célulala vizinha empilhada
+1 = Mover
+2 = Olhar espaço
+3 = Pegar Cristal
+4 = Soltar Cristal
+5 = Atacar
+*/
 void Sistema(int op) {
 	switch (op) {
 		OPERANDO atr;

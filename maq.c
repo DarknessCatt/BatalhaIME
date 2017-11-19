@@ -46,6 +46,8 @@ char *CODES[] = {
 #  define D(X)
 #endif
 
+void Sistema(int op);
+
 static void Erro(char *msg) {
   fprintf(stderr, "%s\n", msg);
 }
@@ -319,35 +321,35 @@ void exec_maquina(Maquina *m, int n) {
 	  empilha(pil,arg);
 	  Sistema(0); // vamos supor que o 0 é para ele retornar o valor do atributo.
 	  break;
-	case MOV:
+	case MOV:// Tenta se mover para uma das células vizinhas
 	  if(arg.t == NUM){
 	    empilha(pil,arg);
 	  	Sistema(1);
 	  }
 	  else Fatal("Operando incompatível MOV", 9); 
 	  break;
-	case SCH:
+	case SCH:// Requisita empilhar as informações de uma célula vizinha
 	   if(arg.t == NUM){
 	   	empilha(pil,arg);
 	  	Sistema(2);
 	   }
 	   else Fatal("Operando incompatível SCH", 9);
 	   break;
-	case GRB:
+	case GRB:// Tenta pegar um cristal em uma célula vizinha
 	  if(arg.t == NUM){
 	    empilha(pil,arg);
 	  	Sistema(3);
 	  }
 	  else Fatal("Operando incompatível GRB", 9);
 	  break;
-	case DRP:
+	case DRP:// Tenta depositar um cristal em uma célula vizinha
 	  if(arg.t == NUM){
 	    empilha(pil,arg);
 	  	Sistema(4);
 	  }
 	  else Fatal("Operando incompatível DRP", 9);
 	  break;
-	case ATK:
+	case ATK://Requisita uma ataque em uma célula vizinha
 	  if(arg.t == NUM){
 	    empilha(pil,arg);
 	  	Sistema(5);

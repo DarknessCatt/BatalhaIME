@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "arena.h"
 
 INSTR fatorial[] = {
@@ -72,6 +73,11 @@ INSTR teste[] = {
   {GRB, {NUM, 0}},
   {GRB, {NUM, 1}},
   {DRP, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
   {END,{NUM ,0}},
 };
 
@@ -101,24 +107,50 @@ INSTR robo2[] = {
   {MOV, {NUM, 3}},
   {MOV, {NUM, 4}},
   {MOV, {NUM, 4}},
+  {GRB, {NUM, 1}},
+  {GRB, {NUM, 1}},
+  {GRB, {NUM, 1}},
+  {GRB, {NUM, 1}},
+  {GRB, {NUM, 5}},
+  {GRB, {NUM, 5}},
+  {GRB, {NUM, 5}},
+  {GRB, {NUM, 5}},
+  {DRP, {NUM, 0}},
+  {DRP, {NUM, 0}},
+  {DRP, {NUM, 0}},
+  {DRP, {NUM, 0}},
+  {DRP, {NUM, 0}},
+  {DRP, {NUM, 0}},
+  {DRP, {NUM, 0}},              
   {END, {NUM, 0}}
 };
 
 INSTR robo8[] = {
   {MOV, {NUM, 3}},
   {MOV, {NUM, 3}},
-  {GRB, {NUM, 1}},
-  {GRB, {NUM, 2}},
-  {GRB, {NUM, 3}},
+  {GRB, {NUM, 0}},
+  {GRB, {NUM, 0}},
+  {GRB, {NUM, 0}},
+  {GRB, {NUM, 0}},
+  {GRB, {NUM, 0}},
   {MOV, {NUM, 3}},
   {GRB, {NUM, 2}},
   {MOV, {NUM, 2}},
   {GRB, {NUM, 2}},
-  {DRP, {NUM, 3}},
-  {DRP, {NUM, 3}},
-  {DRP, {NUM, 3}},
-  {DRP, {NUM, 3}},
-  {DRP, {NUM, 3}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {DRP, {NUM, 5}},
+  {DRP, {NUM, 5}},
+  {DRP, {NUM, 5}},
+  {DRP, {NUM, 5}},
+  {DRP, {NUM, 5}},
+  {DRP, {NUM, 5}},
+  {DRP, {NUM, 2}},
+  {DRP, {NUM, 2}},
   {END, {NUM, 0}}
 };
 
@@ -128,8 +160,24 @@ INSTR tested[] = {
   {MOV, {NUM, 3}},
   {SCH, {NUM, 4}},
   {ATR, {NUM, 1}},
-  {GRB, {NUM, 4}},
+  {GRB, {NUM, 0}},
+  {GRB, {NUM, 0}},
+  {GRB, {NUM, 0}},
+  {GRB, {NUM, 0}},
+  {GRB, {NUM, 0}},
   {DRP, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {DRP, {NUM, 2}},
+  {DRP, {NUM, 2}},
+  {DRP, {NUM, 2}},
+  {DRP, {NUM, 2}},
+  {DRP, {NUM, 2}},
+  {DRP, {NUM, 2}},
+  {DRP, {NUM, 2}},
   {END,{NUM ,0}}
 };
 
@@ -142,11 +190,24 @@ INSTR oi[] = {
   {ATK, {NUM, 5}},
   {MOV, {NUM, 5}},
   {ATK, {NUM, 4}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {ATK, {NUM, 5}},
+  {DRP, {NUM, 2}},
+  {DRP, {NUM, 2}},
+  {DRP, {NUM, 2}},
+  {DRP, {NUM, 2}},
+  {DRP, {NUM, 2}},
+  {DRP, {NUM, 2}},
+  {DRP, {NUM, 2}},
   {END,{NUM ,0}}
 };
 
 int main(int ac, char **av) {
-  srand( 1 );
+  srand(77);
   init_arena();
   Exercito exercito;
   exercito.robos[0] = cria_maquina(robo8);
@@ -162,8 +223,8 @@ int main(int ac, char **av) {
   exercito2.robos[3] = cria_maquina(teste);
   exercito2.robos[4] = cria_maquina(oi);
   InsereExercito(exercito2);
-  Escalonador(30);
-  RemoveExercito(0,1,2);
+  Escalonador(60);
+  //RemoveExercito(0,1,2);
   //destroi_maquina(exercito.robos[0]);
   return(0);
 }

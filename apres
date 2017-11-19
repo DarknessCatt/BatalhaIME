@@ -149,7 +149,7 @@ for i in range(H-1):
         arena[i].append(Cell(i,j,125,125,125))
         arena[i][j].draw()
 
-# lista dos robôs definidos
+# lista dos robôs,bases e cristais definidos
 robs = []
 bases = []
 cristais = []
@@ -172,7 +172,8 @@ for line in fileinput.input():
         i, j = list(map(int,r[2:]))
         robs[-1].draw(i,j)
         continue
-
+    # linha começando com 'base', inclui uma base,
+    # o segundo argumento na linha é a imagem   
     if r[0] == 'base':
         bases.append(Base(r[1]))
         i, j = list(map(int,r[2:]))
@@ -181,6 +182,8 @@ for line in fileinput.input():
         bases[-1].y = j
         continue
 
+    # linha começando com 'atk', comando para o robô atacar,
+    # na direção i,j. O robo muda de imagem durante o ataque e depois volta  
     if r[0] == 'atk':
         rid,i, j = list(map(int,r[3:]))
         robs[rid].image = pg.image.load(r[1])
@@ -196,6 +199,8 @@ for line in fileinput.input():
         atu()
         continue
 
+    # linha começando com 'destroy', destroi uma base inimiga.
+    # O segundo argumento é a imagem da base destruida.
     if r[0] == 'destroy':
         base,i, j = list(map(int,r[2:]))
         bases[base].image = pg.image.load(r[1])
@@ -205,9 +210,10 @@ for line in fileinput.input():
         pg.time.wait(10)
         continue  
 
+    # linha começando com 'rest', muda a imagem do robo para um amassado.
+    # O segundo argumento é a imagem do robo danificado.
     if r[0] == 'rest':
         rid,i, j = list(map(int,r[2:]))
-        print('I e J:')
         print(i,j)
         robs[rid].image = pg.image.load(r[1])
         arena[i][j].draw()
@@ -215,7 +221,7 @@ for line in fileinput.input():
         robs[rid].draw(i,j)
         atu()
         continue
-
+    # linha começando com 'cristais', coloca n cristais na celula i,j.
     if r[0] == 'cristais':
         n, i, j = list(map(int, r[1:]))
         arena[i][j].cristais = n
@@ -230,6 +236,9 @@ for line in fileinput.input():
         atu()
         pg.time.wait(10)
         continue
+
+    # linha começando com 'cell', preenche a celula i,j,
+    # com as cores r,g,b passadas como argumento.
     if r[0] == 'cell':
         i, j, r, g ,b = list(map(int, r[1:]))
         arena[i][j].cor = (r,g,b)
