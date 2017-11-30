@@ -18,10 +18,10 @@ if       { return IF; }
 else     { return ELSE;}
 while	 { return WHILE; }
 for      { return FOR;}
-mov      { return MOV;}
-sch		 { return SCH;}
-grb		 { return GRB;}
-atk		 { return ATK;}
+mov      { return MOVER;}
+sch		 { return SEARCH;}
+grb		 { return GRAB;}
+atk		 { return ATKK;}
 func|def { return FUNC; }
 print    { return PRINT; }
 

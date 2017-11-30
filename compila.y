@@ -33,7 +33,7 @@ void AddInstr(OpCode op, int val) {
 %token <cod> ID
 %token ADDt SUBt MULt DIVt ASGN OPEN CLOSE RETt EOL
 %token EQt NEt LTt LEt GTt GEt ABRE FECHA SEP
-%token IF WHILE FUNC PRINT MOV
+%token IF ELSE WHILE FOR FUNC PRINT MOVER SEARCH GRAB ATKK
 
 %right ASGN
 %left ADDt SUBt
@@ -55,7 +55,7 @@ Comando: Expr EOL
        | Loop
        | Func
 	   | PRINT Expr EOL { AddInstr(PRN, 0);}
-	   | MOV OPEN ID CLOSE EOL { int dir;
+	   | MOVER OPEN ID CLOSE EOL { int dir;
 	   							switch($3){
 	   								case "NW":
 	   									dir = 0;
