@@ -40,6 +40,8 @@ char *CODES[] = {
   "SCH",
   "GRB",
   "DRP",
+  "ENTRY",
+  "LEAVE",
   "ATK"
 };
 #else
@@ -68,11 +70,26 @@ Maquina *cria_maquina(INSTR *p) {
   m->contador = 0;
   m->HP = 5;
   m->rest = 0;
+  m->ib = 0;
   return m;
 }
 
 void destroi_maquina(Maquina *m) {
   free(m);
+}
+
+int new_frame(Maquina *m, int n) {
+  int ibc = m->ib;
+  if (ibc < MAXFRM-1) {
+	m->bp[++m->ib] = n+ibc;
+	return m->ib;
+  }
+  return -1;
+}
+
+int del_frame(Maquina *m) {
+  if (m->ib > 0) return --m->ib;
+  return -1;
 }
 
 /* Alguns macros para facilitar a leitura do código */
@@ -83,20 +100,22 @@ void destroi_maquina(Maquina *m) {
 
 void exec_maquina(Maquina *m, int n) {
   int i;
+
   for (i = 0; i < n; i++) {
 	OpCode   opc = prg[ip].instr;
 	OPERANDO arg = prg[ip].op;
 
-	D(printf("%3d: %-4.4s %d\n     ", ip, CODES[opc], arg.n));
+	D(printf("%3d: %-4.4s %d\n", ip, CODES[opc], arg.n));
 
 	switch (opc) {
 	  OPERANDO tmp;
 	  OPERANDO op1;
 	  OPERANDO op2;
 	  OPERANDO op3;
+
 	case PUSH:
-		empilha(pil, arg); 
-		break;
+	  empilha(pil, arg); 
+	  break;
 	case POP:
 	  desempilha(pil);
 	  break;
@@ -108,6 +127,7 @@ void exec_maquina(Maquina *m, int n) {
 	case ADD:
 	  op1 = desempilha(pil);
 	  op2 = desempilha(pil);
+
 	  if (op1.t == NUM && op2.t == NUM) {
 	  	op3.t = op1.t;
 	  	op3.n = op1.n + op2.n;
@@ -289,10 +309,10 @@ void exec_maquina(Maquina *m, int n) {
 	  break;
 	case STO:
 	  op1 = desempilha(pil);
-	  m->Mem[arg.n] = op1;
+	  m->Mem[arg.n + m->bp[m->ib]] = op1;
 	  break;
 	case RCL:
-	  op1 = m->Mem[arg.n];
+	  op1 = m->Mem[arg.n+m->bp[m->ib]];
 	  empilha(pil, op1);
 	  break;
 	case END:
@@ -307,7 +327,7 @@ void exec_maquina(Maquina *m, int n) {
 	case STL:
 	  exec->val[m->rbp + arg.n] = desempilha(pil); //Desempilha da pilha de dados e coloca na de execucao na posição do arg mais rbp
 	  break;
-	case ALC:
+/*	case ALC:
 	  if (arg.t == NUM) {
 	  m->rbp = exec->topo-1; // Aponta a base para o inicio das variaveis locais (aponta para o valor de rbp antigo)
 	  exec->topo = exec->topo + arg.n; //Soma arg no topo da pilha de exec
@@ -316,7 +336,7 @@ void exec_maquina(Maquina *m, int n) {
 	  break;
 	case FRE:
 	  exec->topo = m->rbp+1; //Volta o topo para sua posicao original
-	  break;
+	  break;*/
 	case ATR:
 	  empilha(pil,arg);
 	  Sistema(0); // vamos supor que o 0 é para ele retornar o valor do atributo.
@@ -356,6 +376,15 @@ void exec_maquina(Maquina *m, int n) {
 	  }
 	  else Fatal("Operando incompatível ATK", 9);
 	  break;
+
+	case ENTRY:
+	  new_frame(m, arg.n);
+	  break;
+	  
+	case LEAVE:
+	  del_frame(m);
+	  break;
+
 	}
 
 	D(imprime(pil,5));

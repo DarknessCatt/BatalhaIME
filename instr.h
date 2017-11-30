@@ -33,6 +33,8 @@ typedef enum {
   SCH,
   GRB,
   DRP,
+  ENTRY,
+  LEAVE,
   ATK
 } OpCode;
 
