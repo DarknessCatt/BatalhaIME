@@ -24,7 +24,7 @@ Arena arena;
 FILE *display;
 
 //Gera a arena aleatoriamente, colocando o terreno e os cristais
-void *init_arena();
+void init_arena();
 
 //Executa todos os robos N rodadas, alterando entre os robos de cada time
 void Escalonador(int rodadas);
