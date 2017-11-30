@@ -33,7 +33,7 @@ void AddInstr(OpCode op, int val) {
 %token <cod> ID
 %token ADDt SUBt MULt DIVt ASGN OPEN CLOSE RETt EOL
 %token EQt NEt LTt LEt GTt GEt ABRE FECHA SEP
-%token IF WHILE FUNC PRINT
+%token IF WHILE FUNC PRINT MOV
 
 %right ASGN
 %left ADDt SUBt
@@ -55,6 +55,33 @@ Comando: Expr EOL
        | Loop
        | Func
 	   | PRINT Expr EOL { AddInstr(PRN, 0);}
+	   | MOV OPEN ID CLOSE EOL { int dir;
+	   							switch($3){
+	   								case "NW":
+	   									dir = 0;
+	   									break;
+	   								case "NE":
+	   									dir = 1;
+	   									break;
+	   								case "E":
+	   									dir = 2;
+	   									break;
+	   								case "SE":
+	   									dir = 3;
+	   									break;
+	   								case "SW":
+	   									dir = 4;
+	   									break;
+	   								case "W":
+	   									dir = 5;
+	   									break;
+	   								default:
+	   									yyerror("Direção invalida!\n");
+			 							YYABORT;
+			 							break;
+			 						}
+			 					AddInstr(MOV, dir);
+	   							}
 	   | RETt EOL {
 		 	     AddInstr(LEAVE, 0);
 			     AddInstr(RET, 0);
