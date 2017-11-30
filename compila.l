@@ -14,10 +14,16 @@ E [Ee][+-]?{D}+
 
 ret(urn)?  { return RETt; }
 
-if      { return IF; }
-while	{ return WHILE; }
+if       { return IF; }
+else     { return ELSE;}
+while	 { return WHILE; }
+for      { return FOR;}
+mov      { return MOV;}
+sch		 { return SCH;}
+grb		 { return GRB;}
+atk		 { return ATK;}
 func|def { return FUNC; }
-print   { return PRINT; }
+print    { return PRINT; }
 
 
 {L}{H}* { 
