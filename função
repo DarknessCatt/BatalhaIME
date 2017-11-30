@@ -1,0 +1,17 @@
+x = 34;
+y = 45;
+z = x+y;
+
+def v(a) {print(5*a); return(2);}
+
+if (x > 2) {
+  y = y - v(3);
+ }
+
+k = 2;
+while (k > 0) {
+ k = k-1;
+ print k;
+}
+
+print z+(y/100);

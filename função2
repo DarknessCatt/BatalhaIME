@@ -1,0 +1,12 @@
+x = 14;
+
+def resp(x,y) {
+  print(x);
+  print(y);
+  ret (x*y);
+}
+
+print(x);
+z = 2;
+
+print(resp(x,3));

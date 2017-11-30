@@ -194,19 +194,10 @@ void exec_maquina(Maquina *m, int n) {
 	case CALL:
 	  op1.t = NUM;
 	  op1.n = ip;
-	  op2.t = NUM;
-	  op2.n = m->rbp;
 	  empilha(exec, op1);
-	  empilha(exec, op2); //armazena o rbp para voltar depois no RET
-	  D(imprime(exec,5));
-	  D(printf("\n     ")); 
 	  ip = arg.n;
 	  continue;
-	case RET:
-	  op2 = desempilha(exec);
-	  if (op2.t == NUM) m->rbp = op2.n;
-	  else Fatal("OPERANDO incompatível RET", 9);
-	  
+	case RET: 
 	  op1 = desempilha(exec);
 	  if (op1.t == NUM) ip = op1.n;
 	  else Fatal("OPERANDO incompatível RET", 9); 
@@ -264,7 +255,7 @@ void exec_maquina(Maquina *m, int n) {
 	  op2 = desempilha(pil);
 	  op3 = desempilha(pil);
 	  if (op2.t == NUM && op3.t == NUM) {
-	  	if (op3.n > op3.n) {
+	  	if (op2.n > op3.n) {
 			op1.n = 1;
 			empilha(pil, op1);
 	  	}
@@ -295,7 +286,7 @@ void exec_maquina(Maquina *m, int n) {
 	  op1.t = NUM;
 	  op2 = desempilha(pil);
 	  op3 = desempilha(pil);
-	  if (op2.t == NUM && op2.t == NUM) {
+	  if (op2.t == NUM && op3.t == NUM) {
 	  if (op2.n != op3.n) {
 		op1.n = 1;
 		empilha(pil, op1);

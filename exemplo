@@ -1,0 +1,26 @@
+y = 43;
+x = 3;
+
+if (x > y) {
+  ;
+   y = 3-(4*7);
+   
+}
+
+;
+def f(x,y) {
+  local = 42;
+
+  ;
+  def g(u) {
+	ret(u*u);
+  }
+  while (x < 10) {
+	y = y * 3;
+	x = x + g(1);
+  }
+  return(x+y);
+}
+
+f(local);
+g(42);

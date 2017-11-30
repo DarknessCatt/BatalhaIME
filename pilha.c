@@ -11,7 +11,6 @@ static void Fatal(char *msg, int cod) {
   exit(cod);
 }
 
-
 Pilha *cria_pilha() {
   Pilha *p = (Pilha*)malloc(sizeof(Pilha));
   if (!p) Fatal("Memória insuficiente",4);
@@ -33,6 +32,7 @@ OPERANDO desempilha(Pilha *p) {
   if (p->topo > 0)
 	return p->val[--p->topo];
   else Erro("Pilha vazia");
+  return p->val[p->topo]; 
 }
 
 void imprime(Pilha *p, int n) { 
