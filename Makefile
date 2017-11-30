@@ -1,4 +1,4 @@
-compila: symrec.o arena.o maq.o pilha.o motor.o lex.yy.o compila.tab.o acertos.o 
+compila: compila.tab.o symrec.o arena.o maq.o pilha.o motor.o lex.yy.o acertos.o 
 	gcc symrec.o arena.o maq.o pilha.o motor.o lex.yy.o compila.tab.o acertos.o -o compila -lm -lfl
 
 compila.tab.o: compila.y
@@ -12,5 +12,5 @@ lex.yy.o: compila.l
 progteste: maq.o pilha.o arena.o progteste.o
 
 clean:
-	rm -f progteste *.o lex.yy.c compila.tab.c compila
+	rm -f progteste *.o lex.yy.c compila.tab.c compila.tab.h compila
 
