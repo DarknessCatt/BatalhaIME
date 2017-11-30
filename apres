@@ -129,8 +129,8 @@ class Cristais(pg.sprite.Sprite):
         """
         if n > 0:
             x, y = convert(i,j)
-            if n >5: img = 'salt'+ str(5) + '.png'
-            else:    img = 'salt'+ str(n) + '.png'
+            if n >5: img = 'imagens/salt'+ str(5) + '.png'
+            else:    img = 'imagens/salt'+ str(n) + '.png'
             s.image = pg.image.load(img)
             s.rect = s.image.get_rect()
             # fronteiras do sprite

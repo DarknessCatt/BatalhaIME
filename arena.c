@@ -77,7 +77,7 @@ void Escalonador(int rodadas) {
 						arena.exercitos[j].robos[i]->HP++;
 						if(arena.exercitos[j].robos[i]->HP>4){
 							printf("O robo se recuperou!\n");
-							fprintf(display, "rest bot%d.png %d %d %d\n",j, 5*j + i,arena.exercitos[j].robos[i]->x,arena.exercitos[j].robos[i]->y);
+							fprintf(display, "rest imagens/bot%d.png %d %d %d\n",j, 5*j + i,arena.exercitos[j].robos[i]->x,arena.exercitos[j].robos[i]->y);
 							arena.exercitos[j].robos[i]->rest = 0;
 						}
 					}
@@ -112,7 +112,7 @@ void InsereExercito(Exercito exct) {
 		arena.exercitos[arena.nexercitos].robos[i]->y = y;
 		arena.cell[x][y].ocup = arena.exercitonow*5+arena.robonow+1;
 		printf("Robo:%d, pos[%d][%d]\n",ID,arena.exercitos[arena.nexercitos].robos[i]->x,arena.exercitos[arena.nexercitos].robos[i]->y);
-		fprintf(display, "rob bot%d.png %d %d\n",arena.nexercitos,x,y);
+		fprintf(display, "rob imagens/bot%d.png %d %d\n",arena.nexercitos,x,y);
 		arena.robonow++;
 	}
 	int v = 1 + rand() % (GRID-2);
@@ -126,7 +126,7 @@ void InsereExercito(Exercito exct) {
 	arena.cell[v][w].ocup = 21+arena.exercitonow;
 	printf("A base do exercito %d esta em [%d][%d].\n",arena.nexercitos,v,w);
 	fprintf(display, "cristais 0 %d %d\n",v,w);
-	fprintf(display, "base tower%d.png %d %d\n",arena.nexercitos,v,w);
+	fprintf(display, "base imagens/tower%d.png %d %d\n",arena.nexercitos,v,w);
 	arena.robonow = 0;
 	arena.nexercitos++;
 	arena.exercitonow++;
@@ -141,7 +141,7 @@ void RemoveExercito(int base,int x, int y) {
 		arena.cell[x][y].ocup = 0;
 		destroi_maquina(arena.exercitos[base].robos[i]);
 	}
-	fprintf(display, "destroy tower-1.png %d %d %d\n",base,x,y);
+	fprintf(display, "destroy imagens/tower-1.png %d %d %d\n",base,x,y);
 	printf("O Exercito %d foi destruido!",base);
 }
 
@@ -311,7 +311,7 @@ int Cristal(int nx, int ny, int c) {
 // Função que implementa o ataque do robo na posição da célula passada como argumento.
 int Atacar(int nx, int ny){
 	printf("O robo %d vai atacar a posição [%d][%d]! ",ID,nx,ny);
-	fprintf(display, "atk botatk%d.png bot%d.png %d %d %d\n",arena.exercitonow,arena.exercitonow,arena.cell[maqnow->x][maqnow->y].ocup-1,maqnow->x,maqnow->y);
+	fprintf(display, "atk imagens/botatk%d.png imagens/bot%d.png %d %d %d\n",arena.exercitonow,arena.exercitonow,arena.cell[maqnow->x][maqnow->y].ocup-1,maqnow->x,maqnow->y);
 	if(arena.cell[nx][ny].ocup <= 0 || arena.cell[nx][ny].ocup>20){
 		printf("Parece que não havia nada ali!\n");
 		return 0;
@@ -346,7 +346,7 @@ int Atacar(int nx, int ny){
 		if(arena.exercitos[e].robos[r]->HP<1){
 			arena.exercitos[e].robos[r]->rest=1;
 			printf("Ele desmaiou!\n");
-			fprintf(display, "rest brkbot%d.png %d %d %d\n",e,arena.cell[nx][ny].ocup-1,nx,ny);
+			fprintf(display, "rest imagens/brkbot%d.png %d %d %d\n",e,arena.cell[nx][ny].ocup-1,nx,ny);
 		}
 		else{
 			printf("Ele ainda tem %d de HP!\n",arena.exercitos[e].robos[r]->HP);
