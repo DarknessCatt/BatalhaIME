@@ -3,6 +3,7 @@
 %{
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 #include "symrec.h"
 #include "acertos.h"
 #include "instr.h"
@@ -14,6 +15,7 @@ static int ip  = 0;					/* ponteiro de instruções */
 static int mem = 6;					/* ponteiro da memória */
 static INSTR *prog;
 static int parmcnt = 0;		/* contador de parâmetros */
+static int dir = 0;
 
 void AddInstr(OpCode op, int val) {
   prog[ip++] = (INSTR) {op,  {NUM, {val}}};
@@ -55,76 +57,11 @@ Comando: Expr EOL
        | Loop
        | Func
 	   | PRINT Expr EOL { AddInstr(PRN, 0);}
-	   | MOVER OPEN ID CLOSE EOL { int dir;
-	   							   char* string = $3;
-	   							   if      (strcmp(string, "NW") == 0) {dir = 0;}
-	   							   else if (strcmp(string, "NE") == 0) {dir = 1;}
-	   							   else if (strcmp(string, "E") == 0)  {dir = 2;}
-	   							   else if (strcmp(string, "SE") == 0) {dir = 3;}
-	   							   else if (strcmp(string, "SW") == 0) {dir = 4;}
-	   							   else if (strcmp(string, "W") == 0)  {dir = 5;}
-	   							   else {
-	   									yyerror("Direção invalida!\n");
-			 							YYABORT;
-			 						}
-			 						AddInstr(MOV, dir);
-	   							 }
-	   | SEARCH OPEN ID CLOSE EOL { int dir;
-	   							   char* string = $3;
-	   							   if      (strcmp(string, "NW") == 0) {dir = 0;}
-	   							   else if (strcmp(string, "NE") == 0) {dir = 1;}
-	   							   else if (strcmp(string, "E") == 0)  {dir = 2;}
-	   							   else if (strcmp(string, "SE") == 0) {dir = 3;}
-	   							   else if (strcmp(string, "SW") == 0) {dir = 4;}
-	   							   else if (strcmp(string, "W") == 0)  {dir = 5;}
-	   							   else {
-	   									yyerror("Direção invalida!\n");
-			 							YYABORT;
-			 						}
-			 						AddInstr(SCH, dir);
-	   							 }
-       | GRAB OPEN ID CLOSE EOL { int dir;
-	   							   char* string = $3;
-	   							   if      (strcmp(string, "NW") == 0) {dir = 0;}
-	   							   else if (strcmp(string, "NE") == 0) {dir = 1;}
-	   							   else if (strcmp(string, "E") == 0)  {dir = 2;}
-	   							   else if (strcmp(string, "SE") == 0) {dir = 3;}
-	   							   else if (strcmp(string, "SW") == 0) {dir = 4;}
-	   							   else if (strcmp(string, "W") == 0)  {dir = 5;}
-	   							   else {
-	   									yyerror("Direção invalida!\n");
-			 							YYABORT;
-			 						}
-			 						AddInstr(GRB, dir);
-	   							 }
-	   | DROP OPEN ID CLOSE EOL { int dir;
-	   							   char* string = $3;
-	   							   if      (strcmp(string, "NW") == 0) {dir = 0;}
-	   							   else if (strcmp(string, "NE") == 0) {dir = 1;}
-	   							   else if (strcmp(string, "E") == 0)  {dir = 2;}
-	   							   else if (strcmp(string, "SE") == 0) {dir = 3;}
-	   							   else if (strcmp(string, "SW") == 0) {dir = 4;}
-	   							   else if (strcmp(string, "W") == 0)  {dir = 5;}
-	   							   else {
-	   									yyerror("Direção invalida!\n");
-			 							YYABORT;
-			 						}
-			 						AddInstr(DRP, dir);
-	   							 }
-       | ATKK OPEN ID CLOSE EOL { int dir;
-	   							   char* string = $3;
-	   							   if      (strcmp(string, "NW") == 0) {dir = 0;}
-	   							   else if (strcmp(string, "NE") == 0) {dir = 1;}
-	   							   else if (strcmp(string, "E") == 0)  {dir = 2;}
-	   							   else if (strcmp(string, "SE") == 0) {dir = 3;}
-	   							   else if (strcmp(string, "SW") == 0) {dir = 4;}
-	   							   else if (strcmp(string, "W") == 0)  {dir = 5;}
-	   							   else {
-	   									yyerror("Direção invalida!\n");
-			 							YYABORT;
-			 						}
-			 						AddInstr(ATK, dir);
-	   							 }
+	   | MOVER Direcao EOL {AddInstr(MOV, dir);}
+	   | SEARCH Direcao EOL {AddInstr(SCH, dir);}
+       | GRAB Direcao EOL {AddInstr(GRB, dir);}
+	   | DROP Direcao EOL {AddInstr(DRP, dir);}
+       | ATKK Direcao EOL {AddInstr(ATK, dir);}
 	   | RETt EOL {
 		 	     AddInstr(LEAVE, 0);
 			     AddInstr(RET, 0);
@@ -261,6 +198,20 @@ Chamada: ID OPEN
 		 }
 	  	 CLOSE ;
 
+Direcao: OPEN ID CLOSE {
+			char* string = $2;
+	   			if      (strcmp(string, "NW") == 0) {dir = 0;}
+	   			else if (strcmp(string, "NE") == 0) {dir = 1;}
+	   			else if (strcmp(string, "E") == 0)  {dir = 2;}
+	   			else if (strcmp(string, "SE") == 0) {dir = 3;}
+	   			else if (strcmp(string, "SW") == 0) {dir = 4;}
+	   			else if (strcmp(string, "W") == 0)  {dir = 5;}
+	   			else {
+	   				yyerror("Direção invalida!\n");
+			 		YYABORT;
+			 	}
+			}
+;
 
 ListParms:
 	| Expr { parmcnt++;}
