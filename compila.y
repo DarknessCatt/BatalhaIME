@@ -168,16 +168,33 @@ Expr: NUMt {  AddInstr(PUSH, $1);}
 	| Expr NEt Expr  { AddInstr(NE,   0);}
 ;
 
-Cond: IF OPEN  Expr {
+Cond: IF OPEN Expr {
   	  	 	   salva_end(ip);
 			   AddInstr(JIF,  0);
  		 }
-		 CLOSE  Bloco {
+		 CLOSE Bloco {
+		 	prog[pega_end()].op.n = ip+1;
+		 	salva_end(ip);
+		 	AddInstr(JMP,  0);
+		 } ELSE Bloco {
 		   prog[pega_end()].op.n = ip;
 		 };
 
 Loop: WHILE OPEN  {salva_end(ip);}
 	  		Expr  { salva_end(ip); AddInstr(JIF,0); }
+	  		CLOSE Bloco {
+			  int ip2 = pega_end();
+			  AddInstr(JMP, pega_end());
+			  prog[ip2].op.n = ip;
+			}
+	| FOR OPEN Expr EOL { salva_end(ip);}
+	  		Expr EOL {salva_end(ip); AddInstr(JIF,0); }
+	  	    ID ASGN Expr{
+	  	     printf("Teste:%s",$9);
+	         symrec *s = getsym($9);
+			 if (s==0) s = putsym($9); /* não definida */
+			 AddInstr(STO, s->val);
+ 		 }
 	  		CLOSE Bloco {
 			  int ip2 = pega_end();
 			  AddInstr(JMP, pega_end());
