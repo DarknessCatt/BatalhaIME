@@ -33,7 +33,7 @@ void AddInstr(OpCode op, int val) {
 %token <cod> ID
 %token ADDt SUBt MULt DIVt ASGN OPEN CLOSE RETt EOL
 %token EQt NEt LTt LEt GTt GEt ABRE FECHA SEP
-%token IF ELSE WHILE FOR FUNC PRINT MOVER SEARCH GRAB ATKK
+%token IF ELSE WHILE FOR FUNC PRINT MOVER SEARCH GRAB DROP ATKK
 
 %right ASGN
 %left ADDt SUBt
@@ -56,32 +56,61 @@ Comando: Expr EOL
        | Func
 	   | PRINT Expr EOL { AddInstr(PRN, 0);}
 	   | MOVER OPEN ID CLOSE EOL { int dir;
-	   							switch($3){
-	   								case "NW":
-	   									dir = 0;
-	   									break;
-	   								case "NE":
-	   									dir = 1;
-	   									break;
-	   								case "E":
-	   									dir = 2;
-	   									break;
-	   								case "SE":
-	   									dir = 3;
-	   									break;
-	   								case "SW":
-	   									dir = 4;
-	   									break;
-	   								case "W":
-	   									dir = 5;
-	   									break;
-	   								default:
+	   							   char* string = $3;
+	   							   if      (strcmp(string, "NW") == 0) {dir = 0;}
+	   							   else if (strcmp(string, "NE") == 0) {dir = 1;}
+	   							   else if (strcmp(string, "E") == 0)  {dir = 2;}
+	   							   else if (strcmp(string, "SE") == 0) {dir = 3;}
+	   							   else if (strcmp(string, "SW") == 0) {dir = 4;}
+	   							   else if (strcmp(string, "W") == 0)  {dir = 5;}
+	   							   else {
 	   									yyerror("Direção invalida!\n");
 			 							YYABORT;
-			 							break;
 			 						}
-			 					AddInstr(MOV, dir);
-	   							}
+			 						AddInstr(MOV, dir);
+	   							 }
+	   | SEARCH OPEN ID CLOSE EOL { int dir;
+	   							   char* string = $3;
+	   							   if      (strcmp(string, "NW") == 0) {dir = 0;}
+	   							   else if (strcmp(string, "NE") == 0) {dir = 1;}
+	   							   else if (strcmp(string, "E") == 0)  {dir = 2;}
+	   							   else if (strcmp(string, "SE") == 0) {dir = 3;}
+	   							   else if (strcmp(string, "SW") == 0) {dir = 4;}
+	   							   else if (strcmp(string, "W") == 0)  {dir = 5;}
+	   							   else {
+	   									yyerror("Direção invalida!\n");
+			 							YYABORT;
+			 						}
+			 						AddInstr(SCH, dir);
+	   							 }
+       | GRAB OPEN ID CLOSE EOL { int dir;
+	   							   char* string = $3;
+	   							   if      (strcmp(string, "NW") == 0) {dir = 0;}
+	   							   else if (strcmp(string, "NE") == 0) {dir = 1;}
+	   							   else if (strcmp(string, "E") == 0)  {dir = 2;}
+	   							   else if (strcmp(string, "SE") == 0) {dir = 3;}
+	   							   else if (strcmp(string, "SW") == 0) {dir = 4;}
+	   							   else if (strcmp(string, "W") == 0)  {dir = 5;}
+	   							   else {
+	   									yyerror("Direção invalida!\n");
+			 							YYABORT;
+			 						}
+			 						AddInstr(GRB, dir);
+	   							 }
+	   | DROP OPEN ID CLOSE EOL { int dir;
+	   							   char* string = $3;
+	   							   if      (strcmp(string, "NW") == 0) {dir = 0;}
+	   							   else if (strcmp(string, "NE") == 0) {dir = 1;}
+	   							   else if (strcmp(string, "E") == 0)  {dir = 2;}
+	   							   else if (strcmp(string, "SE") == 0) {dir = 3;}
+	   							   else if (strcmp(string, "SW") == 0) {dir = 4;}
+	   							   else if (strcmp(string, "W") == 0)  {dir = 5;}
+	   							   else {
+	   									yyerror("Direção invalida!\n");
+			 							YYABORT;
+			 						}
+			 						AddInstr(DRP, dir);
+	   							 }
 	   | RETt EOL {
 		 	     AddInstr(LEAVE, 0);
 			     AddInstr(RET, 0);

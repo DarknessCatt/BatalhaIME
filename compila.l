@@ -21,6 +21,7 @@ for      { return FOR;}
 mov      { return MOVER;}
 sch		 { return SEARCH;}
 grb		 { return GRAB;}
+drp      { return DROP;}
 atk		 { return ATKK;}
 func|def { return FUNC; }
 print    { return PRINT; }
