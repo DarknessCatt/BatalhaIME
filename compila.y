@@ -111,6 +111,20 @@ Comando: Expr EOL
 			 						}
 			 						AddInstr(DRP, dir);
 	   							 }
+       | ATKK OPEN ID CLOSE EOL { int dir;
+	   							   char* string = $3;
+	   							   if      (strcmp(string, "NW") == 0) {dir = 0;}
+	   							   else if (strcmp(string, "NE") == 0) {dir = 1;}
+	   							   else if (strcmp(string, "E") == 0)  {dir = 2;}
+	   							   else if (strcmp(string, "SE") == 0) {dir = 3;}
+	   							   else if (strcmp(string, "SW") == 0) {dir = 4;}
+	   							   else if (strcmp(string, "W") == 0)  {dir = 5;}
+	   							   else {
+	   									yyerror("Direção invalida!\n");
+			 							YYABORT;
+			 						}
+			 						AddInstr(ATK, dir);
+	   							 }
 	   | RETt EOL {
 		 	     AddInstr(LEAVE, 0);
 			     AddInstr(RET, 0);
