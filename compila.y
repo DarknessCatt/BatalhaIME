@@ -188,13 +188,14 @@ Loop: WHILE OPEN  {salva_end(ip);}
 			  prog[ip2].op.n = ip;
 			}
 	| FOR OPEN Expr EOL { salva_end(ip);}
-	  		Expr EOL {salva_end(ip); AddInstr(JIF,0); }
-	  	    ID ASGN Expr{
-	  	     printf("Teste:%s",$9);
-	         symrec *s = getsym($9);
-			 if (s==0) s = putsym($9); /* não definida */
-			 AddInstr(STO, s->val);
- 		 }
+	  		Expr EOL {}
+	  	    ID ASGN Expr {
+	        	symrec *s = getsym($9);
+				if (s==0) s = putsym($9); /* não definida */
+				AddInstr(STO, s->val);
+				salva_end(ip);
+				AddInstr(JIF,0);
+ 		 	}
 	  		CLOSE Bloco {
 			  int ip2 = pega_end();
 			  AddInstr(JMP, pega_end());
