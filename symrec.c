@@ -27,7 +27,6 @@ symrec *putsym (char *sym_name)
   ptr->val = SymStack[topss].base++;
   ptr->next = table;
 
-  /* printf("Inclui: %2d: %s, %d\n", topss, ptr->name, ptr->val); */
   SymStack[topss].syms = ptr;
   return ptr;
 }
@@ -39,10 +38,9 @@ static symrec *getsym_i(int t, char *sym_name) {
 
   for (ptr = table; ptr != (symrec *) 0;
 	   ptr = (symrec *)ptr->next)
-	if (strcmp (ptr->name,sym_name) == 0) {
-	  /* printf("Achei: %2d: %s, %d\n", t, ptr->name, ptr->val); */
+	if (strcmp (ptr->name,sym_name) == 0) 
 	  return ptr;
-	}
+
   return 0;
 }
 
@@ -81,8 +79,8 @@ static void delsymtab(Cabec c) {
   symrec *s = c.syms;
   if (!s)
 	return;				/* já está vazia */
+
   prox = s->next;
-  
   for (ptr = s; ptr != NULL; ptr = prox) {
 	prox = ptr->next;
 	free(ptr->name);
@@ -97,6 +95,13 @@ symrec *deltab() {
   return SymStack[--topss].syms;
 }
 
+void cleartab() {
+  while (topss) {
+	deltab();
+  }
+  delsymtab(SymStack[0]);
+  SymStack[0].syms = NULL;
+}
 
 int lastval() {
   return SymStack[topss].base;

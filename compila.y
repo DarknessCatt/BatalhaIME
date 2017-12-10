@@ -229,6 +229,8 @@ int compilador(FILE *cod, INSTR *dest) {
   int r;
   yyin = cod;
   prog = dest;
+  cleartab();
+  ip = 0;
   r = yyparse();
   AddInstr(END,0);
   return r;
