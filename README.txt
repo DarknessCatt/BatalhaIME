@@ -1,13 +1,11 @@
-﻿Relatório - Projeto Fase 3
+﻿Relatório - Projeto Fase 4
 MAC0216 - Professor Marcos Dimas Gubitoso
 
 Eduardo Nascimento - NºUSP 10267070
-Gabriel Sarti Massukado - NºUSP 10824177
+Gabriel Sarti Massukado - NºUSP 10284177
 Matheus Lima Cunha - NºUSP 10297755
 
-Para a terceira fase do projeto, primeiramente criamos sprites para nossos robôs, cristais e bases. Optamos por não criar sprites para os diferentes tipos de terreno pois acreditamos que a visualização seria mais simples e intuitiva utilizando apenas cores para representar os terrenos, visto que a baixa resolução dos sprites poderiam criar imagens confusas pela sobreposição dos robôs/cristais sobre os terrenos. Para identificação dos times, utilizamos sprites iguais mas com diferenças de coloração (vermelha, azul, verde e amarela).
-
-Além disso, alteramos nosso arena.c para que ele abrisse um pipe e executasse o programa "apres", responsável por implementar a parte gráfica do projeto. É importante notar que o pipe que criamos é criado da seguinte forma (linha 9 de arena.c):
+Em primeiro lugar, mantivemos o pipe criado pelo arena.c utilizando a versão 1 de python. Caso o corretor utilize uma versão mais recente, é necessária a seguinte alteração (linha 9 de arena.c):
 
 display = popen("python apres", "w");
 
@@ -15,10 +13,12 @@ Logo, dependendo da sua versão de Python, talvez seja necessário alterar ess l
 
 display = popen("python3 apres", "w");
 
-Ademais, adicionamos em nossas funções InsereExercito e Cristais comandos que imprimem as informações necessárias para que elas imprimam o texto que "apres" necessita para desenhar os robôs e os cristais.
+Para a quarta fase de nosso projeto, trabalhamos principalmente sobre os arquivos disponibilizados pelo professor responsáveis pelo compilador, ou seja, compila.l e compila.y. Antes de começarmos, alteramos nosso makefile para que compilasse os arquivos de byson e flex, assim como o makefile dos arquivos em "Anexos para a quarta fase". Simplesmente executar "make" compila o nosso compilador e gera o executável "compila".
 
-Implementamos também uma nova função para nossos robôs, o comando ATK, que corresponde a um ataque de um robô. Cada robô possui cinco pontos de vida e perde um ponto cada vez que é atingido por um ataque. Quando os pontos de vida do robô se esgotam, ele entra em estado de repouso (indicado por um sprite diferente) e deve ficar 5 turnos recarregando (10 ciclos de máquina), sem poder realizar nenhuma ação. Após esse período, ele resume suas ações normalmente. 
+No arquivo "compila.l", criamos novas palavras reservadas para a linguagem: mov, sch, grb, drp e atk, que são indicadoras das ações que os robôs podem executar - se mover, examinar seus arredores, pegar um cristal, soltar seus cristais e atacar, respectivamente. Logicamente, tambéma adicionamos a interpretação dessas palavras registradas como comandos no arquivo "compila.y". 
 
-Finalmente, criamos mais uma instrução no Makefile (make edit) apenas para facilitar nosso trabalho de edição do código. O comando make progteste executa nossos programas de exemplo.
+Implementamos também o loop com a palavra reservada "for", que recebe uma variável, uma condição de parada e uma condição que se repete no final do loop (como incrementar a variável, por exemplo). É importante notar que nossa linguagem não possui formas simplificadas para representar incrementos, decrementos e outras operações similares. 
 
-Foram feitas as correções necessárias relativas à segunda fase: adicionamos comentários às funções restantes e removemos os warnings da compilação.
+Finalmente, implementamos o condicional com a palavra reservada "else". Para isso, utilizamos uma definição recursiva na gramática, evitando assim o conflito reduce/reduce que possuíamos anteriormente.
+
+Tivemos algumas dificuldades na implementação do "for", devido ao modo como organizávamos nossos valores na pilha. Entretanto, todas foram solucionadas.
