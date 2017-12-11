@@ -12,10 +12,20 @@ int yylex();
 void yyerror(char const *);
 int compila(FILE *, INSTR *);
 static int ip  = 0;					/* ponteiro de instruções */
+static int jp  = 0;
 static int mem = 6;					/* ponteiro da memória */
 static INSTR *prog;
+static INSTR paux[100];
 static int parmcnt = 0;		/* contador de parâmetros */
 static int dir = 0;
+
+void push(){
+	paux[jp++] = prog[--ip];
+}
+
+INSTR pop(){
+	return paux[--jp];
+}
 
 void AddInstr(OpCode op, int val) {
   prog[ip++] = (INSTR) {op,  {NUM, {val}}};
@@ -125,15 +135,20 @@ Loop: WHILE OPEN  {salva_end(ip);}
 			  prog[ip2].op.n = ip;
 			}
 	| FOR OPEN Expr EOL { salva_end(ip);}
-	  		Expr EOL {}
+	  		Expr EOL { salva_end(ip);}
 	  	    ID ASGN Expr {
 	        	symrec *s = getsym($9);
 				if (s==0) s = putsym($9); /* não definida */
 				AddInstr(STO, s->val);
+				int i = pega_end();
+				int num = i - ip+1;
+				while(ip>i+1) push();
+				AddInstr(ADD, num); push(); // adiciona num na pilha
 				salva_end(ip);
 				AddInstr(JIF,0);
  		 	}
 	  		CLOSE Bloco {
+	  		  for( int j = (int) pop().op.n; j>0 ; j--) prog[ip++] = pop();
 			  int ip2 = pega_end();
 			  AddInstr(JMP, pega_end());
 			  prog[ip2].op.n = ip;
