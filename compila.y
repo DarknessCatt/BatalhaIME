@@ -24,7 +24,12 @@ void push(){
 }
 
 INSTR pop(){
-	return paux[--jp];
+    if(jp>0){
+        return paux[--jp];
+    }
+    else {
+        yyerror("ta dando pop no nada tio?");
+    }
 }
 
 void AddInstr(OpCode op, int val) {
@@ -141,14 +146,15 @@ Loop: WHILE OPEN  {salva_end(ip);}
 				if (s==0) s = putsym($9); /* não definida */
 				AddInstr(STO, s->val);
 				int i = pega_end();
-				int num = i - ip+1;
-				while(ip>i+1) push();
+				int num = ip - i;
+				while(ip>i) push();
 				AddInstr(ADD, num); push(); // adiciona num na pilha
 				salva_end(ip);
 				AddInstr(JIF,0);
  		 	}
 	  		CLOSE Bloco {
-	  		  for( int j = (int) pop().op.n; j>0 ; j--) prog[ip++] = pop();
+	  		  int teste = (int) pop().op.n;
+	  		  for( int j = teste; j>0 ; j--) prog[ip++] = pop();
 			  int ip2 = pega_end();
 			  AddInstr(JMP, pega_end());
 			  prog[ip2].op.n = ip;
