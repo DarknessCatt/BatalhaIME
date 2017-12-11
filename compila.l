@@ -6,6 +6,7 @@ E [Ee][+-]?{D}+
 %{
 #include <math.h>
 #include "compila.tab.h"
+#include <string.h>
 %}
 
 

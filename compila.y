@@ -7,7 +7,7 @@
 #include "symrec.h"
 #include "acertos.h"
 #include "instr.h"
-  
+
 int yylex();
 void yyerror(char const *);
 int compila(FILE *, INSTR *);
@@ -127,10 +127,11 @@ Cond: IF OPEN Expr {
 		 CLOSE Bloco {
 		 	prog[pega_end()].op.n = ip+1;
 		 	salva_end(ip);
-		 	AddInstr(JMP,  0);
-		 } ELSE Bloco {
+		 	AddInstr(JMP,  ip+1);
+		 }
+	| Cond ELSE Bloco {
 		   prog[pega_end()].op.n = ip;
-		 };
+	};
 
 Loop: WHILE OPEN  {salva_end(ip);}
 	  		Expr  { salva_end(ip); AddInstr(JIF,0); }
