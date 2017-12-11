@@ -153,8 +153,7 @@ Loop: WHILE OPEN  {salva_end(ip);}
 				AddInstr(JIF,0);
  		 	}
 	  		CLOSE Bloco {
-	  		  int teste = (int) pop().op.n;
-	  		  for( int j = teste; j>0 ; j--) prog[ip++] = pop();
+	  		  for( int j = (int) pop().op.n; j>0 ; j--) prog[ip++] = pop();
 			  int ip2 = pega_end();
 			  AddInstr(JMP, pega_end());
 			  prog[ip2].op.n = ip;
